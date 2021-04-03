@@ -4,12 +4,13 @@ import java.util.List;
 
 
 import com.capg.onlinesportsshopee.bean.Order;
+import com.capg.onlinesportsshopee.model.OrderDTO;
 
 public interface IOrderService {
-	public Order addOrder(Order order);
-	public Order removeOrder(long id);
-	public Order  updateOrder(long id, Order order);
-	public Order  getOrderDetails(long id);
-	public List<Order> getAllOrders(); 
+	public OrderDTO addOrder(Order order);
+	public OrderDTO removeOrder(long id);
+	public OrderDTO  updateOrder(long id, Order order);
+	public OrderDTO  getOrderDetails(long id);
+	public List<OrderDTO> getAllOrders(); 
 
 }
