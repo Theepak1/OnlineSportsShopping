@@ -11,7 +11,7 @@ public interface IProductService {
 	public Product updateProduct(long id, Product product);
 	public Product getProduct(long id);
 	public List<Product> getAllProduct();
-	public List<Product> getProductsByName();
+	public List<Product> getProductsByName(String name);
 	public List<Product> getProductsBySize();
 	public List<Product> getProductsByPrice();
 	public List<Product> getProductsByColor();
