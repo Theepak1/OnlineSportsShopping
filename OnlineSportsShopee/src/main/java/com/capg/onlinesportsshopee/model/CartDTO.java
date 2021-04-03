@@ -1,58 +1,12 @@
+package com.capg.onlinesportsshopee.model;
 
-package com.capg.onlinesportsshopee.bean;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="cart")
-public class Cart extends Product{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cartid")
+public class CartDTO{
 	 private long cartId;
-	 
-	@Column(name="imagename")
-	private String imageName;
-	
-	@Column(name="productname")
+	 private String imageName;
 	 private String productName;
-	
-	@Column(name="quantity")
 	 private int quantity;
-	
-	@Column(name="price")
 	 private double price;
-	
-	@Column(name="total")
 	 private double total;
-	
-	
-	
-	public Cart() {
-		
-	}
-	
-	
-	
-	public Cart(long cartId, String imageName, String productName, int quantity, double price, double total) {
-		super();
-		this.cartId = cartId;
-		this.imageName = imageName;
-		this.productName = productName;
-		this.quantity = quantity;
-		this.price = price;
-		this.total = total;
-	}
-
-
-
 	public long getCartId() {
 		return cartId;
 	}
