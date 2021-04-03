@@ -15,4 +15,7 @@ public class Product {
 	private double priceAfterDiscount;
 	private boolean inStock;
 	private LocalDate estimatedDelivery;
+	
+	//add
+	
 }
