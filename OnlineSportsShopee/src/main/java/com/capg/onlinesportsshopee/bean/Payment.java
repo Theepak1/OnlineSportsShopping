@@ -5,4 +5,6 @@ public class Payment {
 	private String type;
 	private String status;
 	private Card card;
+	//add
+	private int num;
 }
