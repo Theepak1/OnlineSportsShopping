@@ -13,7 +13,7 @@ public class AddressDTO {
 	private String area;
 	private String city;
 	private String state;
-	private int pincode;
+	private int pinCode;
 	
 	public String getDoorNo() {
 		return doorNo;
@@ -45,25 +45,25 @@ public class AddressDTO {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public int getPincode() {
-		return pincode;
+	public int getPinCode() {
+		return pinCode;
 	}
-	public void setPincode(int pincode) {
-		this.pincode = pincode;
+	public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
 	}
 	
 	public int getAddressId() {
 		return addressId;
 	}
 	
-	public AddressDTO(String doorNo, String street, String area, String city, String state, int pincode) {
+	public AddressDTO(String doorNo, String street, String area, String city, String state, int pinCode) {
 		super();
 		this.doorNo = doorNo;
 		this.street = street;
 		this.area = area;
 		this.city = city;
 		this.state = state;
-		this.pincode = pincode;
+		this.pinCode = pinCode;
 	}
 	
 	public AddressDTO()
@@ -74,7 +74,7 @@ public class AddressDTO {
 	@Override
 	public String toString() {
 		return "Address [doorNo=" + doorNo + ", street=" + street + ", area=" + area + ", city=" + city + ", state="
-				+ state + ", pincode=" + pincode + "]";
+				+ state + ", pinCode=" + pinCode + "]";
 	}
 	
 }

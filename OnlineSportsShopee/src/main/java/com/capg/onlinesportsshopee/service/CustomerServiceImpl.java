@@ -3,6 +3,7 @@ package com.capg.onlinesportsshopee.service;
 import java.util.ArrayList;
 
 
+
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -30,11 +31,11 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public CustomerDTO removeCustomer(long custId) {
+	public CustomerDTO removeCustomer(long userId) {
 		
 		Customer customertemp=new Customer();
-		customertemp=customerRepo.getOne(custId);
-		customerRepo.deleteById(custId);
+		customertemp=customerRepo.getOne(userId);
+		customerRepo.deleteById(userId);
 		return CustomerUtil.convertToCustomerDto(customertemp);
 	}
 
@@ -46,9 +47,9 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public CustomerDTO getCustomer(long custId) {
+	public CustomerDTO getCustomer(long userId) {
 		Customer getCustomer=new Customer();
-		getCustomer=customerRepo.findById(custId).orElse(null);
+		getCustomer=customerRepo.findById(userId).orElse(null);
 		return CustomerUtil.convertToCustomerDto(getCustomer);
 	}
 
@@ -85,7 +86,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	{
 		boolean flag=true;
 		if(customer.getEmail()==null || customer.getEmail().length()<8 ||  customer.getEmail().length()>30 ||
-				customer.getEmail().isEmpty() || !(Pattern.matches("^[A-Za-z0-9]+@[A-Za-z0-9]$",customer.getContactNo())))
+				customer.getEmail().isEmpty() || !(Pattern.matches("^[A-Za-z0-9]+@[A-Za-z0-9.]$",customer.getEmail())))
 		{
 			flag=false;
 		}
