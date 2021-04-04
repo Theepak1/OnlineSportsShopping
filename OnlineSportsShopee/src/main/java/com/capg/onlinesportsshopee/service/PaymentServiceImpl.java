@@ -51,11 +51,14 @@ public class PaymentServiceImpl implements IPaymentService {
 		if ( !paymentTemp.isEmpty() && validatePaymentStatus(payment) && validatePaymentStatus(payment)
 				&&  validateCardName(payment) && validateCardNumber(payment) 
 				&& validateCvv(payment) && validateCardExpiry(payment) ) {
-			Payment newPayment = paymentRepository.findById(paymentId).orElse(null);
-			newPayment.setType(payment.getType());
-			newPayment.setStatus(payment.getStatus());
-			newPayment.setCard(payment.getCard());
-			Payment updatePayment = paymentRepository.save(newPayment);
+			/*
+			 * Payment newPayment = paymentRepository.findById(paymentId).orElse(null);
+			 * newPayment.setPaymentId(payment.getPaymentId());
+			 * newPayment.setType(payment.getType());
+			 * newPayment.setStatus(payment.getStatus());
+			 * newPayment.setCard(payment.getCard());
+			 */
+			Payment updatePayment = paymentRepository.save(payment);
 			return PaymentUtil.convertToPaymentDto(updatePayment);
 		} else {
 			throw new PaymentServiceException("PaymentId not found or Enter validate type and Status");
