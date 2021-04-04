@@ -43,7 +43,7 @@ public class Card implements Serializable {
 	@NotNull(message = "Card Expiry Date Should Not Be Null")
 	private LocalDate cardExpiry;
     
-	@Column(name = "cvv",nullable = false,length = 3)
+	@Column(name = "cvv",nullable = false)
 	@NotNull(message = "Card Cvv Number Should Not Be Null")
 	private int cvv;
 	
