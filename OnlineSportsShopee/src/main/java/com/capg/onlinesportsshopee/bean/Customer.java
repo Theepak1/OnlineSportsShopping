@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Customers")
+@Table(name = "customers")
 public class Customer {
 
 	@Id
@@ -24,19 +24,19 @@ public class Customer {
 	@Column(name = "userid")
 	private long userId;
 
-	@Column(name = "name",length=20)
+	@Column(name = "name",nullable=false,length=20)
 	@NotBlank(message="Name should not be blank")
 	private String name;
 
-	@Column(name = "email",unique=true, length = 25)
+	@Column(name = "email",unique=true,nullable=false, length = 25)
 	@NotBlank(message="EmailId should not be blank")
 	private String email;
 
-	@Column(name = "contactno",unique=true, length = 10)
+	@Column(name = "contactno",unique=true,nullable=false, length = 10)
 	@NotBlank(message="ContactNo should not be blank")
 	private String contactNo;
 
-	@Column(name = "dob")
+	@Column(name = "dob",nullable=false)
 	@NotBlank(message="Date of Birth should not be blank")
 	private String dob;
 

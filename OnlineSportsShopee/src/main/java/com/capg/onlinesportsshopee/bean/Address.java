@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="Address")
+@Table(name="address")
 public class Address {
 
 	@Id
@@ -18,27 +18,27 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int addressId;
 	
-	@Column(name="doorno")
+	@Column(name="doorno",nullable=false)
 	@NotBlank(message="DoorNo should not be blank")
 	private String doorNo;
 	
-	@Column(name="street",length=20)
+	@Column(name="street",length=20,nullable=false)
 	@NotBlank(message="Street should not be blank")
 	private String street;
 	
-	@Column(name="area",length=20)
+	@Column(name="area",length=20,nullable=false)
 	@NotBlank(message="Area should not be blank")
 	private String area;
 	
-	@Column(name="city",length=20)
+	@Column(name="city",length=20,nullable=false)
 	@NotBlank(message="City should not be blank")
 	private String city;
 	
-	@Column(name="state",length=20)
+	@Column(name="state",length=20,nullable=false)
 	@NotBlank(message="State should not be blank")
 	private String state;
 	
-	@Column(name="pincode",length=6)
+	@Column(name="pincode",length=6,nullable=false)
 	@NotBlank(message="PinCode should not be blank")
 	private int pinCode;
 
