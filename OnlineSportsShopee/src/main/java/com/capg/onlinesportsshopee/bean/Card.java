@@ -2,6 +2,7 @@ package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +12,17 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 
 @Entity
 @Table(name = "card")
 public class Card implements Serializable {
+	
 	
 	private static final long serialVersionUID = 1L;
 
@@ -23,19 +31,22 @@ public class Card implements Serializable {
 	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "card_name")
+	@Column(name = "card_name",nullable = false)
 	@NotBlank(message = "Card Name Should Not Be Blank")
 	private String cardName;
 	
-	@Column(name = "card_number")
+	@Column(name = "card_number",nullable = false,unique = true)
 	@NotNull(message = "Card Number Should Not Be Null")
 	private String cardNumber;
     
-	@Column(name = "card_expiry")
+	@Column(name = "card_expiry_date",nullable = false)
 	@NotBlank(message = "Card Expiry Should Not Be Blank")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy") 
+	@JsonDeserialize(using = LocalDateDeserializer.class)  
+	@JsonSerialize(using = LocalDateSerializer.class)  
 	private LocalDate cardExpiry;
     
-	@Column(name = "cvv")
+	@Column(name = "cvv",nullable = false)
 	@NotNull(message = "Card Cvv Number Should Not Be Null")
 	private int cvv;
 	
@@ -100,4 +111,3 @@ public class Card implements Serializable {
 	
 	
 }
-

@@ -35,7 +35,7 @@ public class Payment implements Serializable{
 	private String status;
 	
 	@ManyToOne(cascade= {CascadeType.ALL},fetch=FetchType.EAGER)
-	@JoinColumn(name="card_id",referencedColumnName = "ID")
+	@JoinColumn(name="card_id",referencedColumnName = "id",nullable = false)
 	private Card card;
 	
 	public Payment() {
