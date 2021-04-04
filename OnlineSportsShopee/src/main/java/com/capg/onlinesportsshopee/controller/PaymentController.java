@@ -26,31 +26,33 @@ public class PaymentController {
 	
 	@PostMapping("/addPayment")
 	public ResponseEntity<PaymentDTO> addPayment(@RequestBody Payment payment) {
-		PaymentDTO resultpayment = paymentService.addPayment(payment);
-		return new ResponseEntity<PaymentDTO>(resultpayment, HttpStatus.OK);
+		PaymentDTO addPayment = paymentService.addPayment(payment);
+		return new ResponseEntity<PaymentDTO>(addPayment, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/removePayment/{paymentId}")
-	public PaymentDTO removePayment(@PathVariable long paymentId) throws PaymentServiceException {
-		return paymentService.removePayment(paymentId);
+	public ResponseEntity<PaymentDTO> removePayment(@PathVariable long paymentId)
+	{
+		PaymentDTO removePayment = paymentService.removePayment(paymentId);
+		return new ResponseEntity<PaymentDTO>(removePayment,HttpStatus.OK);
 	}
 	
 	@PutMapping("/updatePayment")
 	public ResponseEntity<PaymentDTO> updatePayment(@RequestBody Payment payment) {
-		PaymentDTO resultPayment = paymentService.updatePayment(payment.getPaymentId(), payment);
-		return new ResponseEntity<PaymentDTO>(resultPayment, HttpStatus.OK);
+		PaymentDTO updatePayment = paymentService.updatePayment(payment.getPaymentId(), payment);
+		return new ResponseEntity<PaymentDTO>(updatePayment, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getPaymentDetails/{paymentId}")
+	@GetMapping("/getPayment/{paymentId}")
 	public ResponseEntity<PaymentDTO> GetPaymentDetails(@PathVariable long paymentId) throws PaymentServiceException {
-		PaymentDTO resultPayment = paymentService.getPaymentDetails(paymentId);
-		return new ResponseEntity<PaymentDTO>(resultPayment, HttpStatus.OK);
+		PaymentDTO getByPaymentId = paymentService.getPaymentDetails(paymentId);
+		return new ResponseEntity<PaymentDTO>(getByPaymentId, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getAllPaymentDetails")
+	@GetMapping("/getAllPayment")
 	public ResponseEntity<List<PaymentDTO>> getAllPayment() {
-		List<PaymentDTO> resultPayment = paymentService.getAllPaymentDetails();
-		return new ResponseEntity<List<PaymentDTO>>(resultPayment, HttpStatus.OK);
+		List<PaymentDTO> getAllPayment = paymentService.getAllPaymentDetails();
+		return new ResponseEntity<List<PaymentDTO>>(getAllPayment, HttpStatus.OK);
 	}
 	
 

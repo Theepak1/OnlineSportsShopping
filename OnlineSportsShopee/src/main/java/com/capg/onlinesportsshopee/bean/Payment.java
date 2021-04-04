@@ -34,7 +34,7 @@ public class Payment implements Serializable{
 	@NotBlank(message = "Payment Status Should Not Be Blank")
 	private String status;
 	
-	@ManyToOne(cascade= {CascadeType.ALL},fetch=FetchType.EAGER)
+	@ManyToOne(targetEntity = Card.class,  cascade= CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="card_id",referencedColumnName = "id",nullable = false)
 	private Card card;
 	

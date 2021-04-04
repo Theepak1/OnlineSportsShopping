@@ -35,18 +35,15 @@ public class Card implements Serializable {
 	@NotBlank(message = "Card Name Should Not Be Blank")
 	private String cardName;
 	
-	@Column(name = "card_number",nullable = false,unique = true)
+	@Column(name = "card_number",nullable = false,unique = true,length = 16)
 	@NotNull(message = "Card Number Should Not Be Null")
 	private String cardNumber;
     
 	@Column(name = "card_expiry_date",nullable = false)
-	@NotBlank(message = "Card Expiry Should Not Be Blank")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/yyyy") 
-	@JsonDeserialize(using = LocalDateDeserializer.class)  
-	@JsonSerialize(using = LocalDateSerializer.class)  
+	@NotNull(message = "Card Expiry Date Should Not Be Null")
 	private LocalDate cardExpiry;
     
-	@Column(name = "cvv",nullable = false)
+	@Column(name = "cvv",nullable = false,length = 3)
 	@NotNull(message = "Card Cvv Number Should Not Be Null")
 	private int cvv;
 	
