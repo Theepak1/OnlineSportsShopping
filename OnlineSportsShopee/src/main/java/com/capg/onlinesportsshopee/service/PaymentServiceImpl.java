@@ -61,7 +61,7 @@ public class PaymentServiceImpl implements IPaymentService {
 			Payment updatePayment = paymentRepository.save(payment);
 			return PaymentUtil.convertToPaymentDto(updatePayment);
 		} else {
-			throw new PaymentServiceException("PaymentId not found or Enter validate type and Status");
+			throw new PaymentServiceException("PaymentId not found or Enter validate update data");
 		}
 	}
 
@@ -127,7 +127,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[0-9]*$");
 		CharSequence cs= payment.getCard().getCardNumber();
-		if ((pattern.matcher(cs).matches())) 
+		if ((pattern.matcher(cs).matches()) && payment.getCard().getCardNumber().length() == 16) 
 		{
 			flag = true;
 		} else {

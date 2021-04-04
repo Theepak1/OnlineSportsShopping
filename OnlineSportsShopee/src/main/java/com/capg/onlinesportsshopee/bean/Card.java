@@ -35,7 +35,7 @@ public class Card implements Serializable {
 	@NotBlank(message = "Card Name Should Not Be Blank")
 	private String cardName;
 	
-	@Column(name = "card_number",nullable = false,unique = true,length = 16)
+	@Column(name = "card_number",nullable = false,unique = true)
 	@NotNull(message = "Card Number Should Not Be Null")
 	private String cardNumber;
     
