@@ -59,7 +59,5 @@ public class CustomerController {
 	public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
 		List<CustomerDTO> resultCustomer = customerService.getAllCustomers();
 		return new ResponseEntity<List<CustomerDTO>>(resultCustomer, HttpStatus.OK);
-	}	
-	
-	
+	}
 }
