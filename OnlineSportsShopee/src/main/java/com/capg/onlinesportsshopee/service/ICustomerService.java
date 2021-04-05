@@ -1,3 +1,4 @@
+
 package com.capg.onlinesportsshopee.service;
 
 import java.util.List;
@@ -13,3 +14,4 @@ public interface ICustomerService {
 	public CustomerDTO getCustomer(long custId);
 	public List<CustomerDTO> getAllCustomers(); 
 }
+
