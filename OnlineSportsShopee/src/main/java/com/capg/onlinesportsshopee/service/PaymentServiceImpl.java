@@ -58,7 +58,7 @@ public class PaymentServiceImpl implements IPaymentService {
 			}
 			else
 			{
-				throw new PaymentServiceException("Payment is deleted");
+				throw new PaymentServiceException("Payment is not present ");
 			}
 		}
 	}
