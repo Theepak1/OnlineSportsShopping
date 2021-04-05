@@ -21,16 +21,24 @@ public class PaymentServiceImpl implements IPaymentService {
 	@Override
 	public PaymentDTO addPayment(Payment payment) throws PaymentServiceException {
 		Optional<Payment> paymentTemp = paymentRepository.findById(payment.getPaymentId());
-		if (paymentTemp.isEmpty() && validatePaymentType(payment)  && validatePaymentStatus(payment)  
-				&& validateCardName(payment) && validateCvv(payment)  
-			&& validateCardNumber(payment) && validateCardExpiry(payment) ) 
+		if (paymentTemp.isEmpty() )
 		{
-			Payment addPayment = paymentRepository.save(payment);
-			return PaymentUtil.convertToPaymentDto(addPayment);
+			if( validatePaymentType(payment)  && validatePaymentStatus(payment)  
+				&& validateCardName(payment) && validateCvv(payment)  
+			&& validateCardNumber(payment) && validateCardExpiry(payment) )
+			{
+				Payment addPayment = paymentRepository.save(payment);
+				return PaymentUtil.convertToPaymentDto(addPayment);
+			}
+			else
+			{
+				throw new PaymentServiceException("Enter the valid payment detials");
+			}
+		
 		} 
 		else 
 		{
-			throw new PaymentServiceException("Payment already exists or Enter the valid payment detials");
+			throw new PaymentServiceException("Payment already exists ");
 		}
 	}
 
@@ -39,28 +47,42 @@ public class PaymentServiceImpl implements IPaymentService {
 		Optional<Payment> payment = paymentRepository.findById(paymentId);
 		if (payment.isEmpty()) 
 		{
-			throw new PaymentServiceException("PaymentId does not exist to delete");
+			throw new PaymentServiceException("Payment does not exist for paymenId to delete");
 		} 
 		else 
 		{
-			paymentRepository.delete(payment.get());
-			return PaymentUtil.convertToPaymentDto(payment.get());
+			paymentRepository.deleteById(paymentId);
+			if(payment.isPresent())
+			{
+				return PaymentUtil.convertToPaymentDto(payment.get());
+			}
+			else
+			{
+				throw new PaymentServiceException("Payment is deleted");
+			}
 		}
 	}
 
 	@Override
 	public PaymentDTO updatePayment(long paymentId, Payment payment) throws PaymentServiceException {
 		Optional<Payment> paymentTemp = paymentRepository.findById(paymentId);
-		if ( !paymentTemp.isEmpty() && validatePaymentStatus(payment) && validatePaymentType(payment)
-				&&  validateCardName(payment) && validateCardNumber(payment) 
-				&& validateCvv(payment) && validateCardExpiry(payment) ) 
+		if ( !paymentTemp.isEmpty() )
 		{
-			Payment updatePayment = paymentRepository.save(payment);
-			return PaymentUtil.convertToPaymentDto(updatePayment);
+			if(	validatePaymentStatus(payment) && validatePaymentType(payment)
+				&&  validateCardName(payment) && validateCardNumber(payment) 
+				&& validateCvv(payment) && validateCardExpiry(payment) )
+			{
+				Payment updatePayment = paymentRepository.save(payment);
+				return PaymentUtil.convertToPaymentDto(updatePayment);
+			}
+			else
+			{
+				throw new PaymentServiceException("Enter the valid payment detials");
+			}
 		}
 		else 
 		{
-			throw new PaymentServiceException("PaymentId not found or Enter validate update data");
+			throw new PaymentServiceException("Payment does not exist for PaymentId");
 		}
 	}
 
@@ -68,7 +90,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	public PaymentDTO getPaymentDetails(long paymentId) throws PaymentServiceException {
 		Optional<Payment> paymentTemp = paymentRepository.findById(paymentId);
 		if (paymentTemp.isEmpty()) {
-			throw new PaymentServiceException("PaymentId does not exist");
+			throw new PaymentServiceException("Payment does not exist fro paymentId");
 		} 
 		else 
 		{
@@ -94,7 +116,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[A-Za-z]*$"); 
 		CharSequence cs= payment.getType();
-		if (pattern.matcher(cs).matches()) {
+		if (pattern.matcher(cs).matches() && !payment.getType().isBlank()) {
 			flag = true;
 		} 
 		else 
@@ -108,7 +130,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[A-Za-z]*$");
 		CharSequence cs= payment.getStatus();
-		if (pattern.matcher(cs).matches()) {
+		if (pattern.matcher(cs).matches() && !payment.getStatus().isBlank()) {
 			flag = true;
 		} 
 		else
@@ -122,7 +144,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[a-zA-Z ]*$");
 		CharSequence cs= payment.getCard().getCardName();
-		if (pattern.matcher(cs).matches()) {
+		if (pattern.matcher(cs).matches() && !payment.getCard().getCardName().isBlank()) {
 			flag = true;
 		} 
 		else 
@@ -136,7 +158,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[0-9]*$");
 		CharSequence cs= payment.getCard().getCardNumber();
-		if ((pattern.matcher(cs).matches()) && payment.getCard().getCardNumber().length() == 16) 
+		if ((pattern.matcher(cs).matches()) && payment.getCard().getCardNumber().length() == 16 ) 
 		{
 			flag = true;
 		} 
@@ -165,7 +187,7 @@ public class PaymentServiceImpl implements IPaymentService {
 
 	public  boolean validateCardExpiry(Payment payment) {
 		boolean flag = false;
-		if (payment.getCard().getCardExpiry().isAfter(LocalDate.now())) {
+		if (payment.getCard().getCardExpiry() != null && payment.getCard().getCardExpiry().isAfter(LocalDate.now())) {
 			flag = true;
 		} 
 		else 
@@ -175,26 +197,4 @@ public class PaymentServiceImpl implements IPaymentService {
 		return flag;
 	}
 
-	/*
-	 * public static boolean validatePayment(Payment payment) { boolean flag =
-	 * false; if ( payment.getType().contentEquals("") ||
-	 * payment.getType().contentEquals("card") &&
-	 * payment.getStatus().contentEquals("Success") ||
-	 * payment.getStatus().contentEquals("Pending") ||
-	 * payment.getStatus().contentEquals("success") ||
-	 * payment.getStatus().contentEquals("pending")) { flag = true; } else { flag =
-	 * false; } return flag; }
-	 * 
-	 * public static boolean validatePaymentType(Payment payment) { boolean flag =
-	 * false; if (payment.getType().contentEquals("Card") ||
-	 * payment.getType().contentEquals("card") ) { flag = true; } else { flag =
-	 * false; } return flag; }
-	 * 
-	 * public static boolean validatePaymentStatus(Payment payment) { boolean flag =
-	 * false; if (payment.getStatus().contentEquals("Success") ||
-	 * payment.getStatus().contentEquals("Pending") ||
-	 * payment.getStatus().contentEquals("success") ||
-	 * payment.getStatus().contentEquals("pending")) { flag = true; } else { flag =
-	 * false; } return flag; }
-	 */ 
 }

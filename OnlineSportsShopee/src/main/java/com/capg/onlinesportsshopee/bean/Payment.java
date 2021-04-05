@@ -26,11 +26,11 @@ public class Payment implements Serializable{
 	@Column(name = "paymentId")
 	private long paymentId;
 	
-	@Column(name = "type")
+	@Column(name = "type",nullable = false)
 	@NotBlank(message = "Payment type Should Not Be Blank")
 	private String type;
 	
-	@Column(name = "status")
+	@Column(name = "status",nullable = false)
 	@NotBlank(message = "Payment Status Should Not Be Blank")
 	private String status;
 	

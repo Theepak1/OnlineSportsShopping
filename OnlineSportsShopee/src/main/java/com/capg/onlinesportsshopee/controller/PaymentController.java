@@ -18,7 +18,7 @@ import com.capg.onlinesportsshopee.model.PaymentDTO;
 import com.capg.onlinesportsshopee.service.IPaymentService;
 
 @RestController
-@RequestMapping("/api/payment")
+@RequestMapping("/api/oss")
 public class PaymentController {
 	
 	@Autowired
