@@ -1,12 +1,9 @@
 package com.capg.onlinesportsshopee.bean;
-<<<<<<< HEAD
 
 
-=======
+
+
 import java.time.LocalDate;
->>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

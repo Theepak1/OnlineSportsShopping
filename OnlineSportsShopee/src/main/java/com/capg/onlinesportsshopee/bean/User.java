@@ -1,6 +1,7 @@
 package com.capg.onlinesportsshopee.bean;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,8 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-<<<<<<< HEAD
-=======
 @Entity
 @Table(name="User")
 public class User {
@@ -39,15 +38,8 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
->>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
 
-<<<<<<< HEAD
-public class User {
-	
-	
-	
-}
-=======
+
 	public long getUserId() {
 		return userId;
 	}
@@ -121,4 +113,4 @@ public class User {
 }
 
 
->>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
+
