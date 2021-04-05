@@ -3,11 +3,12 @@ package com.capg.onlinesportsshopee.service;
 import java.util.List;
 
 import com.capg.onlinesportsshopee.bean.Payment;
+import com.capg.onlinesportsshopee.model.PaymentDTO;
 
 public interface IPaymentService {
-	public Payment addPayment(Payment payment);
-	public Payment removePayment(long id);
-	public Payment updatePayment(long id, Payment payment);
-	public Payment getPaymentDetails(long id);
-	public List<Payment> getAllPaymentDetails();
+	public PaymentDTO addPayment(Payment payment);
+	public PaymentDTO removePayment(long paymentId);
+	public PaymentDTO updatePayment(long paymentId ,Payment payment);
+	public PaymentDTO getPaymentDetails(long paymentId);
+	public List<PaymentDTO> getAllPaymentDetails();
 }
