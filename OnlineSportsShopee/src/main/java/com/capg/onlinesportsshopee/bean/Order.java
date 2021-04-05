@@ -2,6 +2,7 @@ package com.capg.onlinesportsshopee.bean;
 import java.io.Serializable;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,22 +25,22 @@ public class Order implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name= "order_id")
+	@Column(name= "order_id",nullable=false)
 	@NotBlank(message="Order Id should not be blank")
 	private long orderId;
 	
-	@Column(name= "amount")
+	@Column(name= "amount",nullable=false)
 	@NotBlank(message="Amount should not be blank")
 	private double amount;
 	
 	@Temporal(TemporalType.DATE)
-	@Column(name = "billing_date")
+	@Column(name = "billing_date",nullable=false)
 	@NotBlank(message="Billing Date should not be blank")
 	private LocalDate billingDate;
 	
-	@ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
-	@JoinColumn(name="cust_Id",referencedColumnName = "user_Id")
-	private Customer customer;
+	@ManyToOne
+	@JoinColumn(name = "userId",nullable = false)
+    private Customer customer;
 
 	public Order() {
 		super();

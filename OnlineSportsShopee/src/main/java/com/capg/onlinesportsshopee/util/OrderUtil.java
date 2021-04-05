@@ -10,6 +10,7 @@ import com.capg.onlinesportsshopee.model.OrderDTO;
 
 @Component
 public class OrderUtil {
+	
 	public static List<OrderDTO> convertToOrderDtoList(List<Order> list)
 	{
 		List<OrderDTO> OrderDtoList = new ArrayList<OrderDTO>();
@@ -40,4 +41,3 @@ public class OrderUtil {
 	
 
 }
-	
