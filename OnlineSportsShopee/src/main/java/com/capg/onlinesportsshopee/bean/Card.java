@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Table(name = "card")
 public class Card implements Serializable {
 	
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,19 +24,19 @@ public class Card implements Serializable {
 	@Column(name = "id")
 	private long id;
 	
-	@Column(name = "card_name")
+	@Column(name = "card_name",nullable = false)
 	@NotBlank(message = "Card Name Should Not Be Blank")
 	private String cardName;
 	
-	@Column(name = "card_number")
+	@Column(name = "card_number",nullable = false,unique = true)
 	@NotNull(message = "Card Number Should Not Be Null")
 	private String cardNumber;
     
-	@Column(name = "card_expiry")
-	@NotBlank(message = "Card Expiry Should Not Be Blank")
+	@Column(name = "card_expiry_date",nullable = false)
+	@NotNull(message = "Card Expiry Date Should Not Be Null")
 	private LocalDate cardExpiry;
     
-	@Column(name = "cvv")
+	@Column(name = "cvv",nullable = false)
 	@NotNull(message = "Card Cvv Number Should Not Be Null")
 	private int cvv;
 	
@@ -100,4 +101,3 @@ public class Card implements Serializable {
 	
 	
 }
-

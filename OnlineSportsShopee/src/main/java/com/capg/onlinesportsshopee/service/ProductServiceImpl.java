@@ -24,9 +24,9 @@ public class ProductServiceImpl implements IProductService {
 	@Autowired
 	 IProductRepository repo;
 	
+
 	@Override
-	@Override
-	public ProductDTO addProduct(Product product) {
+	public Product addProduct(Product product) {
 		Optional<Product> product1= repo.findById(product.getProductId());
 		if (product1.isEmpty()) {
 			return repo.saveAndFlush(product);
@@ -79,8 +79,10 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 
+	
+
 	@Override
-	public List<Product> getProductsByName(String productName) {
+	public List<Product> findByProductName(String productName) {
 	
 	List<Product> product= repo.findByProductName(productName);
 	if(product.isEmpty()) {
@@ -91,7 +93,7 @@ public class ProductServiceImpl implements IProductService {
 
 
 	@Override
-	public List<Product> getProductsBySize(int size) {
+	public List<Product> findByProductSize(int size) {
 		List<Product> product= repo.findBySize(size);
 		if(product.isEmpty()) {
 			throw new ProductServiceException("Products with required sizes not found");
@@ -101,8 +103,8 @@ public class ProductServiceImpl implements IProductService {
 
 
 	@Override
-	public List<Product> getProductsByPrice(double priceAfterDiscount ) {
-	List<Product> product= repo.findByPriceAfterDiscount(priceAfterDiscount);
+	public List<Product> findByPrice(double price ) {
+	List<Product> product= repo.findByPriceAfterDiscount(price);
 	if(product.isEmpty()) {
 		throw new ProductServiceException("Products with mentioed price not found");
 	}
@@ -110,8 +112,9 @@ public class ProductServiceImpl implements IProductService {
 }
 
 
+
 	@Override
-	public List<Product> getProductsByColor(String color) {
+	public List<Product> findByColor(String color) {
 		List<Product> product= repo.findByColor(color);
 		if(product.isEmpty()) {
 			throw new ProductServiceException("Products with mentioned color not found");

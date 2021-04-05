@@ -6,25 +6,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="cart")
 public class Cart extends Product{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="cartid")
+	@Column(name="cartid" )
 	 private long cartId;
 	 
 	@Column(name="imagename")
 	private String imageName;
 	
-	@Column(name="productname")
+	@Column(name="productname", nullable=false, length=20)
+	@NotBlank(message="ProductName should not be blank")
 	 private String productName;
 	
-	@Column(name="quantity")
+	@Column(name="quantity", nullable=false)
+	@NotBlank(message="Quantity should be specified")
 	 private int quantity;
 	
 	@Column(name="price")

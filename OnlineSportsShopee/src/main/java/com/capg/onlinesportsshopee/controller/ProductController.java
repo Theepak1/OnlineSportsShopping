@@ -29,7 +29,7 @@ public class ProductController {
 
 	@PostMapping("/product")
 	public ResponseEntity<Product> addProduct(@RequestBody Product product) {
-		Product resultProduct = productservice.addProdct(product);
+		Product resultProduct = productservice.addProduct(product);
 		return new ResponseEntity<Product>(resultProduct,HttpStatus.OK) ;  
 	}
 
@@ -58,21 +58,21 @@ public class ProductController {
 	@GetMapping("/product1/{name}")
 	public List<Product> getProductsByName(@PathVariable String name) {
 
-		return productservice.getProductsByName(name);
+		return productservice.findByProductName(name);
 	}
 
 	@GetMapping("/product2/{sizes}")
-	public List<Product> getProductsBySize(@PathVariable String sizes) {
-		return productservice.getProductsBySize(size);
+	public List<Product> getProductsBySize(@PathVariable int size) {
+		return productservice.findBySize(size);
 	}
 
 	@GetMapping("/product3/{color}")
 	public List<Product> getProductsByColor(@PathVariable String color) {
-		return productservice.getProductsByColor(color);
+		return productservice.findByColor(color);
 	}
 
-	@GetMapping("/product4/{priceAfterDiscount}")
-	public List<Product> getProductsByPrice(@PathVariable double priceAfterDiscount) {
-		return productservice.getProductsByPrice(priceAfterDiscount);
+	@GetMapping("/product4/{price}")
+	public List<Product> getProductsByPrice(@PathVariable double price) {
+		return productservice.findByPrice(price);
 	}
 }

@@ -2,15 +2,16 @@ package com.capg.onlinesportsshopee.bean;
 
 	import java.time.LocalDate;
 
-	import javax.persistence.Column;
-	import javax.persistence.Entity;
-	import javax.persistence.GeneratedValue;
-	import javax.persistence.GenerationType;
-	import javax.persistence.Id;
-	import javax.persistence.JoinColumn;
-	import javax.persistence.ManyToMany;
-	import javax.persistence.ManyToOne;
-	import javax.persistence.Table;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 	//add
 	    @Entity
@@ -22,10 +23,12 @@ package com.capg.onlinesportsshopee.bean;
 	    	@Column(name="productid")
 			private long productId;
 	    	
-	    	@Column(name="productname")
+	    	@Column(name="productname", nullable=false, length=20)
+	    	@NotBlank(message="ProductName should not be blank")
 			private String productName;
 	    	
-	    	@Column(name="category")
+	    	@Column(name="category", nullable=false, length =25)
+	    	@NotBlank(message="Category should not be blank")
 			private String category;
 	    	
 	    	@Column(name="description")
@@ -34,10 +37,12 @@ package com.capg.onlinesportsshopee.bean;
 	    	@Column(name="brand")
 			private String brand;
 	    	
-	    	@Column(name="color")
+	    	@Column(name="color", nullable=false)
+	    	@NotBlank(message="Color should not be blank")
 			private String color;
 	    	
-	    	@Column(name="size")
+	    	@Column(name="size", nullable=false)
+	    	@NotBlank(message="Size should not be blank")
 			private int size;
 	    	
 	    	@Column(name="mrp")
