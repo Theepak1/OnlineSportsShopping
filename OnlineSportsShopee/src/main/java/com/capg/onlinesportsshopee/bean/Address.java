@@ -6,9 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="Address")
+@Table(name="address")
 public class Address {
 
 	@Id
@@ -16,22 +17,28 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int addressId;
 	
-	@Column(name="doorno",nullable = false)
+	@Column(name="doorno",nullable=false)
+	@NotBlank(message="DoorNo should not be blank")
 	private String doorNo;
 	
-	@Column(name="street",nullable = false)
+	@Column(name="street",length=20,nullable=false)
+	@NotBlank(message="Street should not be blank")
 	private String street;
 	
-	@Column(name="area",nullable = false)
+	@Column(name="area",length=20,nullable=false)
+	@NotBlank(message="Area should not be blank")
 	private String area;
 	
-	@Column(name="city",nullable = false)
+	@Column(name="city",length=20,nullable=false)
+	@NotBlank(message="City should not be blank")
 	private String city;
 	
-	@Column(name="state",nullable = false)
+	@Column(name="state",length=20,nullable=false)
+	@NotBlank(message="State should not be blank")
 	private String state;
 	
-	@Column(name="pincode",nullable = false,length=6)
+	@Column(name="pincode",length=6,nullable=false)
+	@NotBlank(message="PinCode should not be blank")
 	private int pinCode;
 
 	public String getDoorNo() {
@@ -86,7 +93,7 @@ public class Address {
 		return addressId;
 	}
 
-	public Address(String doorNo, String street, String area, String city, String state, int pinCode) {
+	public Address(String doorNo, String street, String area, String city, String state,int pinCode) {
 		super();
 		this.doorNo = doorNo;
 		this.street = street;

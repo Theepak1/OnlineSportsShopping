@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.util;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import com.capg.onlinesportsshopee.bean.Customer;
@@ -10,8 +11,8 @@ public class CustomerUtil {
 	public static List<CustomerDTO> convertToCustomerDtoList(List<Customer> list)
 	{
 		List<CustomerDTO> customerDTOList = new ArrayList<CustomerDTO>();
-		for (Customer payment : list)
-			customerDTOList.add(convertToCustomerDto(payment.get());
+		for (Customer customer : list)
+			customerDTOList.add(convertToCustomerDto(customer));
 	    return customerDTOList;
 	}
 	
