@@ -11,7 +11,7 @@ public class CustomerUtil {
 	{
 		List<CustomerDTO> customerDTOList = new ArrayList<CustomerDTO>();
 		for (Customer payment : list)
-			customerDTOList.add(convertToCustomerDto(payment));
+			customerDTOList.add(convertToCustomerDto(payment.get());
 	    return customerDTOList;
 	}
 	
