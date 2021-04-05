@@ -1,6 +1,5 @@
 package com.capg.onlinesportsshopee.bean;
 import java.io.Serializable;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -17,6 +16,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+
+
 @Entity
 @Table(name="order")
 public class Order implements Serializable {
@@ -33,14 +34,25 @@ public class Order implements Serializable {
 	@NotBlank(message="Amount should not be blank")
 	private double amount;
 	
+<<<<<<< HEAD
 	@Temporal(TemporalType.DATE)
 	@Column(name = "billing_date",nullable=false)
+=======
+	//@Temporal(TemporalType.DATE)
+	@Column(name = "billing_date")
+>>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
 	@NotBlank(message="Billing Date should not be blank")
 	private LocalDate billingDate;
 	
+<<<<<<< HEAD
 	@ManyToOne
 	@JoinColumn(name = "userId",nullable = false)
     private Customer customer;
+=======
+	@ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
+	@JoinColumn(name="cust_Id",referencedColumnName = "userid")
+	private Customer customer;
+>>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
 
 	public Order() {
 		super();

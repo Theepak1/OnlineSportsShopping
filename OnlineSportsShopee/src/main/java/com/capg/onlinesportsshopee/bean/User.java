@@ -1,6 +1,7 @@
 package com.capg.onlinesportsshopee.bean;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -37,6 +38,7 @@ public class User {
 		this.password = password;
 		this.role = role;
 	}
+
 
 	public long getUserId() {
 		return userId;
@@ -109,5 +111,6 @@ public class User {
 	}
 		
 }
+
 
 
