@@ -3,11 +3,8 @@ package com.capg.onlinesportsshopee.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.capg.onlinesportsshopee.bean.Customer;
 import com.capg.onlinesportsshopee.exceptions.CustomerServiceException;
 import com.capg.onlinesportsshopee.model.CustomerDTO;
@@ -23,14 +20,14 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Override
 	public CustomerDTO addCustomer(Customer customer) throws CustomerServiceException 
 	{
-		Optional<Customer> addCustomertemp = customerRepo.findById(customer.getUserId());
-		if (addCustomertemp.isEmpty()){
+		Optional<Customer> addCustomerTemp = customerRepo.findById(customer.getUserId());
+		if (addCustomerTemp.isEmpty() && CustomerServiceImpl.checkName(customer) && CustomerServiceImpl.checkContactNo(customer) && CustomerServiceImpl.checkEmail(customer)){
 			Customer addCustomer = customerRepo.save(customer);
 			return CustomerUtil.convertToCustomerDto(addCustomer);
 		}
 		else
 		{
-			throw new CustomerServiceException("Customer already exists");
+			throw new CustomerServiceException("Customer already exists or invalid inputs");
 		}
 		
 	}
@@ -48,7 +45,15 @@ public class CustomerServiceImpl implements ICustomerService {
 		else
 		{
 			customerRepo.deleteById(userId);
-			return CustomerUtil.convertToCustomerDto(customerTemp.get());
+			if(customerTemp.isPresent())
+			{
+				return CustomerUtil.convertToCustomerDto(customerTemp.get());
+			}
+			else
+			{
+				throw new CustomerServiceException("Customer is not present");
+			}
+			
 		}
 		
 	}
@@ -57,9 +62,9 @@ public class CustomerServiceImpl implements ICustomerService {
 	public CustomerDTO updateCustomer(Customer customer) throws CustomerServiceException
 	{
 		Optional<Customer> updateCustomerTemp = customerRepo.findById(customer.getUserId());
-		if(updateCustomerTemp.isEmpty()) 
+		if(updateCustomerTemp.isEmpty() && CustomerServiceImpl.checkName(customer) && CustomerServiceImpl.checkContactNo(customer) && CustomerServiceImpl.checkEmail(customer)) 
 		{
-			throw new CustomerServiceException("Customer not found");
+			throw new CustomerServiceException("Customer not found or invalid inputs");
 		}
 		else
 		{
@@ -111,8 +116,7 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	public static boolean checkContactNo(Customer customer) {
 		boolean flag = true;
-		if (customer.getContactNo().length() != 10 || customer.getContactNo().isEmpty()
-				|| !(Pattern.matches("^[0-9]$", customer.getContactNo()))) {
+		if (customer.getContactNo().length() != 10 || customer.getContactNo().isEmpty()) {
 			flag = false;
 		}
 		return flag;
@@ -121,8 +125,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	public static boolean checkEmail(Customer customer) {
 		boolean flag = true;
 		if (customer.getEmail().length() < 8 || customer.getEmail().length() > 30
-				|| customer.getEmail().isEmpty()
-				|| !(Pattern.matches("^[A-Za-z0-9]+@[A-Za-z0-9.]$", customer.getEmail()))) {
+				|| customer.getEmail().isEmpty()) {
 			flag = false;
 		}
 		return flag;
