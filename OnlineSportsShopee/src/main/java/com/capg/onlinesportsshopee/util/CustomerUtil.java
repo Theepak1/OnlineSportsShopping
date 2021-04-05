@@ -1,5 +1,4 @@
 package com.capg.onlinesportsshopee.util;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,4 +41,3 @@ public class CustomerUtil {
 		return customerDTO;
 	}
 }
-	

@@ -1,5 +1,4 @@
 package com.capg.onlinesportsshopee.bean;
-
 import java.time.LocalDate;
 
 
@@ -118,5 +117,6 @@ public class Customer {
 	}
 
 	
+
 
 }

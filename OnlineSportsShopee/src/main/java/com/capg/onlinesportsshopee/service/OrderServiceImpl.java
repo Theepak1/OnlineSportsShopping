@@ -18,12 +18,19 @@ public class OrderServiceImpl implements IOrderService {
 	
 
 	@Override
-	public OrderDTO addOrder(Order order) {
-		if (order == null)
-			return  null;
-		return OrderUtil.convertToOrderDto(orderRepo.save(order));
+	public OrderDTO addOrder(Order order)throws OrderServiceException 
+	{
+		Optional<Order> addOrdertemp = orderRepo.findById(order.getOrderId());
+		if (addOrdertemp.isEmpty()){
+			Order addOrder = orderRepo.save(order);
+			return OrderUtil.convertToOrderDto(addOrder);
+		}
+		else
+		{
+			throw new OrderServiceException("Order already exists");
+		}
+		
 	}
-
 	@Override
 	public OrderDTO removeOrder(long orderId) throws OrderServiceException {
 		Optional<Order> payment = orderRepo.findById(orderId);

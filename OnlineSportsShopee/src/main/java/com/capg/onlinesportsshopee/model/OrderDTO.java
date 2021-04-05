@@ -2,13 +2,19 @@ package com.capg.onlinesportsshopee.model;
 import java.time.LocalDate;
 
 
-import com.capg.onlinesportsshopee.bean.Customer;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class OrderDTO  {
 	private long orderId;
 	private double amount;
 	private LocalDate billingDate;
-	private Customer customer;
+	private int custId;
+	public OrderDTO() {
+		super();
+		
+	}
 	
 	public long getOrderId() {
 		return orderId;
@@ -29,18 +35,25 @@ public class OrderDTO  {
 	public void setBillingDate(LocalDate billingDate) {
 		this.billingDate = billingDate;
 	}
-	public Customer getCustomer() {
-		return customer;
+	public int getCustId() {
+		return custId;
 	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustId(int custId) {
+		this.custId = custId;
 	}
 	@Override
 	public String toString() {
-		return "OrderDTO [orderId=" + orderId + ", amount=" + amount + ", billingDate=" + billingDate + ", customer="
-				+ customer + "]";
+		return "OrderDTO [orderId=" + orderId + ", amount=" + amount + ", billingDate=" + billingDate + ", custId="
+				+ custId +  "]";
 	}
-	
+	public OrderDTO(int orderId, double amount, LocalDate billingDate, int custId) {
+		super();
+		this. orderId= orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+		this.custId = custId;
+	}
+
 	
 
 }

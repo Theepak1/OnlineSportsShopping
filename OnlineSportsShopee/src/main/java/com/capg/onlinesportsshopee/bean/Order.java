@@ -1,8 +1,7 @@
 package com.capg.onlinesportsshopee.bean;
 import java.io.Serializable;
+
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,12 +11,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name="order")
 public class Order implements Serializable {
@@ -27,29 +25,25 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name= "order_id")
+	@NotBlank(message="Order Id should not be blank")
 	private long orderId;
 	
 	@Column(name= "amount")
+	@NotBlank(message="Amount should not be blank")
 	private double amount;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name = "billing_date")
+	@NotBlank(message="Billing Date should not be blank")
 	private LocalDate billingDate;
 	
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name = "id")
+	@ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
+	@JoinColumn(name="cust_Id",referencedColumnName = "user_Id")
 	private Customer customer;
 
-	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "product_orders", joinColumns = { @JoinColumn(name = "order_id") }, inverseJoinColumns = { @JoinColumn(name = "product_id") })
-	private Set<Product> products = new HashSet<>();
-   
 	public Order() {
 		super();
 	}
-	
-	
 	public Order(long orderId, double amount, LocalDate billingDate,Customer customer) {
 		super();
 		this. orderId= orderId;
