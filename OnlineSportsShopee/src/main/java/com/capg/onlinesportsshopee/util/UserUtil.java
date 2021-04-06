@@ -19,17 +19,19 @@ public class UserUtil {
 	public static User convertToUser(UserDTO userDTO) {
 		User user = new User();
 		
-		user.setUserId(userDTO.getUserId());
-		user.setPassword(userDTO.getPassword());
-		user.setRole(userDTO.getRole());
+		user.setUserId(user.getUserId());
+		user.setPassword(user.getPassword());
+		user.setRole(user.getRole());
 		
 		return user;
 	}
 
-	private static UserDTO convertToUserDto(User user) {
+	public static UserDTO convertToUserDto(User user) {
 		UserDTO userDTO = new UserDTO();
 		
 		userDTO.setUserId(user.getUserId());
+
+		userDTO.setusername(user.getUsername());
 		userDTO.setPassword(user.getPassword());
 		userDTO.setRole(user.getRole());
 		
