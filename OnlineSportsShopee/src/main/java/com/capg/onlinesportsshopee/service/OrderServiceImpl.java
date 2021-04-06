@@ -10,6 +10,7 @@ import com.capg.onlinesportsshopee.exceptions.OrderServiceException;
 import com.capg.onlinesportsshopee.model.OrderDTO;
 import com.capg.onlinesportsshopee.repo.IOrderRepository;
 import com.capg.onlinesportsshopee.util.OrderUtil;
+
 @Service
 public class OrderServiceImpl implements IOrderService {
 	
@@ -83,15 +84,6 @@ public class OrderServiceImpl implements IOrderService {
 	}
 		
 		
-	public static boolean validateBillingDate(Order order) {
-		boolean flag=true;
-		if(order.getBillingDate()==null || order.getBillingDate().isAfter(LocalDate.now())) 
-			flag=false;
-		return flag;
-			
-		}
-	
-
 	public static boolean validateOrderId(Order order) {
 		boolean flag = true;
 		Long orderId = order.getOrderId();

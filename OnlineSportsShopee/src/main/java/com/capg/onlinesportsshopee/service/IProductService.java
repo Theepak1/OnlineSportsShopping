@@ -12,7 +12,7 @@ public interface IProductService {
 	public ProductDTO updateProduct(long id, Product product);
 	public ProductDTO getProduct(long id);
 	public List<ProductDTO> getAllProduct();
-	public List<ProductDTO> findByPrice(double price);
+	public List<ProductDTO> findByPriceAfterDiscount(double priceAfterDiscount);
 	public List<ProductDTO> findByProductName(String productName);
 	public List<ProductDTO> findByColor(String color);
 	public List<ProductDTO> findBySize(int size);

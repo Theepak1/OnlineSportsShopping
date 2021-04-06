@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.bean;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -10,10 +11,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 //add
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product implements Serializable {
+
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

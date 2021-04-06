@@ -1,7 +1,4 @@
 package com.capg.onlinesportsshopee.model;
-import java.time.LocalDate;
-
-
 
 import org.springframework.stereotype.Component;
 
@@ -9,11 +6,18 @@ import org.springframework.stereotype.Component;
 public class OrderDTO  {
 	private long orderId;
 	private double amount;
-	private LocalDate billingDate;
+	private String billingDate;
 	private int custId;
 	public OrderDTO() {
 		super();
 		
+	}
+	public OrderDTO(int orderId, double amount, String  billingDate, int custId) {
+		super();
+		this. orderId= orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+		this.custId = custId;
 	}
 	
 	public long getOrderId() {
@@ -29,10 +33,10 @@ public class OrderDTO  {
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
-	public LocalDate getBillingDate() {
+	public String  getBillingDate() {
 		return billingDate;
 	}
-	public void setBillingDate(LocalDate billingDate) {
+	public void setBillingDate(String  billingDate) {
 		this.billingDate = billingDate;
 	}
 	public int getCustId() {
@@ -46,15 +50,8 @@ public class OrderDTO  {
 		return "OrderDTO [orderId=" + orderId + ", amount=" + amount + ", billingDate=" + billingDate + ", custId="
 				+ custId +  "]";
 	}
-	public OrderDTO(int orderId, double amount, LocalDate billingDate, int custId) {
-		super();
-		this. orderId= orderId;
-		this.amount = amount;
-		this.billingDate = billingDate;
-		this.custId = custId;
-	}
+	
 
 	
 
 }
-	

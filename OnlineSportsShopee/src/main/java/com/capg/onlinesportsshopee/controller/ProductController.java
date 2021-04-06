@@ -22,57 +22,58 @@ import com.capg.onlinesportsshopee.service.IProductService;
 
 @RestController
 @RequestMapping("/api/oss")
-
 public class ProductController {
+	
 	@Autowired
-	private IProductService productservice;
+	IProductService productService;
 
 	@PostMapping("/addProduct")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody Product product) {
-		ProductDTO resultProduct = productservice.addProduct(product);
+		ProductDTO resultProduct = productService.addProduct(product);
 		return new ResponseEntity<ProductDTO>(resultProduct,HttpStatus.OK) ;  
 	}
 
 	@DeleteMapping("/deleteProduct/{productId}")
-	public void deleteProduct(@PathVariable long productId) {
-		productservice.removeProduct(productId);
+	public ResponseEntity<String> deleteProduct(@PathVariable long productId) {
+		productService.removeProduct(productId);
+		return new ResponseEntity<String>("Deleted Successfull",HttpStatus.OK) ;  
 	}
 
 	@PutMapping("/updateProduct")
 	public ResponseEntity<ProductDTO> updateProduct(@RequestBody Product product) {
-		ProductDTO resultProduct = productservice.updateProduct(product.getProductId(), product);
+		ProductDTO resultProduct = productService.updateProduct(product.getProductId(), product);
 		return new ResponseEntity<ProductDTO>(resultProduct, HttpStatus.OK);
 	}
 
-	@GetMapping("/getProduct/{id}")
+	@GetMapping("/getProduct/{productName}")
 	public ResponseEntity<ProductDTO> findProduct(@PathVariable long productId) throws ProductServiceException {
-		ProductDTO resultProduct = productservice.getProduct(productId);
+		ProductDTO resultProduct = productService.getProduct(productId);
 		return new ResponseEntity<ProductDTO>(resultProduct, HttpStatus.OK);
 	}
 
 	@GetMapping("/getAllProduct")
 	public List<ProductDTO> getProducts() {
-		return productservice.getAllProduct();
+		return productService.getAllProduct();
 	}
 
 	@GetMapping("/getProductsByName/{productName}")
 	public List<ProductDTO> getProductsByName(@PathVariable String productName) {
 
-		return productservice.findByProductName(productName);
+		return productService.findByProductName(productName);
 	}
 
 	@GetMapping("/getProductsBySize/{size}")
 	public List<ProductDTO> getProductsBySize(@PathVariable int size) {
-		return productservice.findBySize(size);
+		return productService.findBySize(size);
 	}
 
 	@GetMapping("/getProductsByColor/{color}")
 	public List<ProductDTO> getProductsByColor(@PathVariable String color) {
-		return productservice.findByColor(color);
+		return productService.findByColor(color);
 	}
 
 	@GetMapping("/getProductsByPrice/{priceAfterDiscount}")
 	public List<ProductDTO> getProductsByPrice(@PathVariable double priceAfterDiscount) {
-		return productservice.findByPrice(priceAfterDiscount);
+		return productService.findByPriceAfterDiscount(priceAfterDiscount);
 	}
 }

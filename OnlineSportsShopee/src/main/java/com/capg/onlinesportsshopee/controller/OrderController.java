@@ -18,35 +18,44 @@ import com.capg.onlinesportsshopee.model.OrderDTO;
 import com.capg.onlinesportsshopee.service.IOrderService;
 
 @RestController
-@RequestMapping("/api/order")
+@RequestMapping("/api/oss")
 public class OrderController {
 	@Autowired
 	private IOrderService orderService;
 	
 	@PostMapping("/addOrder")
-	public OrderDTO addOrder(@RequestBody Order order) {
-		return orderService.addOrder(order);
+	public ResponseEntity<OrderDTO> addOrder(@RequestBody Order order) 
+	{
+		OrderDTO resultorder = orderService.addOrder(order);
+		return new ResponseEntity<OrderDTO>(resultorder, HttpStatus.OK);
+
 	}
+	
 	
 	@PutMapping("/updateOrder")
 	public ResponseEntity<OrderDTO> updateOrder(@RequestBody Order order) {
-		return new ResponseEntity<OrderDTO>(orderService.updateOrder(order.getOrderId(), order),HttpStatus.OK);
+		OrderDTO updateOrder = orderService.updateOrder(order.getOrderId(), order);
+		return new ResponseEntity<OrderDTO>(updateOrder, HttpStatus.OK);
 	}
+	
 	
 	@DeleteMapping("/removeOrder/{orderid}")
-	public Order removeOrder(@PathVariable long id) throws OrderServiceException {
-		orderService.removeOrder(id);
-		return null;
-	}
-	@GetMapping("/getOrderDetails/{orderId}")
-	public ResponseEntity<OrderDTO> getOrderDetails(@PathVariable long id) throws OrderServiceException{
-		return new ResponseEntity<OrderDTO>(orderService.getOrderDetails(id),HttpStatus.OK);
+	public ResponseEntity<OrderDTO> removePayment(@PathVariable long orderId)
+		{
+			OrderDTO removeOrder = orderService.removeOrder(orderId);
+			return new ResponseEntity<OrderDTO>(removeOrder,HttpStatus.OK);
+		}
+	
+	@GetMapping("/getOrder/{orderId}")
+	public ResponseEntity<OrderDTO> GetOrderDetails(@PathVariable long orderId) throws OrderServiceException {
+		OrderDTO getByOrderId = orderService.getOrderDetails(orderId);
+		return new ResponseEntity<OrderDTO>(getByOrderId, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getAllOrders")
-	public ResponseEntity<List<OrderDTO>> getAllOrders(){
-		return new ResponseEntity<List<OrderDTO>>(orderService.getAllOrders(),HttpStatus.OK);
+	@GetMapping("/getAllOrder")
+	public ResponseEntity<List<OrderDTO>> getAllOrders() {
+		List<OrderDTO> getAllOrder = orderService.getAllOrders();
+		return new ResponseEntity<List<OrderDTO>>(getAllOrder, HttpStatus.OK);
 	}
-	
 
 }

@@ -1,9 +1,6 @@
 package com.capg.onlinesportsshopee.bean;
 
-
-
-
-import java.time.LocalDate;
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +13,9 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customer implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
