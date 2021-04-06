@@ -1,4 +1,3 @@
-
 package com.capg.onlinesportsshopee.bean;
 
 import javax.persistence.Column;
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 @Table(name="cart")
 public class Cart extends Product{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="cartid" )
 	 private long cartId;
 	 
@@ -31,7 +30,7 @@ public class Cart extends Product{
 	@Column(name="price")
 	 private double price;
 	
-	@Column(name="total")
+	@Column(name = "total")
 	 private double total;
 	
 	
@@ -95,5 +94,4 @@ public class Cart extends Product{
 		return "Cart [cartId=" + cartId + ", imageName=" + imageName + ", productName=" + productName + ", quantity="
 				+ quantity + ", price=" + price + ", total=" + total + "]";
 	}
-	 
 }

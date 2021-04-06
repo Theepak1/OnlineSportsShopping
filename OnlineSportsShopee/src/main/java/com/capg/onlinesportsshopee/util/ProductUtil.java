@@ -1,4 +1,3 @@
-
 package com.capg.onlinesportsshopee.util;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,18 +38,18 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 	public static ProductDTO convertToProductDto(Product product) {
 		ProductDTO productDto = new ProductDTO();
 		
-		product.setProductId(productDto.getProductId());
-		product.setProductName(productDto.getProductName());
-		product.setCategory(productDto.getCategory());
-		product.setDescription(productDto.getDescription());
-		product.setBrand(productDto.getBrand());
-		product.setColor(productDto.getColor());
-		product.setSize(productDto.getSize());
-		product.setMrp(productDto.getMrp());
-		product.setDiscount(productDto.getDiscount());
-		product.setPriceAfterDiscount(productDto.getPriceAfterDiscount());
-		product.setInStock(productDto.isInStock());
-		product.setEstimatedDelivery(productDto.getEstimatedDelivery());
+		productDto.setProductId(product.getProductId());
+		productDto.setProductName(product.getProductName());
+		productDto.setCategory(product.getCategory());
+		productDto.setDescription(product.getDescription());
+		productDto.setBrand(product.getBrand());
+		productDto.setColor(product.getColor());
+		productDto.setSize(product.getSize());
+		productDto.setMrp(product.getMrp());
+		productDto.setDiscount(product.getDiscount());
+		productDto.setPriceAfterDiscount(product.getPriceAfterDiscount());
+		productDto.setInStock(product.isInStock());
+		productDto.setEstimatedDelivery(product.getEstimatedDelivery());
 		
 		return productDto;
 	}
