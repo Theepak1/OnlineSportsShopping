@@ -1,3 +1,4 @@
+
 package com.capg.onlinesportsshopee.controller;
 
 import java.util.List;
@@ -59,13 +60,4 @@ public class CustomerController {
 		List<CustomerDTO> resultCustomer = customerService.getAllCustomers();
 		return new ResponseEntity<List<CustomerDTO>>(resultCustomer, HttpStatus.OK);
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

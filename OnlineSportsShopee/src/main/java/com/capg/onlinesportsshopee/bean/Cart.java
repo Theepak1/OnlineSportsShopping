@@ -1,5 +1,8 @@
 package com.capg.onlinesportsshopee.bean;
 
+
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +13,11 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="cart")
-public class Cart extends Product{
+public class Cart implements Serializable{
+	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="cartid" )
@@ -28,11 +35,10 @@ public class Cart extends Product{
 	 private int quantity;
 	
 	@Column(name="price")
-	@NotBlank(message="Price should be specified")
 	 private double price;
 	
-	@Column(name="total")
-	@NotBlank(message="Total should be specified")
+	@Column(name = "total")
+
 	 private double total;
 	
 	

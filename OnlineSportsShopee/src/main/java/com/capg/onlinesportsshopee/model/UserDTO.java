@@ -18,11 +18,11 @@ public class UserDTO {
 		this.userId = userId;
 	}
 	
-	public String getUsername() {
+	public String getusername() {
 		return username;
 	}
 	
-	public void setUsername(String username) {
+	public void setusername(String username) {
 		this.username = username;
 	}
 	

@@ -2,120 +2,134 @@ package com.capg.onlinesportsshopee.service;
 
 import java.util.List;
 import java.util.Optional;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.capg.onlinesportsshopee.bean.Product;
 import com.capg.onlinesportsshopee.exceptions.ProductServiceException;
+import com.capg.onlinesportsshopee.model.ProductDTO;
 import com.capg.onlinesportsshopee.repo.IProductRepository;
+import com.capg.onlinesportsshopee.util.ProductUtil;
 
 
 @Service
-@Transactional
-@Repository
 public class ProductServiceImpl implements IProductService {
 
-	@Autowired
+	 @Autowired
 	 IProductRepository repo;
 	
 
 	@Override
-	public Product addProduct(Product product) {
+	public ProductDTO addProduct(Product product) throws ProductServiceException {
 		Optional<Product> product1= repo.findById(product.getProductId());
 		if (product1.isEmpty()) {
-			return repo.saveAndFlush(product);
+			Product addProduct =  repo.save(product);
+			return ProductUtil.convertToProductDto(addProduct);
 		} else {
 			throw new ProductServiceException("Product already exists");
 		}
 	}
 
 	@Override
-	public void removeProduct(long id) {
-	Optional<Product> product1=repo.findById(id);
-	if(product1.isEmpty()) {
-		throw new ProductServiceException("Product doesnt exist to delete");
+	public void removeProduct(long productId) throws ProductServiceException {
+	Optional<Product> product1=repo.findById(productId);
+	if(!product1.isEmpty()) {
+		if(product1.isPresent())
+		{
+			repo.delete(product1.get());
+		}
 	}
 	else 
-		repo.delete(product1.get());
+		throw new ProductServiceException("Product does not exist to delete");
+		
 }
 
 	
 	@Override
-	public Product updateProduct(long id, Product product) {
-		Optional<Product> product1=repo.findById(id);
+	public ProductDTO updateProduct(long productId, Product product) throws ProductServiceException {
+		Optional<Product> product1=repo.findById(productId);
 		if(product1.isEmpty()) {
 			throw new ProductServiceException("Product not found");
 		}
 		else
-			repo.save(product);
-		return product;
+		{
+			Product updateProduct = repo.save(product);
+			return ProductUtil.convertToProductDto(updateProduct);
+		}
+			
+		
 	}
 
 
 	@Override
-	public Product getProduct(long id) {
-		Optional<Product>product=repo.findById(id);
+	public ProductDTO getProduct(long productId) throws ProductServiceException {
+		Optional<Product> product=repo.findById(productId);
 		if(product.isEmpty()) {
+			Product getProduct = repo.findById(productId).orElse(null);
+			return ProductUtil.convertToProductDto(getProduct);
+			
+		}
+		else
+		{
 			throw new ProductServiceException("Given product id does not exists");
 		}
 	
-		return product.get();
+		
 	}
 
 
 	@Override
-	public List<Product> getAllProduct() {
-		List<Product> product= repo.findAll();
-		if(product.isEmpty()) {
+	public List<ProductDTO> getAllProduct() throws ProductServiceException {
+		List<Product> productList= repo.findAll();
+		if(productList.isEmpty()) {
 			throw new ProductServiceException("Products not found");
 		}
-		return product;
+		return ProductUtil.convertToProductDtoList(productList);
 	}
 
 
 	
 
 	@Override
-	public List<Product> findByProductName(String productName) {
+	public List<ProductDTO> findByProductName(String productName) throws ProductServiceException {
 	
-	List<Product> product= repo.findByProductName(productName);
-	if(product.isEmpty()) {
+	List<Product> productList= repo.findByProductName(productName);
+	if(productList.isEmpty()) {
 		throw new ProductServiceException("Products not found");
 	}
-	return product;
+	return ProductUtil.convertToProductDtoList(productList);
 }
 
 
 	@Override
-	public List<Product> findBySize(int size) {
-		List<Product> product= repo.findBySize(size);
-		if(product.isEmpty()) {
+	public List<ProductDTO> findBySize(int size) throws ProductServiceException {
+		List<Product> productList= repo.findBySize(size);
+		if(productList.isEmpty()) {
 			throw new ProductServiceException("Products with required sizes not found");
 		}
-		return product;
+		return ProductUtil.convertToProductDtoList(productList);
 	}
 
 
 	@Override
-	public List<Product> findByPrice(double price ) {
-	List<Product> product= repo.findByPriceAfterDiscount(price);
-	if(product.isEmpty()) {
+	public List<ProductDTO> findByPriceAfterDiscount(double priceAfterDiscount ) throws ProductServiceException {
+	List<Product> productList= repo.findByPriceAfterDiscount(priceAfterDiscount);
+	if(productList.isEmpty()) {
 		throw new ProductServiceException("Products with mentioed price not found");
 	}
-	return product;
+	return ProductUtil.convertToProductDtoList(productList);
 }
 
 
 
 	@Override
-	public List<Product> findByColor(String color) {
-		List<Product> product= repo.findByColor(color);
-		if(product.isEmpty()) {
+	public List<ProductDTO> findByColor(String color) throws ProductServiceException {
+		List<Product> productList= repo.findByColor(color);
+		if(productList.isEmpty()) {
 			throw new ProductServiceException("Products with mentioned color not found");
 		}
-		return product;
+		return ProductUtil.convertToProductDtoList(productList);
 
 	}
 
 }
+

@@ -31,9 +31,7 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 		product.setPriceAfterDiscount(productDto.getPriceAfterDiscount());
 		product.setInStock(productDto.isInStock());
 		product.setEstimatedDelivery(productDto.getEstimatedDelivery());
-	    product.setCart(productDto.getCart());
-	    product.setOrder(product.getOrder());
-		
+
 		return product;
 	}
 	
@@ -52,8 +50,6 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 		productDto.setPriceAfterDiscount(product.getPriceAfterDiscount());
 		productDto.setInStock(product.isInStock());
 		productDto.setEstimatedDelivery(product.getEstimatedDelivery());
-		productDto.setCart(product.getCart());
-		productDto.setOrder(product.getOrder());
 		
 		return productDto;
 	}
@@ -61,3 +57,4 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 	
 
 }
+

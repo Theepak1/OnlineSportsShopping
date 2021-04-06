@@ -1,5 +1,7 @@
 package com.capg.onlinesportsshopee.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="address")
-public class Address {
+public class Address implements Serializable{
 
 	@Id
 	@Column(name = "addressId")
