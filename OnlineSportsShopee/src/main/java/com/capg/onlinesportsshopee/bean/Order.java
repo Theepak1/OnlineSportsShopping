@@ -18,7 +18,7 @@ import javax.validation.constraints.NotBlank;
 
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order implements Serializable {
 	
 	private static final long serialVersionUID = 1L;

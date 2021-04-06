@@ -15,7 +15,7 @@ import com.capg.onlinesportsshopee.util.CustomerUtil;
 public class CustomerServiceImpl implements ICustomerService {
 
 	@Autowired
-	ICustomerRepository customerRepo;
+	private ICustomerRepository customerRepo;
 
 	@Override
 	public CustomerDTO addCustomer(Customer customer) throws CustomerServiceException 
@@ -32,7 +32,6 @@ public class CustomerServiceImpl implements ICustomerService {
 		
 	}
 	
-
 	@Override
 	public CustomerDTO removeCustomer(long userId) throws CustomerServiceException
 	{

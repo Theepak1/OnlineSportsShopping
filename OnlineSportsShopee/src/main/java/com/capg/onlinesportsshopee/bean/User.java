@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User")
+@Table(name="Users")
 public class User {
 	
 	@Id
@@ -24,7 +24,7 @@ public class User {
 	private String role;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="userid")
 	private Customer user;
 	
 	

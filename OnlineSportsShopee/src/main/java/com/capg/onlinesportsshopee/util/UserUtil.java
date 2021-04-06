@@ -29,9 +29,9 @@ public class UserUtil {
 	private static UserDTO convertToUserDto(User user) {
 		UserDTO userDTO = new UserDTO();
 		
-		userDTO.setUserId(userDTO.getUserId());
-		userDTO.setPassword(userDTO.getPassword());
-		userDTO.setRole(userDTO.getRole());
+		userDTO.setUserId(user.getUserId());
+		userDTO.setPassword(user.getPassword());
+		userDTO.setRole(user.getRole());
 		
 		return userDTO;
 	}
