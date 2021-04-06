@@ -1,7 +1,8 @@
 package com.capg.onlinesportsshopee.controller;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,60 +12,45 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.capg.onlinesportsshopee.bean.User;
-import com.capg.onlinesportsshopee.exceptions.InvalidUsernamePasswordException;
+import com.capg.onlinesportsshopee.exceptions.UserServiceException;
+import com.capg.onlinesportsshopee.model.UserDTO;
 import com.capg.onlinesportsshopee.service.IUserService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/oss")
 public class UserController {
 	
 	@Autowired
 	private IUserService userservice;
 
-	@PostMapping
-	public User addUser(@RequestBody User user) {
-		return userservice.addUser(user);
+	@PostMapping("/adduser")
+	public ResponseEntity<UserDTO> addUser(@RequestBody User user) {
+		UserDTO resultuser = userservice.addUser(user);
+		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 
-	@GetMapping("/{id}")
-	
-	public User addUser(@PathVariable String id) {
-		return userservice.getId(id);
+	@PutMapping("/updateuser")
+	public ResponseEntity<UserDTO> updateUser(@RequestBody User user) {
+		UserDTO resultuser = userservice.updateUser(user);
+		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 
-	@PutMapping
-	public User updateUser(@RequestBody User user) {
-		return userservice.updateUser(user);
-	}
-
-	@DeleteMapping("/{userID}")
-	public User deleteUser(@PathVariable String userID) {
-		return userservice.deleteUser(userID);
-	}
-
-	@GetMapping("/{userId}")
-	public User getUserById(@PathVariable String userId) {
-		return userservice.getId(userId);
-	}
-
-	@GetMapping(value="/login")
-	public String userLogin(@RequestBody User user) throws InvalidUsernamePasswordException {
-		try {
-			return userservice.signIn(user);
-		} catch (Exception e) {
-			 throw new InvalidUsernamePasswordException("Inalid Password/Username");
-		}
-		
-	}
-
-	@GetMapping
-	public User userLogout(@PathVariable("username") int username, @PathVariable("password") String password)  {
-		
-		return userservice.signOut(null);
+	@DeleteMapping("/deleteuser/{userID}")
+	public ResponseEntity<UserDTO> deleteUser(@PathVariable long userID) throws UserServiceException {
+		UserDTO resultuser = userservice.deleteUser(userID);
+		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 	
-	@GetMapping(value="/all")
-	public List<User> getAllUsers(){
-		return userservice.getUsers();
+	@GetMapping("/getuser/{id}")
+	public ResponseEntity<UserDTO> getId(@PathVariable long id) {
+		UserDTO resultuser = userservice.getId(id);
+		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
+	
+	@GetMapping("/getuser/{username}")
+	public ResponseEntity<UserDTO> getusername(@PathVariable User user) {
+		UserDTO resultuser = userservice.getusername(user);
+		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
+	}	
+	
 }
