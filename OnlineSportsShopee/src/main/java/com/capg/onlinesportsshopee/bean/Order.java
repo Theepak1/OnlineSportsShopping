@@ -36,7 +36,7 @@ public class Order implements Serializable {
 	@NotBlank(message="Billing Date should not be blank")
 	private LocalDate billingDate;
 	
-	@ManyToOne(cascade = {CascadeType.ALL},fetch=FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="cust_Id",referencedColumnName = "userid")
 	private Customer customer;
 

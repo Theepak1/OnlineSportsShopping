@@ -30,7 +30,7 @@ public class Cart extends Product{
 	@Column(name="price")
 	 private double price;
 	
-	@Column(name="total")
+	@Column(name = "total")
 	 private double total;
 	
 	
