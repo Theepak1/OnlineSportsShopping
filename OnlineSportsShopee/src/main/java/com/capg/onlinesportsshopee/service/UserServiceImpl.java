@@ -1,12 +1,9 @@
 package com.capg.onlinesportsshopee.service;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.UserServiceException;
 import com.capg.onlinesportsshopee.repo.IUserRepository;
