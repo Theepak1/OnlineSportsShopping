@@ -20,23 +20,23 @@ public class Cart implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="cartid" )
-	 private long cartId;
+	 private long cartid;
 	 
-	@Column(name="imagename")
+	@Column(name="imageName",nullable = false)
 	private String imageName;
 	
-	@Column(name="productname", nullable=false, length=20)
-	@NotBlank(message="ProductName should not be blank")
-	 private String productName;
+	@Column(name="cartProductName",nullable = false)
+	@NotBlank(message="CartProductName should not be blank")
+	private String cartProductName;
 	
-	@Column(name="quantity", nullable=false)
+	@Column(name="quantity",nullable = false)
 	@NotBlank(message="Quantity should be specified")
 	 private int quantity;
 	
-	@Column(name="price")
+	@Column(name="price",nullable = false)
 	 private double price;
 	
-	@Column(name = "total")
+	@Column(name = "total",nullable = false)
 	 private double total;
 	
 	
@@ -47,11 +47,11 @@ public class Cart implements Serializable{
 	
 	
 	
-	public Cart(long cartId, String imageName, String productName, int quantity, double price, double total) {
+	public Cart(long cartid, String imageName, String cartProductName, int quantity, double price, double total) {
 		super();
-		this.cartId = cartId;
+		this.cartid = cartid;
 		this.imageName = imageName;
-		this.productName = productName;
+		this.cartProductName = cartProductName;
 		this.quantity = quantity;
 		this.price = price;
 		this.total = total;
@@ -60,10 +60,10 @@ public class Cart implements Serializable{
 
 
 	public long getCartId() {
-		return cartId;
+		return cartid;
 	}
-	public void setCartId(long cartId) {
-		this.cartId = cartId;
+	public void setCartId(long cartid) {
+		this.cartid = cartid;
 	}
 	public String getImageName() {
 		return imageName;
@@ -72,10 +72,10 @@ public class Cart implements Serializable{
 		this.imageName = imageName;
 	}
 	public String getProductName() {
-		return productName;
+		return cartProductName;
 	}
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setProductName(String cartProductName) {
+		this.cartProductName = cartProductName;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -97,7 +97,7 @@ public class Cart implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Cart [cartId=" + cartId + ", imageName=" + imageName + ", productName=" + productName + ", quantity="
+		return "Cart [cartId=" + cartid + ", imageName=" + imageName + ", cartProductName=" + cartProductName + ", quantity="
 				+ quantity + ", price=" + price + ", total=" + total + "]";
 	}
 	 

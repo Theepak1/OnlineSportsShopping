@@ -44,18 +44,7 @@ public class Customer implements Serializable{
 	@OneToOne(cascade = {CascadeType.ALL})
 	private Address address;
 	
-    @OneToMany(mappedBy = "customer" , fetch = FetchType.LAZY , cascade = CascadeType.ALL)
-    private List<Order> orders;
-	
-   
-
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
+  
 
 	public Customer(String name, String email, String contactNo, String dob,String doorNo, String street, String area, String city, String state, int pinCode) {
 		super();

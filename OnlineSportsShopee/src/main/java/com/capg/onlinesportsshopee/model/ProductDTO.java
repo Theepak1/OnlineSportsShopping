@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import com.capg.onlinesportsshopee.bean.Cart;
+
 @Component
 public class ProductDTO {
 	private long productId;
@@ -18,6 +20,7 @@ public class ProductDTO {
 	private double priceAfterDiscount;
 	private boolean inStock;
 	private LocalDate estimatedDelivery;
+	private Cart cart;
 
 	public ProductDTO() {
 		super();
@@ -26,7 +29,8 @@ public class ProductDTO {
 
 	public ProductDTO(long productId, String productName, String category, String description, String brand,
 			String color, int size, int mrp, int discount, double priceAfterDiscount, boolean inStock,
-			LocalDate estimatedDelivery) {
+			LocalDate estimatedDelivery ,long cartid, String imageName, String cartProductName, int quantity, double price, 
+			double total) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -40,6 +44,7 @@ public class ProductDTO {
 		this.priceAfterDiscount = priceAfterDiscount;
 		this.inStock = inStock;
 		this.estimatedDelivery = estimatedDelivery;
+		this.cart = new Cart(cartid,imageName , cartProductName,quantity,price,total);
 
 	}
 
@@ -139,12 +144,22 @@ public class ProductDTO {
 		this.estimatedDelivery = estimatedDelivery;
 	}
 
+	
+
 	@Override
 	public String toString() {
-		return "Product [productId=" + productId + ", productName=" + productName + ", category=" + category
+		return "ProductDTO [productId=" + productId + ", productName=" + productName + ", category=" + category
 				+ ", description=" + description + ", brand=" + brand + ", color=" + color + ", size=" + size + ", mrp="
 				+ mrp + ", discount=" + discount + ", priceAfterDiscount=" + priceAfterDiscount + ", inStock=" + inStock
-				+ ", estimatedDelivery=" + estimatedDelivery + "]";
+				+ ", estimatedDelivery=" + estimatedDelivery + ", cart=" + cart + "]";
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
 	}
 
 }

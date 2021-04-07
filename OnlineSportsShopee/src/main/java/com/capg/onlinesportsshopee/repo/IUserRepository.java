@@ -8,6 +8,10 @@ import com.capg.onlinesportsshopee.bean.User;
 
 @Repository
 public interface IUserRepository extends JpaRepository<User,Long>{
+
+	public User findByUserName(String userName);
+
+
 	
 	
 	
