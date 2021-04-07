@@ -3,9 +3,11 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -36,19 +38,20 @@ public class Order implements Serializable {
 	private String billingDate;
 	
 
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userid", referencedColumnName = "userid",nullable = false)
 	private Customer customer;
 
 
 	public Order() {
 		super();
 	}
-	public Order(long orderId, double amount, String billingDate,Customer customer) {
+	public Order(long orderId, double amount, String billingDate,long userId) {
 		super();
 		this. orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-		this.customer=customer;
+		this.customer= new Customer(userId);
 		
 	}
 	
@@ -84,6 +87,5 @@ public class Order implements Serializable {
 				+ customer + "]";
 	}
 	
-
 }
 

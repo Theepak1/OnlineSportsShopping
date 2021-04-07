@@ -21,7 +21,7 @@ import com.capg.onlinesportsshopee.service.ICustomerService;
 import com.capg.onlinesportsshopee.exceptions.CustomerServiceException;
 
 @RestController
-@RequestMapping("/sports")
+@RequestMapping("/api/oss")
 public class CustomerController {
 
 	@Autowired

@@ -1,4 +1,4 @@
-package com.capg.onlinesportsshopee.servicetest;
+package com.capg.onlinesportsshopee;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -31,6 +31,7 @@ class PaymentServiceImpTest {
 		Payment paymentTemp=new Payment(1, "debit","paid",1, "SyedSamsu","1244652347891236",expiryDate,256);
 		assertEquals(paymentTemp,paymentService.addPayment(paymentTemp));
 		list.add(paymentTemp);
+		paymentService.removePayment(1);
 	}
 
 	@Test

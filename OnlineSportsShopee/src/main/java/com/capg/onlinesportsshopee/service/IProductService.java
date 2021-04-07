@@ -10,7 +10,7 @@ public interface IProductService {
 	public ProductDTO addProduct(Product product);
 	public void removeProduct(long id);
 	public ProductDTO updateProduct(long id, Product product);
-	public ProductDTO getProduct(long id);
+	public ProductDTO getProduct(long productId);
 	public List<ProductDTO> getAllProduct();
 	public List<ProductDTO> findByPriceAfterDiscount(double priceAfterDiscount);
 	public List<ProductDTO> findByProductName(String productName);
