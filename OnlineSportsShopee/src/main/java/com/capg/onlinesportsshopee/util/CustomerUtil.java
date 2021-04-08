@@ -1,11 +1,16 @@
 package com.capg.onlinesportsshopee.util;
 import java.util.ArrayList;
-
 import java.util.List;
 
 import com.capg.onlinesportsshopee.bean.Customer;
 import com.capg.onlinesportsshopee.model.CustomerDTO;
 
+/*
+ * Author : THEEPAK PRAKASH P
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is Payment Repository 
+*/
 public class CustomerUtil {
 	
 	public static List<CustomerDTO> convertToCustomerDtoList(List<Customer> list)

@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.util;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -26,6 +27,7 @@ public class OrderUtil {
 		orderDto.setCustomer(order.getCustomer());
 		orderDto.setProduct(order.getProduct());
 		orderDto.setPayment(order.getPayment());
+
 		
 		return orderDto;
 	}
@@ -39,6 +41,7 @@ public class OrderUtil {
 		order.setCustomer(orderDto.getCustomer());
 		order.setProduct(orderDto.getProduct());
 		order.setPayment(orderDto.getPayment());
+
 		
 		return order;
 	}
@@ -46,3 +49,4 @@ public class OrderUtil {
 	
 
 }
+

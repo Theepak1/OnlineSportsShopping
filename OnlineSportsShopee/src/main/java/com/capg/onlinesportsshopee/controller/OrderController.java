@@ -1,6 +1,8 @@
+
 package com.capg.onlinesportsshopee.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +33,6 @@ public class OrderController {
 
 	}
 	
-	
 	@PutMapping("/updateOrder")
 	public ResponseEntity<OrderDTO> updateOrder(@RequestBody Order order) {
 		OrderDTO updateOrder = orderService.updateOrder(order.getOrderId(), order);
@@ -39,7 +40,7 @@ public class OrderController {
 	}
 	
 	
-	@DeleteMapping("/removeOrder/{orderid}")
+	@DeleteMapping("/removeOrder/{orderId}")
 	public ResponseEntity<OrderDTO> removePayment(@PathVariable long orderId)
 		{
 			OrderDTO removeOrder = orderService.removeOrder(orderId);
@@ -59,3 +60,4 @@ public class OrderController {
 	}
 
 }
+

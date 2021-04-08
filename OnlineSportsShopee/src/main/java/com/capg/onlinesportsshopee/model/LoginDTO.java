@@ -4,7 +4,12 @@ import org.springframework.stereotype.Component;
 
 import com.capg.onlinesportsshopee.bean.User;
 
-
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 06-04-2021
+ * Description : This is LoginDTO Class
+*/
 @Component
 public class LoginDTO {
 

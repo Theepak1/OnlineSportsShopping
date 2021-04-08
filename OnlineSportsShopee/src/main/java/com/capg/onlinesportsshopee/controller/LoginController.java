@@ -14,7 +14,12 @@ import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 import com.capg.onlinesportsshopee.service.ILoginService;
 
 
-
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 06-04-2021
+ * Description : This is Login Controller
+*/
 @RestController
 @RequestMapping("/api/oss")
 public class LoginController {

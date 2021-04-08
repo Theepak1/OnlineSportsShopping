@@ -1,16 +1,27 @@
+
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
+
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+/*
+ * Author : THEEPAK PRAKASH P
+ * Version : 1.0
+ * Date : 01-04-2021
+ * Description : This is Customer Entity 
+*/
 @Entity
 @Table(name = "customers")
 public class Customer implements Serializable{
@@ -41,21 +52,25 @@ public class Customer implements Serializable{
 	@OneToOne(cascade = {CascadeType.ALL})
 	private Address address;
 	
-  
 
-	public Customer(String name, String email, String contactNo, String dob,String doorNo, String street, String area, String city, String state, int pinCode) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.contactNo = contactNo;
-		this.dob = dob;
-		this.address =  new Address(doorNo,street,area,city,state,pinCode);
-	}
+
+
+
+
 
 	public Customer() {
 		super();
 	}
 
+	public Customer(long userId,  String name,String email, String contactNo, String dob, Address address) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.dob = dob;
+		this.address = address;
+	}
 	
 	public Customer(long userId, String name, String email,String contactNo,String dob, String doorNo, String street, String area, String city, String state, int pinCode) {
 		super();
@@ -66,7 +81,17 @@ public class Customer implements Serializable{
 		this.dob = dob;
 		this.address = new Address(doorNo,street,area,city,state,pinCode);
 	}
+
+	public Customer( String name, String email,String contactNo,String dob, String doorNo, String street, String area, String city, String state, int pinCode) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.dob = dob;
+		this.address = new Address(doorNo,street,area,city,state,pinCode);
+	}
 	
+
 	public Customer(long userId) {
 		this.userId=userId;
 	}

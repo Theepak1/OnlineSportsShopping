@@ -1,3 +1,5 @@
+
+
 package com.capg.onlinesportsshopee.service;
 
 import java.util.List;
@@ -10,6 +12,13 @@ import com.capg.onlinesportsshopee.model.OrderDTO;
 import com.capg.onlinesportsshopee.repo.IOrderRepository;
 import com.capg.onlinesportsshopee.util.OrderUtil;
 
+/*
+ * Author      : JISHNA k
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is Order Service Layer that provides services to Add New Order details, Update Existing Order details, 
+ *               Delete Existing Order details, Get Existing Order details and Get All Existing Order details
+*/
 @Service
 public class OrderServiceImpl implements IOrderService {
 	
@@ -17,6 +26,12 @@ public class OrderServiceImpl implements IOrderService {
 	private IOrderRepository orderRepo;
 	
 
+	   /*
+     * Description    :This method adds Order Details
+     * Input Parameter:Order Object
+     * Return value   :OrderDTO object
+     * Exception      :OrderServiceException
+     */
 	@Override
 	public OrderDTO addOrder(Order order)throws OrderServiceException 
 	{
@@ -31,18 +46,30 @@ public class OrderServiceImpl implements IOrderService {
 		}
 		
 	}
+	/*
+     * Description    :This method removes Order Details
+     * Input Parameter:Order Object
+     * Return value   :OrderDTO object
+     * Exception      :OrderServiceException
+     */
 	@Override
 	public OrderDTO removeOrder(long orderId) throws OrderServiceException {
-		Optional<Order> payment = orderRepo.findById(orderId);
-		if (payment.isEmpty()) {
-			throw new OrderServiceException("paymentId does not exist to delete");
+		Optional<Order> order = orderRepo.findById(orderId);
+		if (order.isEmpty()) {
+			throw new OrderServiceException("OrderId does not exist to delete");
 		} 
 		else {
-			orderRepo.delete(payment.get());
-			return OrderUtil.convertToOrderDto(payment.get());
+			orderRepo.delete(order.get());
+			return OrderUtil.convertToOrderDto(order.get());
 		}
 	}
-
+	
+	 /*
+     * Description    :This method update Order Details
+     * Input Parameter:Order Object
+     * Return value   :OrderDTO object
+     * Exception      :OrderServiceException
+     */
 	@Override
 	public OrderDTO updateOrder(long orderId, Order order) throws OrderServiceException {
 		if (order == null)
@@ -57,7 +84,12 @@ public class OrderServiceImpl implements IOrderService {
 	}
 		
 	
-	
+	 /*
+     * Description    :This method gets Order Details
+     * Input Parameter:OrderID
+     * Return value   :OrderDTO object
+     * Exception      :OrderServiceException
+     */
 	@Override
 	public OrderDTO getOrderDetails(long orderId)throws OrderServiceException {
 		Optional<Order> orderTemp = orderRepo.findById(orderId);
@@ -70,6 +102,12 @@ public class OrderServiceImpl implements IOrderService {
 		}
 	}
 		
+	 /*
+     * Description    :This method gets all Order Details
+     * Input Parameter:Order Object
+     * Return value   :OrderDTO object
+     * Exception      :OrderServiceException
+     */
 	@Override
 	public List<OrderDTO> getAllOrders() throws OrderServiceException {
 		List<Order> orderTemp = orderRepo.findAll();
@@ -94,4 +132,5 @@ public class OrderServiceImpl implements IOrderService {
 		
 		
 		
-	}
+}
+

@@ -1,3 +1,4 @@
+
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
 
 /*
  * Author : SYED SAMSUDEEN A
@@ -55,6 +57,17 @@ public class Payment implements Serializable{
 		this.status = status;
 		
 	}
+	public Payment(long paymentId, String type,
+			 String status, Card card) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.card = card;
+	}
+
+	
+	
 
 	public long getPaymentId() {
 		return paymentId;
@@ -93,3 +106,4 @@ public class Payment implements Serializable{
 		return "Payment [paymentId=" + paymentId + ", type=" + type + ", status=" + status + ", card=" + card + "]";
 	}
 }
+
