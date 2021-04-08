@@ -11,4 +11,3 @@ public class InvalidUsernamePasswordException extends Exception {
 		super(message);
 	}
 }
-

@@ -4,15 +4,16 @@ import java.util.List;
 
 
 import com.capg.onlinesportsshopee.bean.Product;
+import com.capg.onlinesportsshopee.model.ProductDTO;
 
 public interface IProductService {
-	public Product addProdct(Product product);
-	public Product removeProduct(long id);
-	public Product updateProduct(long id, Product product);
-	public Product getProduct(long id);
-	public List<Product> getAllProduct();
-	public List<Product> getProductsByName();
-	public List<Product> getProductsBySize();
-	public List<Product> getProductsByPrice();
-	public List<Product> getProductsByColor();
+	public ProductDTO addProduct(Product product);
+	public void removeProduct(long id);
+	public ProductDTO updateProduct(long id, Product product);
+	public ProductDTO getProduct(long id);
+	public List<ProductDTO> getAllProduct();
+	public List<ProductDTO> findByPriceAfterDiscount(double priceAfterDiscount);
+	public List<ProductDTO> findByProductName(String productName);
+	public List<ProductDTO> findByColor(String color);
+	public List<ProductDTO> findBySize(int size);
 }

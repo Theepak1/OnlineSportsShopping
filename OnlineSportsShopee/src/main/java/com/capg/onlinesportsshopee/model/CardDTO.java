@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CardDTO {
-	
+
 	private long id;
-	
+
 	private String cardName;
-	
+
 	private String cardNumber;
-    
+
 	private LocalDate cardExpiry;
-    
+
 	private int cvv;
-	
+
 	public CardDTO() {
 		super();
 	}
@@ -75,6 +75,5 @@ public class CardDTO {
 		return "Card [id=" + id + ", cardName=" + cardName + ", cardNumber=" + cardNumber + ", cardExpiry=" + cardExpiry
 				+ ", cvv=" + cvv + "]";
 	}
-	
-}
 
+}

@@ -18,6 +18,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+		testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
 	}
 	// https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator-annotation-processor
 implementation group: 'org.hibernate.validator', name: 'hibernate-validator-annotation-processor', version: '6.1.5.Final'

@@ -1,6 +1,7 @@
 package com.capg.onlinesportsshopee.model;
 
-import java.time.LocalDate;
+
+
 
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ public class CustomerDTO
 	private String name;
 	private String email;
 	private String contactNo;
-	private  LocalDate dob;
+	private  String dob;
 	private Address address;
 	
 	
@@ -53,12 +54,12 @@ public class CustomerDTO
 		this.contactNo = contactNo;
 	}
 	
-	public LocalDate getDob() 
+	public String getDob() 
 	{
 		return dob;
 	}
 	
-	public void setDob(LocalDate dob) 
+	public void setDob(String dob) 
 	{
 		this.dob = dob;
 	}
@@ -78,7 +79,7 @@ public class CustomerDTO
 		super();
 	}
 	
-	public CustomerDTO(long userId, String name, String email, String contactNo, LocalDate dob, Address address) {
+	public CustomerDTO(long userId, String name, String email, String contactNo, String dob, Address address) {
 		super();
 		this.userId = userId;
 		this.name = name;
@@ -88,7 +89,7 @@ public class CustomerDTO
 		this.address = address;
 	}
 
-	public CustomerDTO( String name, String email, String contactNo, LocalDate dob, Address address) {
+	public CustomerDTO( String name, String email, String contactNo, String dob, Address address) {
 		super();
 		this.name = name;
 		this.email = email;

@@ -23,11 +23,7 @@ public class PaymentUtil {
 		payment.setPaymentId(paymentDto.getPaymentId());
 		payment.setType(paymentDto.getType());
 		payment.setStatus(paymentDto.getStatus());
-		payment.getCard().setId(paymentDto.getCard().getId());
-		payment.getCard().setCardName(paymentDto.getCard().getCardName());
-		payment.getCard().setCardNumber(paymentDto.getCard().getCardNumber());
-		payment.getCard().setCardExpiry(paymentDto.getCard().getCardExpiry());
-		payment.getCard().setCvv(paymentDto.getCard().getCvv());
+		payment.setCard(paymentDto.getCard());
 		
 		return payment;
 	}
@@ -36,13 +32,9 @@ public class PaymentUtil {
 		PaymentDTO paymentDto = new PaymentDTO();
 		
 		paymentDto.setPaymentId(payment.getPaymentId());
-		paymentDto.setType(payment.getStatus());
+		paymentDto.setType(payment.getType());
 		paymentDto.setStatus(payment.getStatus());
-		paymentDto.getCard().setId(payment.getCard().getId());
-		paymentDto.getCard().setCardName(payment.getCard().getCardName());
-		paymentDto.getCard().setCardNumber(payment.getCard().getCardNumber());
-		paymentDto.getCard().setCardExpiry(payment.getCard().getCardExpiry());
-		paymentDto.getCard().setCvv(payment.getCard().getCvv());
+		paymentDto.setCard(payment.getCard());
 		
 		return paymentDto;
 	}

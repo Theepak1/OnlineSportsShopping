@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import com.capg.onlinesportsshopee.bean.Card;
+
 @Component
 public class PaymentDTO {
 	
@@ -13,7 +15,7 @@ public class PaymentDTO {
 	
 	private String status;
 	
-	private CardDTO cardDTO;
+	private Card card;
 	
 	public PaymentDTO() {
 		super();
@@ -24,7 +26,7 @@ public class PaymentDTO {
 		this.paymentId = paymentId;
 		this.type = type;
 		this.status = status;
-		this.cardDTO = new CardDTO (id,cardName,cardNumber,cardExpiry,cvv);
+		this.card = new Card (id,cardName,cardNumber,cardExpiry,cvv);
 	}
 
 	public long getPaymentId() {
@@ -51,18 +53,17 @@ public class PaymentDTO {
 		this.status = status;
 	}
 
-	public CardDTO getCard() {
-		return cardDTO;
+	public Card getCard() {
+		return card;
 	}
 
-	public void setCard(CardDTO cardDTO) {
-		this.cardDTO = cardDTO;
+	public void setCard( Card card) {
+		this.card = card;
 	}
 
 	@Override
 	public String toString() {
-		return "Payment [paymentId=" + paymentId + ", type=" + type + ", status=" + status + ", card=" + cardDTO + "]";
+		return "Payment [paymentId=" + paymentId + ", type=" + type + ", status=" + status + ", card=" + card + "]";
 	}
 
 }
-

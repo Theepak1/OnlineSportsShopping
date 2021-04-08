@@ -2,7 +2,6 @@ package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,16 +25,16 @@ public class Payment implements Serializable{
 	@Column(name = "paymentId")
 	private long paymentId;
 	
-	@Column(name = "type")
+	@Column(name = "type",nullable = false)
 	@NotBlank(message = "Payment type Should Not Be Blank")
 	private String type;
 	
-	@Column(name = "status")
+	@Column(name = "status",nullable = false)
 	@NotBlank(message = "Payment Status Should Not Be Blank")
 	private String status;
 	
-	@ManyToOne(cascade= {CascadeType.ALL},fetch=FetchType.EAGER)
-	@JoinColumn(name="card_id",referencedColumnName = "ID")
+	@ManyToOne(targetEntity = Card.class,  cascade= CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="card_id",referencedColumnName = "id",nullable = false)
 	private Card card;
 	
 	public Payment() {

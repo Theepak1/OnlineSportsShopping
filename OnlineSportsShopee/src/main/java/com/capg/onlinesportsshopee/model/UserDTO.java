@@ -2,6 +2,13 @@ package com.capg.onlinesportsshopee.model;
 
 import org.springframework.stereotype.Component;
 
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is UserDTO Class
+*/
+
 @Component
 public class UserDTO {
 
@@ -9,44 +16,43 @@ public class UserDTO {
 	private String username;
 	private String password;
 	private String role;
-	
+
 	public long getUserId() {
 		return userId;
 	}
-	
+
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-	
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String getRole() {
 		return role;
 	}
-	
+
 	public void setRole(String role) {
 		this.role = role;
 	}
-	
-	public UserDTO()
-	{
+
+	public UserDTO() {
 		super();
 	}
-	
+
 	public UserDTO(long userId, String username, String password, String role) {
 		super();
 		this.userId = userId;

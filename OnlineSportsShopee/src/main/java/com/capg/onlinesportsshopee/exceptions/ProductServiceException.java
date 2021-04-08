@@ -1,11 +1,13 @@
 package com.capg.onlinesportsshopee.exceptions;
 
-public class PaymentServiceException extends RuntimeException{
 
+public class ProductServiceException extends RuntimeException {
+	
 	private static final long serialVersionUID = 1L;
-
-	public PaymentServiceException(String message) {
+	
+	public ProductServiceException(String message) {
 		super(message);
 	}
+	
 
 }

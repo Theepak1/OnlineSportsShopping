@@ -6,33 +6,41 @@ import java.util.List;
 import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.model.UserDTO;
 
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is User Util Class
+*/
+
 public class UserUtil {
-	
-	public static List<UserDTO> convertToUserDtoList(List<User> list)
-	{
+
+	public static List<UserDTO> convertToUserDtoList(List<User> list) {
 		List<UserDTO> UserDTOList = new ArrayList<UserDTO>();
 		for (User user : list)
 			UserDTOList.add(convertToUserDto(user));
 		return UserDTOList;
 	}
-	
+
 	public static User convertToUser(UserDTO userDTO) {
 		User user = new User();
-		
-		user.setUserId(userDTO.getUserId());
-		user.setPassword(userDTO.getPassword());
-		user.setRole(userDTO.getRole());
-		
+
+		user.setUserId(user.getUserId());
+		user.setUsername(user.getUsername());
+		user.setPassword(user.getPassword());
+		user.setRole(user.getRole());
+
 		return user;
 	}
 
-	private static UserDTO convertToUserDto(User user) {
+	public static UserDTO convertToUserDto(User user) {
 		UserDTO userDTO = new UserDTO();
-		
-		userDTO.setUserId(userDTO.getUserId());
-		userDTO.setPassword(userDTO.getPassword());
-		userDTO.setRole(userDTO.getRole());
-		
+
+		userDTO.setUserId(user.getUserId());
+		userDTO.setUsername(user.getUsername());
+		userDTO.setPassword(user.getPassword());
+		userDTO.setRole(user.getRole());
+
 		return userDTO;
 	}
 

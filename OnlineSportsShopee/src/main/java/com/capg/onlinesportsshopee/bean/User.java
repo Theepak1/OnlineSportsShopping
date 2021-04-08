@@ -1,39 +1,45 @@
 package com.capg.onlinesportsshopee.bean;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is User Entity 
+*/
+
 @Entity
-@Table(name="User")
+@Table(name = "Users")
 public class User {
-	
+
 	@Id
-	@Column(name="user_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
 	private long userId;
-	
-	@Column(name="password", nullable=false)
+
+	@Column(name = "username", nullable = false)
+	private String username;
+
+	@Column(name = "password", nullable = false)
 	private String password;
-	
-	@Column(name="role",nullable=false)
+
+	@Column(name = "role", nullable = false)
 	private String role;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="user_id")
-	private Customer user;
-	
-	
+
 	public User() {
 		super();
 	}
 
-	public User(long userId, String password, String role) {
+	public User(long userId, String password, String role, String username) {
 		super();
 		this.userId = userId;
+		this.username = username;
 		this.password = password;
 		this.role = role;
 	}
@@ -50,6 +56,14 @@ public class User {
 		return password;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
@@ -62,14 +76,12 @@ public class User {
 		this.role = role;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + (int) (userId ^ (userId >>> 32));
 		return result;
 	}
@@ -93,11 +105,6 @@ public class User {
 				return false;
 		} else if (!role.equals(other.role))
 			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
 		if (userId != other.userId)
 			return false;
 		return true;
@@ -105,9 +112,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return String.format("User [userId=%s, password=%s, role=%s]", userId, password, role);
+		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
-		
+
 }
-
-
