@@ -23,7 +23,7 @@ public class CustomerServiceImplTest {
 	@Autowired
 	private CustomerServiceImpl service;
 
-	@Disabled
+
 	@Test
 	void testAddCustomer() {
 
@@ -37,18 +37,16 @@ public class CustomerServiceImplTest {
 
 	}
 
-	@Disabled
 	@Test
-	void testAddCustomer2() {
+	void testAddCustomer2() {//make changes
 
-		Customer customer = new Customer("theepake3", "theepak3e@gmail.com", "9111121212", "2/2/1999", "2", "19th",
+		Customer customer = new Customer("theepakr5", "theepak2f@gmail.com", "9231121212", "2/2/1999", "2", "19th",
 				"porrur", "selam", "tamil nadu", 602032);
 
 		assertEquals(customer.getName(), service.addCustomer(customer).getName());
 
 	}
 
-	@Disabled
 	@Test
 	void testRemoveCustomer() {
 		try {
@@ -59,24 +57,24 @@ public class CustomerServiceImplTest {
 
 	}
 
-	@Disabled
+	
 	@Test
-	void testRemoveCustomer1() {// give number present in table
-		assertEquals(service.getCustomer(132).getContactNo(), service.removeCustomer(132).getContactNo());
+	void testRemoveCustomer1() {// give number present in table that is not used in get
+		assertEquals(service.getCustomer(185).getContactNo(), service.removeCustomer(185).getContactNo());
 
 	}
 
-	@Disabled
+	
 	@Test
-	void testUpdatePayment() {// give number present in table and make some changes
-		Customer customer = new Customer(164, "theepakenew1", "theepak3e@gmail.com", "9111121212", "2/2/1999", "2",
+	void testUpdateCustomer() {// make changes 
+		Customer customer = new Customer(170, "theepakenew2", "theepak3e@gmail.com", "9111121212", "2/2/1999", "2",
 				"19th", "porrur", "selam", "tamil nadu", 602032);
 
-		assertEquals("theepakenew", service.updateCustomer(customer).getName());
+		assertEquals("theepakenew2", service.updateCustomer(customer).getName());
 
 	}
 
-	@Disabled
+	
 	@Test
 	void testUpdateCustomer2() {// give number not in table
 
@@ -94,32 +92,31 @@ public class CustomerServiceImplTest {
 	@Test
 	void testFindEmployeeById() // give number present in data base also data
 	{
-		CustomerDTO customer = service.getCustomer(116);
-		assertEquals("syeddd", customer.getName());
+		CustomerDTO customer = service.getCustomer(180);
+		assertEquals("theepak", customer.getName());
 	}
 
 	@Test
 	void testGetContactNo() {
-		CustomerDTO customer = service.getCustomer(116);
-		assertEquals("9040380958", customer.getContactNo());
+		CustomerDTO customer = service.getCustomer(180);
+		assertEquals("9080380958", customer.getContactNo());
 	}
 
 	@Test
 	void testGetDateOfBirth() {
-		CustomerDTO customer = service.getCustomer(116);
+		CustomerDTO customer = service.getCustomer(180);
 		assertEquals("2/4/1998", customer.getDob());
 	}
 
 	@Test
 	void testGetEmail() {
-		CustomerDTO customer = service.getCustomer(116);
-		assertEquals("syeddd@gmail.com", customer.getEmail());
+		CustomerDTO customer = service.getCustomer(180);
+		assertEquals("theepak@gmail.com", customer.getEmail());
 	}
 
 	
 
 	
-	//@Disabled
 	@Test
 	void testValidateCheckName() {
 

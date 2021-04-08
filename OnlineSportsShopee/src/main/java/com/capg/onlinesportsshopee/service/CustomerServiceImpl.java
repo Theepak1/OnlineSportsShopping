@@ -12,13 +12,26 @@ import com.capg.onlinesportsshopee.exceptions.CustomerServiceException;
 import com.capg.onlinesportsshopee.model.CustomerDTO;
 import com.capg.onlinesportsshopee.repo.ICustomerRepository;
 import com.capg.onlinesportsshopee.util.CustomerUtil;
-
+/*
+ * Author : Theepak Prakash P
+ * Version : 1.0
+ * Date : 05-04-2021
+ * Description : This is Customer Service Layer that provides services to Add New Customer details, Update Existing Customer details, 
+ *               Delete Existing Customer details, Get Existing Customer details and Get All Existing Customer details
+*/
 @Service
 public class CustomerServiceImpl implements ICustomerService {
 
 	@Autowired
 	private ICustomerRepository customerRepo;
 
+	
+	/*
+	 * Description : This method adds Customer Details
+	 * Input Parameter :   Customer Object 
+	 * Return Value : CustomerDTO Object 
+	 * Exception : CustomerServiceException
+	 */
 	@Override
 	public CustomerDTO addCustomer(Customer customer) throws CustomerServiceException {
 		Optional<Customer> addCustomerTemp = customerRepo.findById(customer.getUserId());
@@ -32,6 +45,13 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	}
 
+	
+	/*
+	 * Description : This method remove Customer Details
+	 * Input Parameter :  User ID 
+	 * Return Value : CustomerDTO Object 
+	 * Exception : CustomerServiceException
+	 */
 	@Override
 	public CustomerDTO removeCustomer(long userId) throws CustomerServiceException {
 
@@ -49,7 +69,13 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 
 	}
-
+	
+	/*
+	 * Description : This method updates Customer Details
+	 * Input Parameter :  Customer Object  
+	 * Return Value : CustomerDTO Object 
+	 * Exception : CustomerServiceException
+	 */
 	@Override
 	public CustomerDTO updateCustomer(Customer customer) throws CustomerServiceException {
 		Optional<Customer> updateCustomerTemp = customerRepo.findById(customer.getUserId());
@@ -62,7 +88,13 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 
 	}
-
+	
+	/*
+	 * Description : This method gets a Customer Detail
+	 * Input Parameter :  User ID 
+	 * Return Value : CustomerDTO Object 
+	 * Exception : CustomerServiceException
+	 */
 	@Override
 	public CustomerDTO getCustomer(long userId) throws CustomerServiceException {
 		Optional<Customer> getCustomerTemp = customerRepo.findById(userId);
@@ -75,7 +107,12 @@ public class CustomerServiceImpl implements ICustomerService {
 		}
 
 	}
-
+	
+	/*
+	 * Description : This method gets all Customer Details
+	 * Return Value : List of CustomerDTO Objects 
+	 * Exception : CustomerServiceException
+	 */
 	@Override
 	public List<CustomerDTO> getAllCustomers() throws CustomerServiceException {
 		List<Customer> getCustomer = new ArrayList<Customer>();

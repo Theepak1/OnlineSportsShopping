@@ -18,7 +18,12 @@ import com.capg.onlinesportsshopee.bean.Customer;
 import com.capg.onlinesportsshopee.model.CustomerDTO;
 import com.capg.onlinesportsshopee.service.ICustomerService;
 import com.capg.onlinesportsshopee.exceptions.CustomerServiceException;
-
+/*
+ * Author : Theepak Prakash P
+ * Version : 1.0
+ * Date : 07-04-2021
+ * Description : This is  Customer Controller 
+*/
 @RestController
 @RequestMapping("/api/oss")
 public class CustomerController {

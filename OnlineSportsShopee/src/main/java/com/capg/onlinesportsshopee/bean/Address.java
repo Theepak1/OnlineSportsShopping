@@ -3,22 +3,19 @@ package com.capg.onlinesportsshopee.bean;
 
 import javax.persistence.Column;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-
+/*
+ * Author : Theepak Prakash P
+ * Version : 1.0
+ * Date : 01-04-2021
+ * Description : This is Address Entity 
+*/
 @Entity
 @Table(name="address")
 public class Address {
