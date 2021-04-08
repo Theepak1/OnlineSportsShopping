@@ -4,7 +4,7 @@ package com.capg.onlinesportsshopee.util;
  * Author : SYED SAMSUDEEN A
  * Version : 1.0
  * Date : 04-04-2021
- * Description : This is Payment Repository 
+ * Description : This is Payment Util
 */
 import java.util.ArrayList;
 import java.util.List;

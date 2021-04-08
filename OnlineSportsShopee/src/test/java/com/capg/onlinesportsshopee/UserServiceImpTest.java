@@ -29,7 +29,7 @@ class UserServiceImpTest {
 
 	List<User> list = new ArrayList<>();
 
-    @Disabled
+   //@Disabled
 	@Test
 	void testAddUser() {
 		User userTemp = new User(1, "Madhu", "madhu", "user");

@@ -2,16 +2,13 @@ package com.capg.onlinesportsshopee;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import com.capg.onlinesportsshopee.bean.Product;
 import com.capg.onlinesportsshopee.exceptions.ProductServiceException;
 import com.capg.onlinesportsshopee.model.ProductDTO;
@@ -58,12 +55,13 @@ public class ProductServiceImplTest {
 	@Test
 	void testRemoveProduct() {
 		try {
-			service.removeProduct(1);
+			service.removeProduct(9);
 		} catch (ProductServiceException exception) {
-			assertEquals("Product does not exist for productId to delete", exception.getMessage());
+			assertEquals("Product does not exist to delete", exception.getMessage());
 		}
 
 	}
+	
 
 	@Disabled
 	@Test
