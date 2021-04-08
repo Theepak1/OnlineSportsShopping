@@ -74,12 +74,12 @@ public class OrderServiceImpl implements IOrderService {
 	public OrderDTO updateOrder(long orderId, Order order) throws OrderServiceException {
 		if (order == null)
 			return  null;
-		Order existingOrderBill = orderRepo.findById(order.getOrderId()).orElse(null);
-		if (existingOrderBill == null) {
+		Order order1 = orderRepo.findById(order.getOrderId()).orElse(null);
+		if (order1 == null) {
 			throw new OrderServiceException("OrderId not found");
 		}
         else {
-			return OrderUtil.convertToOrderDto(orderRepo.save(order));
+			return OrderUtil.convertToOrderDto(orderRepo.save(order1));
 		}
 	}
 		

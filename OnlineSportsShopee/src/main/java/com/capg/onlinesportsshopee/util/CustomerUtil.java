@@ -9,7 +9,7 @@ import com.capg.onlinesportsshopee.model.CustomerDTO;
  * Author : THEEPAK PRAKASH P
  * Version : 1.0
  * Date : 04-04-2021
- * Description : This is Customer Util 
+ * Description : This is Customer Util class 
 */
 public class CustomerUtil {
 	

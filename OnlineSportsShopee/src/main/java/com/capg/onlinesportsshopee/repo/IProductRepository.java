@@ -9,7 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.capg.onlinesportsshopee.bean.Product;
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Product Repository
+ */
 @Repository
 public interface IProductRepository extends JpaRepository<Product,Long>{
 	
