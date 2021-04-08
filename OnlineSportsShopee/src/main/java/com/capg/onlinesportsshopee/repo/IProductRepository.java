@@ -14,6 +14,7 @@ import com.capg.onlinesportsshopee.bean.Product;
 @Repository
 public interface IProductRepository extends JpaRepository<Product,Long>{
 	
+
 	public List<Product> findByProductName(String productName);
 	public List<Product> findBySize(int size);
 	public List<Product> findByColor(String color);

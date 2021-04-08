@@ -13,6 +13,4 @@ public interface IUserService {
 
 	public UserDTO getId(long userId);
 
-	public UserDTO getusername(User user);
-
 }

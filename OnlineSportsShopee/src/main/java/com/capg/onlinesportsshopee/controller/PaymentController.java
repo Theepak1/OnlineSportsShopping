@@ -17,6 +17,12 @@ import com.capg.onlinesportsshopee.exceptions.PaymentServiceException;
 import com.capg.onlinesportsshopee.model.PaymentDTO;
 import com.capg.onlinesportsshopee.service.IPaymentService;
 
+/*
+ * Author : SYED SAMSUDEEN A
+ * Version : 1.0
+ * Date : 08-04-2021
+ * Description : This is Payment Controller
+*/
 @RestController
 @RequestMapping("/api/oss")
 public class PaymentController {
@@ -43,7 +49,7 @@ public class PaymentController {
 		return new ResponseEntity<PaymentDTO>(updatePayment, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getPayment/{paymentId}")
+	@GetMapping("/getPaymentById/{paymentId}")
 	public ResponseEntity<PaymentDTO> GetPaymentDetails(@PathVariable long paymentId) throws PaymentServiceException {
 		PaymentDTO getByPaymentId = paymentService.getPaymentDetails(paymentId);
 		return new ResponseEntity<PaymentDTO>(getByPaymentId, HttpStatus.OK);

@@ -11,7 +11,12 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-
+/*
+ * Author : SYED SAMSUDEEN A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is Card Entity  
+*/
 @Entity
 @Table(name = "card")
 public class Card implements Serializable {
@@ -52,6 +57,8 @@ public class Card implements Serializable {
 		this.cardExpiry = cardExpiry;
 		this.cvv = cvv;
 	}
+
+
 
 	public long getId() {
 		return id;

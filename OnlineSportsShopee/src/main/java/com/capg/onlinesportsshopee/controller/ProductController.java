@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.capg.onlinesportsshopee.bean.Product;
-import com.capg.onlinesportsshopee.exceptions.ProductServiceException;
 import com.capg.onlinesportsshopee.model.ProductDTO;
 import com.capg.onlinesportsshopee.service.IProductService;
 
@@ -46,8 +44,8 @@ public class ProductController {
 		return new ResponseEntity<ProductDTO>(resultProduct, HttpStatus.OK);
 	}
 
-	@GetMapping("/getProduct/{productName}")
-	public ResponseEntity<ProductDTO> findProduct(@PathVariable long productId) throws ProductServiceException {
+	@GetMapping("/getProduct/{productId}")
+	public ResponseEntity<ProductDTO> findProduct(@PathVariable long productId) {
 		ProductDTO resultProduct = productService.getProduct(productId);
 		return new ResponseEntity<ProductDTO>(resultProduct, HttpStatus.OK);
 	}

@@ -20,6 +20,7 @@ public class CustomerDTO
 	private String contactNo;
 	private  String dob;
 	private Address address;
+
 	
 	
 	public long getUserId() {
@@ -104,6 +105,10 @@ public class CustomerDTO
 	}
 	
 	
+	public CustomerDTO(long userId) {
+		this.userId=userId;
+	}
+
 	@Override
 	public String toString() {
 		return "CustomerDTO [userId=" + userId + ", name=" + name + ", email=" + email + ", contactNo="
