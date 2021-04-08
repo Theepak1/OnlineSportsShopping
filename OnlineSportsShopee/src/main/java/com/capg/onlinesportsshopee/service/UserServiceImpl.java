@@ -45,10 +45,10 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public UserDTO updateUser(User user) {
-		User updateUser = new User();
-		if (updateUser.equals(user)) {
+		Optional<User> user1 = userrepo.findById(user.getUserId());
+		if (!user1.isEmpty()) {
 
-			updateUser = userrepo.save(user);
+			User updateUser = userrepo.save(user);
 			return UserUtil.convertToUserDto(updateUser);
 
 		} else {
@@ -57,14 +57,25 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserDTO deleteUser(long userID) {
-		User usertemp = new User();
-		usertemp = userrepo.getOne(userID);
-		if (usertemp == null)
+	public UserDTO deleteUser(long userId) throws UserNotFoundException {
+		Optional<User> user1 = userrepo.findById(userId);
+		if (user1.isEmpty())
 			throw new UserServiceException("No user found");
-		else
-			userrepo.deleteById(userID);
-		return UserUtil.convertToUserDto(usertemp);
+		else {
+			userrepo.deleteById(userId);
+			if(user1.isPresent())
+			{
+				return UserUtil.convertToUserDto(user1.get());
+			}
+			else
+			{
+				throw new UserNotFoundException("Payment is not present ");
+			}
+            
+
+		}
+			
+		
 	}
 
 	public boolean checkUser(long userId, String username, String password) throws UserNotFoundException {

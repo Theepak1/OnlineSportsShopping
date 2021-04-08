@@ -19,10 +19,9 @@ import com.capg.onlinesportsshopee.service.ILoginService;
 @RequestMapping("/api/oss")
 public class LoginController {
 	
-	//public static final String id = null;
 
 		@Autowired
-		ILoginService loginService;
+		private ILoginService loginService;
 		
 		@PatchMapping("/validatelogin")
 		public ResponseEntity<String> validateLogin(@RequestBody User user) throws LoginNotFoundException,UserNotFoundException

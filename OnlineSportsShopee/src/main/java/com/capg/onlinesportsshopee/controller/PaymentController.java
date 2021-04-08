@@ -28,7 +28,7 @@ import com.capg.onlinesportsshopee.service.IPaymentService;
 public class PaymentController {
 	
 	@Autowired
-	IPaymentService paymentService;
+	private IPaymentService paymentService;
 	
 	@PostMapping("/addPayment")
 	public ResponseEntity<PaymentDTO> addPayment(@RequestBody Payment payment) {

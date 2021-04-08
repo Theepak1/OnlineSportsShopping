@@ -15,7 +15,7 @@ import com.capg.onlinesportsshopee.util.ProductUtil;
 public class ProductServiceImpl implements IProductService {
 
 	 @Autowired
-	 IProductRepository repo;
+	 private IProductRepository repo;
 	
 
 	@Override

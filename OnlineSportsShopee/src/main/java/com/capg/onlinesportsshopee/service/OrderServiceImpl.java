@@ -1,5 +1,4 @@
 package com.capg.onlinesportsshopee.service;
-import java.time.LocalDate;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +14,7 @@ import com.capg.onlinesportsshopee.util.OrderUtil;
 public class OrderServiceImpl implements IOrderService {
 	
 	@Autowired
-	IOrderRepository orderRepo;
+	private IOrderRepository orderRepo;
 	
 
 	@Override

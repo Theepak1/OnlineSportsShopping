@@ -6,18 +6,15 @@ import org.springframework.stereotype.Service;
 import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.LoginNotFoundException;
 import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
-import com.capg.onlinesportsshopee.repo.ILoginRepository;
 
 
 
 @Service
 public class LoginServiceImpl implements ILoginService {
 
-	@Autowired
-	ILoginRepository loginRepo;
 	
 	@Autowired
-	UserServiceImpl userService;
+	private UserServiceImpl userService;
 
 	@Override
 	public boolean Login(User user) throws LoginNotFoundException,UserNotFoundException {

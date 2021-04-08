@@ -14,6 +14,9 @@ import javax.validation.constraints.NotBlank;
 @Table(name="address")
 public class Address implements Serializable{
 
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "addressId")
 	@GeneratedValue(strategy = GenerationType.AUTO)

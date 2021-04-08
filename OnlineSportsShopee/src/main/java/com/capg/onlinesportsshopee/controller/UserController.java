@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.capg.onlinesportsshopee.bean.User;
-import com.capg.onlinesportsshopee.exceptions.UserServiceException;
+import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 import com.capg.onlinesportsshopee.model.UserDTO;
 import com.capg.onlinesportsshopee.service.IUserService;
 
@@ -36,8 +36,8 @@ public class UserController {
 	}
 
 	@DeleteMapping("/deleteuser/{userId}")
-	public ResponseEntity<UserDTO> deleteUser(@PathVariable long userID) throws UserServiceException {
-		UserDTO resultuser = userservice.deleteUser(userID);
+	public ResponseEntity<UserDTO> deleteUser(@PathVariable long userId) throws UserNotFoundException {
+		UserDTO resultuser = userservice.deleteUser(userId);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 	

@@ -23,7 +23,7 @@ import com.capg.onlinesportsshopee.service.IProductService;
 public class ProductController {
 	
 	@Autowired
-	IProductService productService;
+	private IProductService productService;
 
 	@PostMapping("/addProduct")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody Product product) {
