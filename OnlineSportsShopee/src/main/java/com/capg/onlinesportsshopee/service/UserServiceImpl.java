@@ -31,17 +31,15 @@ public class UserServiceImpl implements IUserService {
 			throw new UserServiceException("User already exists ");
 		}
 	}
-
+	
 	@Override
-	public UserDTO getId(long userId) {
-		Optional<User> getId = userrepo.findById(userId);
-		if (!getId.isEmpty()) {
-
-			User getId1 = userrepo.findById(userId).orElse(null);
-			return UserUtil.convertToUserDto(getId1);
-
+	public UserDTO getId(long userId) throws UserServiceException {
+		Optional<User> getUserTemp = userrepo.findById(userId);
+		if (getUserTemp.isEmpty()) {
+			throw new UserServiceException("User does not exist");
 		} else {
-			throw new UserServiceException("User already exists ");
+			User getUserId = userrepo.findById(userId).orElse(null);
+			return UserUtil.convertToUserDto(getUserId);
 		}
 	}
 
@@ -67,19 +65,6 @@ public class UserServiceImpl implements IUserService {
 		else
 			userrepo.deleteById(userID);
 		return UserUtil.convertToUserDto(usertemp);
-	}
-
-	@Override
-	public UserDTO getusername(User user) {
-		User getusername = new User();
-		getusername = userrepo.save(user);
-		if (getusername.equals(user)) {
-
-			return UserUtil.convertToUserDto(getusername);
-
-		} else {
-			throw new UserServiceException("User already exists ");
-		}
 	}
 
 	public boolean checkUser(long userId, String username, String password) throws UserNotFoundException {

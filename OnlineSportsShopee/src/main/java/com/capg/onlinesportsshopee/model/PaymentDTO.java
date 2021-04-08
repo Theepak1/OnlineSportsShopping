@@ -6,6 +6,13 @@ import org.springframework.stereotype.Component;
 
 import com.capg.onlinesportsshopee.bean.Card;
 
+/*
+ * Author : SYED SAMSUDEEN A
+ * Version : 1.0
+ * Date : 05-04-2021
+ * Description : This is PaymentDTO Class 
+*/
+
 @Component
 public class PaymentDTO {
 	

@@ -47,10 +47,4 @@ public class UserController {
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getuser/{username}")
-	public ResponseEntity<UserDTO> getusername(@RequestBody User user) {
-		UserDTO resultuser = userservice.getusername(user);
-		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
-	}	
-	
 }
