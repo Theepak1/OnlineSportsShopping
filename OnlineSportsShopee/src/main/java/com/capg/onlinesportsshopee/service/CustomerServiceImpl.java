@@ -13,7 +13,7 @@ import com.capg.onlinesportsshopee.model.CustomerDTO;
 import com.capg.onlinesportsshopee.repo.ICustomerRepository;
 import com.capg.onlinesportsshopee.util.CustomerUtil;
 /*
- * Author : Theepak Prakash P
+ * Author : THEEPAK PRAKASH P
  * Version : 1.0
  * Date : 05-04-2021
  * Description : This is Customer Service Layer that provides services to Add New Customer details, Update Existing Customer details, 

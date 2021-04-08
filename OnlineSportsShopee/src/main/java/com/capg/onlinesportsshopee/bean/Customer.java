@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 /*
- * Author : Theepak Prakash P
+ * Author : THEEPAK PRAKASH P
  * Version : 1.0
  * Date : 01-04-2021
  * Description : This is Customer Entity 
@@ -59,6 +59,15 @@ public class Customer implements Serializable{
 		super();
 	}
 
+	public Customer(long userId,  String name,String email, String contactNo, String dob, Address address) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.dob = dob;
+		this.address = address;
+	}
 	
 	public Customer(long userId, String name, String email,String contactNo,String dob, String doorNo, String street, String area, String city, String state, int pinCode) {
 		super();

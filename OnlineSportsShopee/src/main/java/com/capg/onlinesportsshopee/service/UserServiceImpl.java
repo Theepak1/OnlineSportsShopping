@@ -12,6 +12,15 @@ import com.capg.onlinesportsshopee.model.UserDTO;
 import com.capg.onlinesportsshopee.repo.IUserRepository;
 import com.capg.onlinesportsshopee.util.UserUtil;
 
+
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is User Service Layer that provides services to Add New User, Update Existing User details, 
+ *               Delete Existing User, Get Existing User details and Check User
+*/
+
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -19,11 +28,18 @@ public class UserServiceImpl implements IUserService {
 	private IUserRepository userrepo;
 
 
+	/*
+	 * Description : This method adds User
+	 * Input Parameter : User Object 
+	 * Return Value : UserDTO Object 
+	 * Exception : UserServiceException
+	 */
+
 	@Override
 	public UserDTO addUser(User user) throws UserServiceException {
 		Optional<User> userTemp = userrepo.findById(user.getUserId());
-		if (userTemp.isEmpty()) {
-
+		if (userTemp.isEmpty())
+				{
 			user = userrepo.save(user);
 			return UserUtil.convertToUserDto(user);
 
@@ -33,10 +49,12 @@ public class UserServiceImpl implements IUserService {
 
 	}
 
-
-
-	
-
+	/*
+	 * Description : This method gets User by userID
+	 * Input Parameter : User Object 
+	 * Return Value : UserDTO Object 
+	 * Exception : UserServiceException
+	 */
 	@Override
 	public UserDTO getId(long userId) throws UserServiceException {
 		Optional<User> getUserTemp = userrepo.findById(userId);
@@ -48,6 +66,13 @@ public class UserServiceImpl implements IUserService {
 		}
 
 	}
+
+	/*
+	 * Description : This method Updates User Details
+	 * Input Parameter : User Object 
+	 * Return Value : UserDTO Object 
+	 * Exception : UserServiceException
+	 */
 
 	@Override
 	public UserDTO updateUser(User user) {
@@ -62,6 +87,13 @@ public class UserServiceImpl implements IUserService {
 		}
 
 	}
+	
+	/*
+	 * Description : This method deletes User
+	 * Input Parameter : User Object 
+	 * Return Value : UserDTO Object 
+	 * Exception : UserNotFoundException
+	 */
 
 	@Override
 	public UserDTO deleteUser(long userId) throws UserNotFoundException {
@@ -87,13 +119,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 
-	@Override
-	public UserDTO getusername(User user) {
-		User getusername = new User();
-		getusername = userrepo.save(user);
-		return UserUtil.convertToUserDto(getusername);
-	}
-
+	
+	 
 
 	public boolean checkUser(long userId, String username, String password) throws UserNotFoundException {
 		boolean flag = false;

@@ -1,6 +1,6 @@
 package com.capg.onlinesportsshopee.exceptions;
 /*
- * Author : Theepak Prakash P
+ * Author : THEEPAK PRAKASH P
  * Version : 1.0
  * Date : 02-04-2021
  * Description : This is Customer

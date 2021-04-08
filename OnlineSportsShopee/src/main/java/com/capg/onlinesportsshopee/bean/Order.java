@@ -56,10 +56,9 @@ public class Order implements Serializable {
 	public Order(long orderId, double amount, String billingDate,long userId) {
 
 		super();
-		this. orderId= orderId;
+		this.orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-
 		this.customer= new Customer(userId);
 	}
 
@@ -70,14 +69,10 @@ public class Order implements Serializable {
 			long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
 
 		super();
-		this. orderId= orderId;
+		this.orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-
-		this.customer= new Customer(userId);
-		
-
-		this.customer= new Customer (name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
+		this.customer= new Customer (userId,name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
 		this.product = new Product( productId,productName,category, description,brand,color,
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
 			cartid,imageName, cartProductName,  quantity, price, total);
@@ -87,6 +82,17 @@ public class Order implements Serializable {
 	
 	public long getOrderId() {
 		return orderId;
+	}
+	
+	public Order( long orderId,double amount, String billingDate, Customer customer,
+			Product product, Payment payment) {
+		super();
+		this.orderId = orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+		this.customer = customer;
+		this.product = product;
+		this.payment = payment;
 	}
 	
 	public void setOrderId(long orderId) {

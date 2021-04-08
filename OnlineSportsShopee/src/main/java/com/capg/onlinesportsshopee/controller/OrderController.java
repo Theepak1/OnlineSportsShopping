@@ -40,10 +40,10 @@ public class OrderController {
 	}
 	
 	
-	@DeleteMapping("/removeOrder/{orderid}")
-	public ResponseEntity<OrderDTO> removePayment(@PathVariable long orderid)
+	@DeleteMapping("/removeOrder/{orderId}")
+	public ResponseEntity<OrderDTO> removePayment(@PathVariable long orderId)
 		{
-			OrderDTO removeOrder = orderService.removeOrder(orderid);
+			OrderDTO removeOrder = orderService.removeOrder(orderId);
 			return new ResponseEntity<OrderDTO>(removeOrder,HttpStatus.OK);
 		}
 	

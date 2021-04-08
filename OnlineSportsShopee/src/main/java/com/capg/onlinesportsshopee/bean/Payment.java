@@ -57,6 +57,14 @@ public class Payment implements Serializable{
 		this.status = status;
 		
 	}
+	public Payment(long paymentId, String type,
+			 String status, Card card) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.card = card;
+	}
 
 	public long getPaymentId() {
 		return paymentId;

@@ -25,8 +25,6 @@ public class OrderUtil {
 		orderDto.setAmount(order.getAmount());
 		orderDto.setBillingDate(order.getBillingDate());
 		orderDto.setCustomer(order.getCustomer());
-
-
 		orderDto.setProduct(order.getProduct());
 		orderDto.setPayment(order.getPayment());
 
@@ -41,8 +39,6 @@ public class OrderUtil {
 		order.setBillingDate(orderDto.getBillingDate());
 		order.setAmount(orderDto.getAmount());
 		order.setCustomer(orderDto.getCustomer());
-
-
 		order.setProduct(orderDto.getProduct());
 		order.setPayment(orderDto.getPayment());
 
