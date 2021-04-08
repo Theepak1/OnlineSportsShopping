@@ -24,7 +24,7 @@ import com.capg.onlinesportsshopee.util.PaymentUtil;
 public class PaymentServiceImpl implements IPaymentService {
 
 	@Autowired
-	IPaymentRepository paymentRepository;
+	private IPaymentRepository paymentRepository;
 
 	/*
 	 * Description : This method adds Payment Details
