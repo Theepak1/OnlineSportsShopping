@@ -1,20 +1,6 @@
 
+
 package com.capg.onlinesportsshopee.service;
-import java.time.LocalDate;
-
-
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import com.capg.onlinesportsshopee.bean.Order;
-import com.capg.onlinesportsshopee.exceptions.OrderServiceException;
-import com.capg.onlinesportsshopee.model.OrderDTO;
-import com.capg.onlinesportsshopee.repo.IOrderRepository;
-import com.capg.onlinesportsshopee.util.OrderUtil;
-
-
-import java.time.LocalDate;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +16,7 @@ import com.capg.onlinesportsshopee.util.OrderUtil;
 public class OrderServiceImpl implements IOrderService {
 	
 	@Autowired
-	IOrderRepository orderRepo;
+	private IOrderRepository orderRepo;
 	
 
 	@Override

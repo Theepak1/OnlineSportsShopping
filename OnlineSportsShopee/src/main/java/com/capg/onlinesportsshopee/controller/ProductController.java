@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.capg.onlinesportsshopee.bean.Product;
-import com.capg.onlinesportsshopee.exceptions.ProductServiceException;
 import com.capg.onlinesportsshopee.model.ProductDTO;
 import com.capg.onlinesportsshopee.service.IProductService;
 
@@ -27,7 +25,7 @@ import com.capg.onlinesportsshopee.service.IProductService;
 public class ProductController {
 	
 	@Autowired
-	IProductService productService;
+	private IProductService productService;
 
 	@PostMapping("/addProduct")
 	public ResponseEntity<ProductDTO> addProduct(@RequestBody Product product) {

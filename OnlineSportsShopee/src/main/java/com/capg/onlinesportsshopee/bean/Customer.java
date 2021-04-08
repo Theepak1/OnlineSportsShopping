@@ -46,7 +46,6 @@ public class Customer implements Serializable{
 	@OneToOne(cascade = {CascadeType.ALL})
 	private Address address;
 	
-   
 
 
 
@@ -64,7 +63,7 @@ public class Customer implements Serializable{
 		this.dob = dob;
 		this.address = new Address(doorNo,street,area,city,state,pinCode);
 	}
-	
+
 	public Customer( String name, String email,String contactNo,String dob, String doorNo, String street, String area, String city, String state, int pinCode) {
 		super();
 		this.name = name;
@@ -74,7 +73,7 @@ public class Customer implements Serializable{
 		this.address = new Address(doorNo,street,area,city,state,pinCode);
 	}
 	
-	
+
 	public Customer(long userId) {
 		this.userId=userId;
 	}
