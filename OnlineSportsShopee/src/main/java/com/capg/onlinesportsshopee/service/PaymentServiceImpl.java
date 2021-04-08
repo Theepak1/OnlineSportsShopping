@@ -69,7 +69,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		Optional<Payment> payment = paymentRepository.findById(paymentId);
 		if (payment.isEmpty()) 
 		{
-			throw new PaymentServiceException("Payment does not exist for paymenId to delete");
+			throw new PaymentServiceException("Payment does not exist for paymentId to delete");
 		} 
 		else 
 		{

@@ -9,11 +9,7 @@ import com.capg.onlinesportsshopee.bean.Card;
 /*
  * Author : SYED SAMSUDEEN A
  * Version : 1.0
-<<<<<<< HEAD
- * Date : 03-04-2021
-=======
  * Date : 04-04-2021
->>>>>>> branch 'TheepakBranch' of https://github.com/Theepak1/OnlineSportsShopping.git
  * Description : This is PaymentDTO Class 
 */
 
