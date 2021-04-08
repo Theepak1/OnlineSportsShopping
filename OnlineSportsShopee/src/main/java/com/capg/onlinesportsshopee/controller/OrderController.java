@@ -2,6 +2,7 @@
 package com.capg.onlinesportsshopee.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,43 +18,6 @@ import com.capg.onlinesportsshopee.bean.Order;
 import com.capg.onlinesportsshopee.exceptions.OrderServiceException;
 import com.capg.onlinesportsshopee.model.OrderDTO;
 import com.capg.onlinesportsshopee.service.IOrderService;
-
-@RestController
-@RequestMapping("/api/order")
-public class OrderController {
-	@Autowired
-	private IOrderService orderService;
-	
-	@PostMapping("/addOrder")
-	public OrderDTO addOrder(@RequestBody Order order) {
-		return orderService.addOrder(order);
-	}
-	
-	@PutMapping("/updateOrder")
-	public ResponseEntity<OrderDTO> updateOrder(@RequestBody Order order) {
-		return new ResponseEntity<OrderDTO>(orderService.updateOrder(order.getOrderId(), order),HttpStatus.OK);
-	}
-	
-	@DeleteMapping("/removeOrder/{orderid}")
-	public Order removeOrder(@PathVariable long id) throws OrderServiceException {
-		orderService.removeOrder(id);
-		return null;
-	}
-	@GetMapping("/getOrderDetails/{orderId}")
-	public ResponseEntity<OrderDTO> getOrderDetails(@PathVariable long id) throws OrderServiceException{
-		return new ResponseEntity<OrderDTO>(orderService.getOrderDetails(id),HttpStatus.OK);
-	}
-	
-	@GetMapping("/getAllOrders")
-	public ResponseEntity<List<OrderDTO>> getAllOrders(){
-		return new ResponseEntity<List<OrderDTO>>(orderService.getAllOrders(),HttpStatus.OK);
-	}
-	
-
-}
-=======
-package com.capg.onlinesportsshopee.controller;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -85,7 +49,6 @@ public class OrderController {
 
 	}
 	
-	
 	@PutMapping("/updateOrder")
 	public ResponseEntity<OrderDTO> updateOrder(@RequestBody Order order) {
 		OrderDTO updateOrder = orderService.updateOrder(order.getOrderId(), order);
@@ -94,9 +57,9 @@ public class OrderController {
 	
 	
 	@DeleteMapping("/removeOrder/{orderid}")
-	public ResponseEntity<OrderDTO> removePayment(@PathVariable long orderId)
+	public ResponseEntity<OrderDTO> removePayment(@PathVariable long orderid)
 		{
-			OrderDTO removeOrder = orderService.removeOrder(orderId);
+			OrderDTO removeOrder = orderService.removeOrder(orderid);
 			return new ResponseEntity<OrderDTO>(removeOrder,HttpStatus.OK);
 		}
 	

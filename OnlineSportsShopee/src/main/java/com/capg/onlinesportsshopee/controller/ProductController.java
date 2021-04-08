@@ -2,6 +2,7 @@ package com.capg.onlinesportsshopee.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,8 +47,8 @@ public class ProductController {
 		return new ResponseEntity<ProductDTO>(resultProduct, HttpStatus.OK);
 	}
 
-	@GetMapping("/getProduct/{productName}")
-	public ResponseEntity<ProductDTO> findProduct(@PathVariable long productId) throws ProductServiceException {
+	@GetMapping("/getProduct/{productId}")
+	public ResponseEntity<ProductDTO> findProduct(@PathVariable long productId) {
 		ProductDTO resultProduct = productService.getProduct(productId);
 		return new ResponseEntity<ProductDTO>(resultProduct, HttpStatus.OK);
 	}

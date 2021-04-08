@@ -15,39 +15,40 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "payment" )
-public class Payment implements Serializable{
-	
+@Table(name = "payment")
+public class Payment implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "paymentId")
 	private long paymentId;
-	
-	@Column(name = "type",nullable = false)
+
+	@Column(name = "type", nullable = false)
 	@NotBlank(message = "Payment type Should Not Be Blank")
 	private String type;
-	
-	@Column(name = "status",nullable = false)
+
+	@Column(name = "status", nullable = false)
 	@NotBlank(message = "Payment Status Should Not Be Blank")
 	private String status;
-	
-	@ManyToOne(targetEntity = Card.class,  cascade= CascadeType.ALL,fetch=FetchType.EAGER)
-	@JoinColumn(name="card_id",referencedColumnName = "id",nullable = false)
+
+	@ManyToOne(targetEntity = Card.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name = "card_id", referencedColumnName = "id", nullable = false)
 	private Card card;
-	
+
 	public Payment() {
 		super();
 	}
 
-	public Payment(long paymentId,String type, String status, long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+	public Payment(long paymentId, String type, String status, long id, String cardName, String cardNumber,
+			LocalDate cardExpiry, int cvv) {
 		super();
-		this.card = new Card(id,cardName,cardNumber,cardExpiry,cvv);
-		this.paymentId=paymentId;
+		this.card = new Card(id, cardName, cardNumber, cardExpiry, cvv);
+		this.paymentId = paymentId;
 		this.type = type;
 		this.status = status;
-		
+
 	}
 
 	public long getPaymentId() {
