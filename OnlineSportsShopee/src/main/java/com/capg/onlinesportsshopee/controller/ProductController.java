@@ -21,6 +21,12 @@ import com.capg.onlinesportsshopee.model.ProductDTO;
 import com.capg.onlinesportsshopee.service.IProductService;
 
 
+/*
+ * Author : AAYUSHI CHANSORIYA
+ * Version: 1.0
+ * Date   : 07-04-2021
+ * Description : This is  Product Controller
+*/
 @RestController
 @RequestMapping("/api/oss")
 public class ProductController {

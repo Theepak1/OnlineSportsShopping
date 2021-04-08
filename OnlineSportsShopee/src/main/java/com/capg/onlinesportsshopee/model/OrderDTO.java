@@ -8,6 +8,12 @@ import com.capg.onlinesportsshopee.bean.Payment;
 import com.capg.onlinesportsshopee.bean.Product;
 
 
+/*
+ * Author      : JISHNA K
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is OrderDTO class
+*/
 @Component
 public class OrderDTO  {
 	private long orderId;

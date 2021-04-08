@@ -9,7 +9,7 @@ import com.capg.onlinesportsshopee.model.ProductDTO;
 /* Author : AAYUSHI CHANSORIYA
  * Version : 1.0
  * Date : 02-04-2021
- * Description : This is Cart Util
+ * Description : This is Product Util
  */
 public class ProductUtil {
 
