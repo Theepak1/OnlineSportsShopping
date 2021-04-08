@@ -67,7 +67,7 @@ public class Order implements Serializable {
 		this.product = new Product( productId,productName,category, description,brand,color,
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
 			cartid,imageName, cartProductName,  quantity, price, total);
-		this.payment=new Payment(paymentId,type,  status,id, cardName, cardNumber, cardExpiry, cvv);
+		this.payment=new Payment(paymentId,type,  status,cardName, id, cardNumber, cardExpiry, cvv);
 	}
 	
 	public long getOrderId() {

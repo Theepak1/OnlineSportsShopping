@@ -35,20 +35,20 @@ public class UserController {
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deleteuser/{userID}")
+	@DeleteMapping("/deleteuser/{userId}")
 	public ResponseEntity<UserDTO> deleteUser(@PathVariable long userID) throws UserServiceException {
 		UserDTO resultuser = userservice.deleteUser(userID);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getuser/{id}")
-	public ResponseEntity<UserDTO> getId(@PathVariable long id) {
-		UserDTO resultuser = userservice.getId(id);
+	@GetMapping("/getuser/{userId}")
+	public ResponseEntity<UserDTO> getId(@PathVariable long userId) {
+		UserDTO resultuser = userservice.getId(userId);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 	
 	@GetMapping("/getuser/{username}")
-	public ResponseEntity<UserDTO> getusername(@PathVariable User user) {
+	public ResponseEntity<UserDTO> getusername(@RequestBody User user) {
 		UserDTO resultuser = userservice.getusername(user);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}	

@@ -16,7 +16,7 @@ import com.capg.onlinesportsshopee.service.ILoginService;
 
 
 @RestController
-@RequestMapping("/api/ofr/login")
+@RequestMapping("/api/oss")
 public class LoginController {
 	
 	//public static final String id = null;
@@ -24,7 +24,7 @@ public class LoginController {
 		@Autowired
 		ILoginService loginService;
 		
-		@PatchMapping("/validate-login")
+		@PatchMapping("/validatelogin")
 		public ResponseEntity<String> validateLogin(@RequestBody User user) throws LoginNotFoundException,UserNotFoundException
 		{
 			ResponseEntity<String> loginResponse = new ResponseEntity<String>("User Id and Password Does Not Match", HttpStatus.ACCEPTED);

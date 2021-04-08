@@ -41,7 +41,7 @@ public class Payment implements Serializable{
 		super();
 	}
 
-	public Payment(long paymentId,String type, String status, long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+	public Payment(long paymentId,String type, String status, String cardName,long id, String cardNumber, LocalDate cardExpiry, int cvv) {
 		super();
 		this.card = new Card(id,cardName,cardNumber,cardExpiry,cvv);
 		this.paymentId=paymentId;

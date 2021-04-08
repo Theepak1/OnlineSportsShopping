@@ -53,6 +53,8 @@ public class Card implements Serializable {
 		this.cvv = cvv;
 	}
 
+
+
 	public long getId() {
 		return id;
 	}
