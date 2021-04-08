@@ -1,14 +1,17 @@
 package com.capg.onlinesportsshopee.bean;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import javax.validation.constraints.NotBlank;
 
 
@@ -36,20 +39,50 @@ public class Order implements Serializable {
 	private String billingDate;
 	
 
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userid", referencedColumnName = "userid",nullable = false)
 	private Customer customer;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	private Product product;
 
+	@OneToOne(fetch = FetchType.LAZY)
+	private Payment payment;
 
 	public Order() {
 		super();
 	}
-	public Order(long orderId, double amount, String billingDate,Customer customer) {
+
+	public Order(long orderId, double amount, String billingDate,long userId) {
+
 		super();
 		this. orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-		this.customer=customer;
+
+		this.customer= new Customer(userId);
+	}
+
+	public Order(long orderId, double amount, String billingDate,long userId,String name, String email, String contactNo, String dob,String doorNo, String street, String area, String city, String state, int pinCode,
+			long productId, String productName, String category, String description, String brand, String color,
+			int size, int mrp, int discount, double priceAfterDiscount, boolean inStock, LocalDate estimatedDelivery,
+			long cartid, String imageName, String cartProductName, int quantity, double price, double total,long paymentId,String type, String status,
+			long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+
+		super();
+		this. orderId= orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+
+		this.customer= new Customer(userId);
 		
+
+		this.customer= new Customer (name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
+		this.product = new Product( productId,productName,category, description,brand,color,
+			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
+			cartid,imageName, cartProductName,  quantity, price, total);
+		this.payment=new Payment(paymentId,type,  status,cardName, id, cardNumber, cardExpiry, cvv);
+
 	}
 	
 	public long getOrderId() {
@@ -78,11 +111,24 @@ public class Order implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	public Payment getPayment() {
+		return payment;
+	}
+	public void setPayment(Payment payment) {
+		this.payment = payment;
+	}
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", amount=" + amount + ", billingDate=" + billingDate + ", customer="
-				+ customer + "]";
+				+ customer + ", product=" + product + ", payment=" + payment + "]";
 	}
 	
+
 
 }

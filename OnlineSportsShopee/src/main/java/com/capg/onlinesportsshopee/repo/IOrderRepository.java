@@ -18,5 +18,5 @@ public interface IOrderRepository extends JpaRepository<Order, Long> {
 	public Order  updateOrder(long id, Order order);
 	public Order  getOrderDetails(long id);
 	public List<Order> getAllOrders(); */
-    
+
 }

@@ -10,23 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.LoginNotFoundException;
-import com.capg.onlinesportsshopee.exceptions.UserServiceException;
+import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 import com.capg.onlinesportsshopee.service.ILoginService;
 
+
+
 @RestController
-@RequestMapping("/api/oss/login")
+@RequestMapping("/api/oss")
 public class LoginController {
 	
-	public static final String id = null;
 
 		@Autowired
-		ILoginService loginService;
+		private ILoginService loginService;
 		
-		@PatchMapping("/validate-login")
-		public ResponseEntity<String> validateLogin(@RequestBody User user) throws LoginNotFoundException, UserServiceException
+		@PatchMapping("/validatelogin")
+		public ResponseEntity<String> validateLogin(@RequestBody User user) throws LoginNotFoundException,UserNotFoundException
 		{
 			ResponseEntity<String> loginResponse = new ResponseEntity<String>("User Id and Password Does Not Match", HttpStatus.ACCEPTED);
-			if(!ILoginService.Login(user))
+			if(!loginService.Login(user))
 				throw new LoginNotFoundException("Login id  and Password Does not match");
 			else
 				loginResponse = new ResponseEntity<String>("Login Successful!", HttpStatus.ACCEPTED);

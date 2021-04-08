@@ -1,13 +1,11 @@
 package com.capg.onlinesportsshopee.service;
 
 import com.capg.onlinesportsshopee.bean.User;
-import com.capg.onlinesportsshopee.exceptions.UserServiceException;
+import com.capg.onlinesportsshopee.exceptions.LoginNotFoundException;
+import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 
 public interface ILoginService {
 	
-	public static boolean Login(User user) throws UserServiceException {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean Login(User user) throws LoginNotFoundException, UserNotFoundException;
 
 }

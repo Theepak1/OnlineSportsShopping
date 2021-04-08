@@ -15,23 +15,22 @@ import javax.persistence.Table;
 */
 
 @Entity
-@Table(name = "Users")
+@Table(name="Users")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "user_id")
+	@Column(name="user_id")
 	private long userId;
 
 	@Column(name = "username", nullable = false)
 	private String username;
-
-	@Column(name = "password", nullable = false)
+	
+	@Column(name="password", nullable=false)
 	private String password;
 
 	@Column(name = "role", nullable = false)
 	private String role;
-
 	public User() {
 		super();
 	}
@@ -75,7 +74,6 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -114,5 +112,4 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
-
 }

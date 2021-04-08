@@ -1,19 +1,25 @@
 package com.capg.onlinesportsshopee.bean;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
+/*
+ * Author : Theepak Prakash P
+ * Version : 1.0
+ * Date : 01-04-2021
+ * Description : This is Address Entity 
+*/
 @Entity
 @Table(name="address")
-public class Address implements Serializable{
+public class Address {
 
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -106,15 +112,18 @@ public class Address implements Serializable{
 		this.state = state;
 		this.pinCode = pinCode;
 	}
-
-	public Address() {
+	
+	public Address()
+	{
 		super();
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Address [doorNo=" + doorNo + ", street=" + street + ", area=" + area + ", city=" + city + ", state="
 				+ state + ", pinCode=" + pinCode + "]";
 	}
+
 
 }

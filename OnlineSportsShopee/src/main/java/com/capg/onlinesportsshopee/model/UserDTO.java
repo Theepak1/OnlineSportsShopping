@@ -24,12 +24,11 @@ public class UserDTO {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-
-	public String getUsername() {
+	
+	public String getusername() {
 		return username;
 	}
-
-	public void setUsername(String username) {
+	public void setusername(String username) {
 		this.username = username;
 	}
 

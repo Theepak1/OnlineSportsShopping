@@ -1,4 +1,5 @@
 package com.capg.onlinesportsshopee.service;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import com.capg.onlinesportsshopee.util.OrderUtil;
 public class OrderServiceImpl implements IOrderService {
 	
 	@Autowired
-	IOrderRepository orderRepo;
+	private IOrderRepository orderRepo;
 	
 
 	@Override

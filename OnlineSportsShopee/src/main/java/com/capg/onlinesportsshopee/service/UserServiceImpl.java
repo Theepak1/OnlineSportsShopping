@@ -12,14 +12,6 @@ import com.capg.onlinesportsshopee.model.UserDTO;
 import com.capg.onlinesportsshopee.repo.IUserRepository;
 import com.capg.onlinesportsshopee.util.UserUtil;
 
-/*
- * Author : SAI MADHU BHAVANA A
- * Version : 1.0
- * Date : 04-04-2021
- * Description : This is User Service Layer that provides services to Add New User, Update Existing User details, 
- *               Delete Existing User, Get Existing User details
-*/
-
 @Service
 public class UserServiceImpl implements IUserService {
 
@@ -53,10 +45,10 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public UserDTO updateUser(User user) {
-		User updateUser = new User();
-		if (updateUser.equals(user)) {
+		Optional<User> user1 = userrepo.findById(user.getUserId());
+		if (!user1.isEmpty()) {
 
-			updateUser = userrepo.save(user);
+			User updateUser = userrepo.save(user);
 			return UserUtil.convertToUserDto(updateUser);
 
 		} else {
@@ -65,14 +57,25 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserDTO deleteUser(long userID) {
-		User usertemp = new User();
-		usertemp = userrepo.getOne(userID);
-		if (usertemp == null)
+	public UserDTO deleteUser(long userId) throws UserNotFoundException {
+		Optional<User> user1 = userrepo.findById(userId);
+		if (user1.isEmpty())
 			throw new UserServiceException("No user found");
-		else
-			userrepo.deleteById(userID);
-		return UserUtil.convertToUserDto(usertemp);
+		else {
+			userrepo.deleteById(userId);
+			if(user1.isPresent())
+			{
+				return UserUtil.convertToUserDto(user1.get());
+			}
+			else
+			{
+				throw new UserNotFoundException("Payment is not present ");
+			}
+            
+
+		}
+			
+		
 	}
 
 	public boolean checkUser(long userId, String username, String password) throws UserNotFoundException {
@@ -86,50 +89,6 @@ public class UserServiceImpl implements IUserService {
 			throw new UserNotFoundException("Password does not Match");
 		return flag;
 	}
-	
-	public boolean validateUserId(long id) throws UserNotFoundException
-	{
-		boolean flag = userrepo.existsById(id);
-		if(flag == false)
-			throw new UserNotFoundException("No user found. Enter valid UserId");
-		return flag;
-	}
-	
-	public static boolean validateUsername(String userName) throws UserNotFoundException
-    {  
-		boolean flag = false;
-		if(userName == null)
-			throw new UserNotFoundException("User Name cannot be empty");
-		else if(userName.isEmpty())
-			throw new UserNotFoundException("User not found");
-		else if(userName.length()<3 || userName.length()>40)
-			throw new UserNotFoundException("Invalid User Name");
-		else
-			flag = true;
-		return flag;
-    }	
-	
-	public static boolean validatePassword(String Password) throws UserNotFoundException
-    {  
-		boolean flag = false;
-		if(Password == null)
-			throw new UserNotFoundException("Password cannot be null");
-		else if(!Password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$"))
-			throw new UserNotFoundException("Invalid password");
-		else
-			flag = true;
-		return flag;
-    }
 
-	public boolean validateUser(User user) throws UserNotFoundException {
-		boolean flag = false;
-		if(user == null)
-			throw new UserNotFoundException("User details cannot be blank");
-		else if(!(validateUsername(user.getUsername()) && validatePassword(user.getPassword())))
-			throw new UserNotFoundException("Invalid User Details"); 
-		else
-			flag = true;
-		return flag;
-	}
-
+	
 }

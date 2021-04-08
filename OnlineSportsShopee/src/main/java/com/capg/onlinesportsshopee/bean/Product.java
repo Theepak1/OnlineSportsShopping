@@ -1,23 +1,25 @@
 package com.capg.onlinesportsshopee.bean;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-//add
 @Entity
 @Table(name = "products")
 public class Product implements Serializable {
-
 
 	private static final long serialVersionUID = 1L;
 
@@ -63,12 +65,25 @@ public class Product implements Serializable {
 	@Column(name = "estimateddelivery")
 	private LocalDate estimatedDelivery;
 
+	@ManyToOne(targetEntity = Cart.class,  cascade= CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "cartid", referencedColumnName = "cartid", nullable = false)
+	private Cart cart;
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	public Product() {
 
 	}
 
 	public Product(long productId, String productName, String category, String description, String brand, String color,
-			int size, int mrp, int discount, double priceAfterDiscount, boolean inStock, LocalDate estimatedDelivery) {
+			int size, int mrp, int discount, double priceAfterDiscount, boolean inStock, LocalDate estimatedDelivery,
+			long cartid, String imageName, String cartProductName, int quantity, double price, double total) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -82,7 +97,7 @@ public class Product implements Serializable {
 		this.priceAfterDiscount = priceAfterDiscount;
 		this.inStock = inStock;
 		this.estimatedDelivery = estimatedDelivery;
-
+		this.cart = new Cart(cartid,imageName , cartProductName,quantity,price,total);
 	}
 
 	public long getProductId() {
@@ -186,7 +201,8 @@ public class Product implements Serializable {
 		return "Product [productId=" + productId + ", productName=" + productName + ", category=" + category
 				+ ", description=" + description + ", brand=" + brand + ", color=" + color + ", size=" + size + ", mrp="
 				+ mrp + ", discount=" + discount + ", priceAfterDiscount=" + priceAfterDiscount + ", inStock=" + inStock
-				+ ", estimatedDelivery=" + estimatedDelivery + "]";
+				+ ", estimatedDelivery=" + estimatedDelivery + ", cart=" + cart + "]";
 	}
+    
 
 }

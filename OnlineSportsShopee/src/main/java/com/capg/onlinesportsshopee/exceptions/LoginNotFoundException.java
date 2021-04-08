@@ -1,6 +1,5 @@
 package com.capg.onlinesportsshopee.exceptions;
 
-
 public class LoginNotFoundException extends Exception{
 	
 	private static final long serialVersionUID = 1L;
