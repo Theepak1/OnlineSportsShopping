@@ -31,7 +31,7 @@ public class OrderDTO  {
 		this. orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-		this.customer= new Customer (name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
+		this.customer= new Customer (userId,name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
 		this.product = new Product( productId,productName,category, description,brand,color,
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
 			cartid,imageName, cartProductName,  quantity, price, total);

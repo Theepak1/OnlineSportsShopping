@@ -52,6 +52,21 @@ public class Customer implements Serializable{
 		this.address =  new Address(doorNo,street,area,city,state,pinCode);
 	}
 
+	
+	public Customer(long userId,  String name,
+			 String email,
+			 String contactNo,
+			 String dob, Address address) {
+		super();
+		this.userId = userId;
+		this.name = name;
+		this.email = email;
+		this.contactNo = contactNo;
+		this.dob = dob;
+		this.address = address;
+	}
+
+
 	public Customer() {
 		super();
 	}

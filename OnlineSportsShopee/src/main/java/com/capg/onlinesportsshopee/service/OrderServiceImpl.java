@@ -33,13 +33,13 @@ public class OrderServiceImpl implements IOrderService {
 	}
 	@Override
 	public OrderDTO removeOrder(long orderId) throws OrderServiceException {
-		Optional<Order> payment = orderRepo.findById(orderId);
-		if (payment.isEmpty()) {
-			throw new OrderServiceException("paymentId does not exist to delete");
+		Optional<Order> order = orderRepo.findById(orderId);
+		if (order.isEmpty()) {
+			throw new OrderServiceException("OrderId does not exist to delete");
 		} 
 		else {
-			orderRepo.delete(payment.get());
-			return OrderUtil.convertToOrderDto(payment.get());
+			orderRepo.delete(order.get());
+			return OrderUtil.convertToOrderDto(order.get());
 		}
 	}
 

@@ -99,6 +99,28 @@ public class Product implements Serializable {
 		this.cart = new Cart(cartid,imageName , cartProductName,quantity,price,total);
 	}
 
+	
+	public Product(long productId, @NotBlank(message = "ProductName should not be blank") String productName,
+			@NotBlank(message = "Category should not be blank") String category, String description, String brand,
+			@NotBlank(message = "Color should not be blank") String color,
+			@NotBlank(message = "Size should not be blank") int size, int mrp, int discount, double priceAfterDiscount,
+			boolean inStock, LocalDate estimatedDelivery, Cart cart) {
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.category = category;
+		this.description = description;
+		this.brand = brand;
+		this.color = color;
+		this.size = size;
+		this.mrp = mrp;
+		this.discount = discount;
+		this.priceAfterDiscount = priceAfterDiscount;
+		this.inStock = inStock;
+		this.estimatedDelivery = estimatedDelivery;
+		this.cart = cart;
+	}
+
 	public long getProductId() {
 		return productId;
 	}
@@ -203,5 +225,9 @@ public class Product implements Serializable {
 				+ ", estimatedDelivery=" + estimatedDelivery + ", cart=" + cart + "]";
 	}
     
+	public Product(long productId)
+	{
+		this.productId=productId;
+	}
 
 }

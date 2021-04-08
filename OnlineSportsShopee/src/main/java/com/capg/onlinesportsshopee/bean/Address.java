@@ -108,6 +108,23 @@ public class Address implements Serializable{
 		this.pinCode = pinCode;
 	}
 
+	
+	public Address(int addressId, @NotBlank(message = "DoorNo should not be blank") String doorNo,
+			@NotBlank(message = "Street should not be blank") String street,
+			@NotBlank(message = "Area should not be blank") String area,
+			@NotBlank(message = "City should not be blank") String city,
+			@NotBlank(message = "State should not be blank") String state,
+			@NotBlank(message = "PinCode should not be blank") int pinCode) {
+		super();
+		this.addressId = addressId;
+		this.doorNo = doorNo;
+		this.street = street;
+		this.area = area;
+		this.city = city;
+		this.state = state;
+		this.pinCode = pinCode;
+	}
+
 	public Address() {
 		super();
 	}
