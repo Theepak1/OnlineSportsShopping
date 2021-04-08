@@ -61,7 +61,7 @@ public class ProductServiceImpl implements IProductService {
 
 
 	@Override
-	public ProductDTO getProduct(long productId) throws ProductServiceException {
+	public ProductDTO getProduct(long productId){
 		Optional<Product> product=repo.findById(productId);
 		if(!product.isEmpty()) {
 			Product getProduct = repo.findById(productId).orElse(null);
@@ -132,3 +132,4 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 }
+

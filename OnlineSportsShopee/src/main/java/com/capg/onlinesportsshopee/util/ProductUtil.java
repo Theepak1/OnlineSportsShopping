@@ -34,7 +34,6 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 		product.setInStock(productDto.isInStock());
 		product.setEstimatedDelivery(productDto.getEstimatedDelivery());
 		product.setCart(productDto.getCart());
-		
 		return product;
 	}
 	
@@ -61,3 +60,4 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 	
 
 }
+

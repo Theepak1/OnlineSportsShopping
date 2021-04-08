@@ -1,6 +1,8 @@
+
 package com.capg.onlinesportsshopee.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+
 import org.springframework.stereotype.Repository;
 
 import com.capg.onlinesportsshopee.bean.Payment;
@@ -16,3 +18,4 @@ import com.capg.onlinesportsshopee.bean.Payment;
 public interface IPaymentRepository extends JpaRepository<Payment, Long>{
 	
 }
+

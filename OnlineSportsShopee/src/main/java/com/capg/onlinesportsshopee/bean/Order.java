@@ -14,7 +14,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 
 @Entity
@@ -52,13 +51,29 @@ public class Order implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Payment payment;
 
+
+	public Order() {
+		super();
+	}
+
+	public Order(long orderId, double amount, String billingDate,long userId) {
+
+		super();
+		this.orderId= orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+		this.customer= new Customer(userId);
+	}
+
+
 	public Order(long orderId, double amount, String billingDate,long userId,String name, String email, String contactNo, String dob,String doorNo, String street, String area, String city, String state, int pinCode,
 			long productId, String productName, String category, String description, String brand, String color,
 			int size, int mrp, int discount, double priceAfterDiscount, boolean inStock, LocalDate estimatedDelivery,
 			long cartid, String imageName, String cartProductName, int quantity, double price, double total,long paymentId,String type, String status,
 			long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+
 		super();
-		this. orderId= orderId;
+		this.orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
 		this.customer= new Customer (userId,name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
@@ -66,15 +81,16 @@ public class Order implements Serializable {
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
 			cartid,imageName, cartProductName,  quantity, price, total);
 		this.payment=new Payment(paymentId,type,  status,cardName, id, cardNumber, cardExpiry, cvv);
+
 	}
 	
-	public Order() {
-		super();
-	}
+	
 
 	public long getOrderId() {
 		return orderId;
 	}
+	
+	
 	
 	public void setOrderId(long orderId) {
 		this.orderId = orderId;
@@ -129,8 +145,6 @@ public class Order implements Serializable {
 		this.payment = payment;
 	}
 	
-	
 
-	
+
 }
-

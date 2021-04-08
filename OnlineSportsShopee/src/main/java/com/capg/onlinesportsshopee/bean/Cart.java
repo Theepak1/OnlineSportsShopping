@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.bean;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -36,6 +37,7 @@ public class Cart implements Serializable{
 	@Column(name="price",nullable = false)
 	 private double price;
 	
+
 	@Column(name = "total",nullable = false)
 	 private double total;
 	

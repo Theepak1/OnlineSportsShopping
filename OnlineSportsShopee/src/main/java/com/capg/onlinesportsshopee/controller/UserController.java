@@ -15,6 +15,12 @@ import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 import com.capg.onlinesportsshopee.model.UserDTO;
 import com.capg.onlinesportsshopee.service.IUserService;
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is User Controller
+*/
 
 @RestController
 @RequestMapping("/api/oss")
@@ -23,25 +29,25 @@ public class UserController {
 	@Autowired
 	private IUserService userservice;
 
-	@PostMapping("/adduser")
+	@PostMapping("/addUser")
 	public ResponseEntity<UserDTO> addUser(@RequestBody User user) {
 		UserDTO resultuser = userservice.addUser(user);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 
-	@PutMapping("/updateuser")
+	@PutMapping("/updateUser")
 	public ResponseEntity<UserDTO> updateUser(@RequestBody User user) {
 		UserDTO resultuser = userservice.updateUser(user);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/deleteuser/{userId}")
+	@DeleteMapping("/deleteUser/{userId}")
 	public ResponseEntity<UserDTO> deleteUser(@PathVariable long userId) throws UserNotFoundException {
 		UserDTO resultuser = userservice.deleteUser(userId);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);
 	}
 	
-	@GetMapping("/getuser/{userId}")
+	@GetMapping("/getUser/{userId}")
 	public ResponseEntity<UserDTO> getId(@PathVariable long userId) {
 		UserDTO resultuser = userservice.getId(userId);
 		return new ResponseEntity<UserDTO>(resultuser, HttpStatus.OK);

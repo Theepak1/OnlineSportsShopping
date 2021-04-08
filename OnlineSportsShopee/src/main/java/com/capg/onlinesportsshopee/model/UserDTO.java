@@ -1,6 +1,12 @@
 package com.capg.onlinesportsshopee.model;
 
 import org.springframework.stereotype.Component;
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is UserDTO Class
+*/
 
 @Component
 public class UserDTO {

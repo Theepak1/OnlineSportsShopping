@@ -1,4 +1,6 @@
+
 package com.capg.onlinesportsshopee.service;
+
 
 import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
@@ -14,4 +16,9 @@ public interface IUserService {
 
 	public UserDTO getId(long userId);
 
+
 }
+
+
+
+

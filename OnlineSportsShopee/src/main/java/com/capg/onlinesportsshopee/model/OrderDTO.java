@@ -1,10 +1,9 @@
+
 package com.capg.onlinesportsshopee.model;
 
-import java.time.LocalDate;
-
 import org.springframework.stereotype.Component;
-
 import com.capg.onlinesportsshopee.bean.Customer;
+import java.time.LocalDate;
 import com.capg.onlinesportsshopee.bean.Payment;
 import com.capg.onlinesportsshopee.bean.Product;
 
@@ -80,9 +79,4 @@ public class OrderDTO  {
 				+ customer + ", product=" + product + ", payment=" + payment + "]";
 	}
     
-	
-	
-    
-	
-
 }

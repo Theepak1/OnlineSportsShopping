@@ -1,16 +1,13 @@
-
-
-
-
-
 package com.capg.onlinesportsshopee.model;
 
-
-
-
 import org.springframework.stereotype.Component;
-
 import com.capg.onlinesportsshopee.bean.Address;
+/*
+ * Author : THEEPAK PRAKASH P
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is CustomerDTO 
+*/
 @Component
 public class CustomerDTO 
 {
@@ -117,4 +114,5 @@ public class CustomerDTO
 
 	
 }
+
 

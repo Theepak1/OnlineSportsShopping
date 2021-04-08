@@ -5,7 +5,12 @@ import org.springframework.stereotype.Repository;
 
 import com.capg.onlinesportsshopee.bean.Customer;
 
-
+/*
+ * Author : Theepak Prakash P
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is Customer Repository
+*/
 
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer,Long>{

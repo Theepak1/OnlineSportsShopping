@@ -20,7 +20,11 @@ import com.capg.onlinesportsshopee.service.IPaymentService;
 /*
  * Author : SYED SAMSUDEEN A
  * Version : 1.0
+<<<<<<< HEAD
  * Date : 05-04-2021
+=======
+ * Date : 07-04-2021
+>>>>>>> branch 'TheepakBranch' of https://github.com/Theepak1/OnlineSportsShopping.git
  * Description : This is Payment Controller
 */
 @RestController

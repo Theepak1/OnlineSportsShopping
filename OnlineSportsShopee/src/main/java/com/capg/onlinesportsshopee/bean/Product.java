@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.bean;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -78,6 +79,7 @@ public class Product implements Serializable {
 
 	public Product() {
 
+		super();
 	}
 
 	public Product(long productId, String productName, String category, String description, String brand, String color,
@@ -98,13 +100,11 @@ public class Product implements Serializable {
 		this.estimatedDelivery = estimatedDelivery;
 		this.cart = new Cart(cartid,imageName , cartProductName,quantity,price,total);
 	}
-
 	
-	public Product(long productId, @NotBlank(message = "ProductName should not be blank") String productName,
-			@NotBlank(message = "Category should not be blank") String category, String description, String brand,
-			@NotBlank(message = "Color should not be blank") String color,
-			@NotBlank(message = "Size should not be blank") int size, int mrp, int discount, double priceAfterDiscount,
-			boolean inStock, LocalDate estimatedDelivery, Cart cart) {
+	public Product(long productId,String productName, String category, String description, String brand, String color,
+			int size, int mrp, int discount, double priceAfterDiscount,
+			boolean inStock, LocalDate estimatedDelivery, Cart cart) 
+	{
 		super();
 		this.productId = productId;
 		this.productName = productName;
@@ -120,6 +120,8 @@ public class Product implements Serializable {
 		this.estimatedDelivery = estimatedDelivery;
 		this.cart = cart;
 	}
+
+	
 
 	public long getProductId() {
 		return productId;
@@ -231,3 +233,4 @@ public class Product implements Serializable {
 	}
 
 }
+

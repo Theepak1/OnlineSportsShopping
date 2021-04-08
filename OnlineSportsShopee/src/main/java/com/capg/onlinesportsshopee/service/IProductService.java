@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.capg.onlinesportsshopee.bean.Product;
+
 import com.capg.onlinesportsshopee.model.ProductDTO;
 
 public interface IProductService {
@@ -16,4 +17,5 @@ public interface IProductService {
 	public List<ProductDTO> findByProductName(String productName);
 	public List<ProductDTO> findByColor(String color);
 	public List<ProductDTO> findBySize(int size);
+
 }
