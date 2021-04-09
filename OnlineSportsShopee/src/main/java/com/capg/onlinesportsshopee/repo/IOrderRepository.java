@@ -7,7 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import com.capg.onlinesportsshopee.bean.Order;
 
-
+/*
+ * Author      : JISHNA k
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is OrderService Interface
+*/
 @Repository
 public interface IOrderRepository extends JpaRepository<Order, Long> {
 

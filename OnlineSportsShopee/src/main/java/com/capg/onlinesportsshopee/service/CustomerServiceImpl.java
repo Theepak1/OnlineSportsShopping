@@ -45,7 +45,6 @@ public class CustomerServiceImpl implements ICustomerService {
 
 	}
 
-	
 	/*
 	 * Description : This method remove Customer Details
 	 * Input Parameter :  User ID 

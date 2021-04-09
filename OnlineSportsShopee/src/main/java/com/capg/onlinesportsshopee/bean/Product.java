@@ -16,7 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Product Entity
+ */
 @Entity
 @Table(name = "products")
 public class Product implements Serializable {

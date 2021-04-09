@@ -1,26 +1,28 @@
 package com.capg.onlinesportsshopee.util;
+
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.capg.onlinesportsshopee.bean.Product;
 import com.capg.onlinesportsshopee.model.ProductDTO;
 
-
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Cart Util
+ */
 public class ProductUtil {
 
-public static List<ProductDTO> convertToProductDtoList(List<Product> list)
-	{
-		List<ProductDTO> 	ProductDtoList = new ArrayList<ProductDTO>();
+	public static List<ProductDTO> convertToProductDtoList(List<Product> list) {
+		List<ProductDTO> ProductDtoList = new ArrayList<ProductDTO>();
 		for (Product product : list)
 			ProductDtoList.add(convertToProductDto(product));
-	    return ProductDtoList;
+		return ProductDtoList;
 	}
-	
+
 	public static Product convertToProduct(ProductDTO productDto) {
 		Product product = new Product();
-		
+
 		product.setProductId(productDto.getProductId());
 		product.setProductName(productDto.getProductName());
 		product.setCategory(productDto.getCategory());
@@ -36,10 +38,10 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 		product.setCart(productDto.getCart());
 		return product;
 	}
-	
+
 	public static ProductDTO convertToProductDto(Product product) {
 		ProductDTO productDto = new ProductDTO();
-		
+
 		productDto.setProductId(product.getProductId());
 		productDto.setProductName(product.getProductName());
 		productDto.setCategory(product.getCategory());
@@ -53,11 +55,8 @@ public static List<ProductDTO> convertToProductDtoList(List<Product> list)
 		productDto.setInStock(product.isInStock());
 		productDto.setEstimatedDelivery(product.getEstimatedDelivery());
 		productDto.setCart(product.getCart());
-		
+
 		return productDto;
 	}
-	
-	
 
 }
-

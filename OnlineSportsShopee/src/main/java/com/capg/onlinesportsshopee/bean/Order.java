@@ -14,6 +14,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+/*
+ * Author      : JISHNA K
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is Order Entity class
+*/
 
 @Entity
 @Table(name="orders")
