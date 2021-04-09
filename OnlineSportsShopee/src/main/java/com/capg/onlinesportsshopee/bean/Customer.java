@@ -2,9 +2,6 @@
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
-
-
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;

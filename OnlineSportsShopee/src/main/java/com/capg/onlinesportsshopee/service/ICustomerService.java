@@ -15,9 +15,9 @@ import com.capg.onlinesportsshopee.model.CustomerDTO;
 */
 public interface ICustomerService {
 	public CustomerDTO addCustomer(Customer customer) throws CustomerServiceException;
-	public CustomerDTO removeCustomer(long custId)throws CustomerServiceException;
-	public CustomerDTO updateCustomer(Customer customer)throws CustomerServiceException;
-	public CustomerDTO getCustomer(long custId)throws CustomerServiceException;
-	public List<CustomerDTO> getAllCustomers()throws CustomerServiceException; 
+	public CustomerDTO removeCustomer(long custId) throws CustomerServiceException;
+	public CustomerDTO updateCustomer(Customer customer) throws CustomerServiceException;
+	public CustomerDTO getCustomer(long custId) throws CustomerServiceException;
+	public List<CustomerDTO> getAllCustomers() throws CustomerServiceException; 
 }
 
