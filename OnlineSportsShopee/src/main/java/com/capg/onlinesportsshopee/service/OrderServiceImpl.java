@@ -59,7 +59,7 @@ public class OrderServiceImpl implements IOrderService {
 			throw new OrderServiceException("OrderId does not exist to delete");
 		} 
 		else {
-			orderRepo.delete(order.get());
+			orderRepo.deleteById(orderId);
 			if(order.isPresent())
 			{
 				return OrderUtil.convertToOrderDto(order.get());
