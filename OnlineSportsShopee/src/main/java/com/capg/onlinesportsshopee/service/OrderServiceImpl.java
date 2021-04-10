@@ -2,6 +2,7 @@
 
 package com.capg.onlinesportsshopee.service;
 
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +61,15 @@ public class OrderServiceImpl implements IOrderService {
 		} 
 		else {
 			orderRepo.delete(order.get());
-			return OrderUtil.convertToOrderDto(order.get());
+			if(order.isPresent())
+			{
+				return OrderUtil.convertToOrderDto(order.get());
+			}
+			else
+			{
+				throw new OrderServiceException("Order is not present");
+			}
+			
 		}
 	}
 	
