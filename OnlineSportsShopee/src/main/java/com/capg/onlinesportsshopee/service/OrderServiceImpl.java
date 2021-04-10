@@ -60,7 +60,15 @@ public class OrderServiceImpl implements IOrderService {
 		} 
 		else {
 			orderRepo.delete(order.get());
-			return OrderUtil.convertToOrderDto(order.get());
+			if(order.isPresent())
+			{
+				return OrderUtil.convertToOrderDto(order.get());
+			}
+			else
+			{
+				throw new OrderServiceException("Order is not present");
+			}
+			
 		}
 	}
 	
