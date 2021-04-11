@@ -1,3 +1,4 @@
+
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
@@ -105,6 +106,4 @@ public class Card implements Serializable {
 		return "Card [id=" + id + ", cardName=" + cardName + ", cardNumber=" + cardNumber + ", cardExpiry=" + cardExpiry
 				+ ", cvv=" + cvv + "]";
 	}
-	
-	
 }

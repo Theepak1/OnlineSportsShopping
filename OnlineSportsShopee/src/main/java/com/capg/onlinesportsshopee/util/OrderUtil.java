@@ -1,12 +1,18 @@
 package com.capg.onlinesportsshopee.util;
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import com.capg.onlinesportsshopee.bean.Order;
 import com.capg.onlinesportsshopee.model.OrderDTO;
-
+/*
+ * Author      : JISHNA K
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is OrderUtil class
+*/
 @Component
 public class OrderUtil {
 	
@@ -26,6 +32,7 @@ public class OrderUtil {
 		orderDto.setCustomer(order.getCustomer());
 		orderDto.setProduct(order.getProduct());
 		orderDto.setPayment(order.getPayment());
+
 		
 		return orderDto;
 	}
@@ -39,6 +46,7 @@ public class OrderUtil {
 		order.setCustomer(orderDto.getCustomer());
 		order.setProduct(orderDto.getProduct());
 		order.setPayment(orderDto.getPayment());
+
 		
 		return order;
 	}
@@ -46,3 +54,4 @@ public class OrderUtil {
 	
 
 }
+

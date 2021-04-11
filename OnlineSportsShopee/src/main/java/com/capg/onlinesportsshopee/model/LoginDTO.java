@@ -10,7 +10,6 @@ import com.capg.onlinesportsshopee.bean.User;
  * Date : 06-04-2021
  * Description : This is LoginDTO Class
 */
-
 @Component
 public class LoginDTO {
 

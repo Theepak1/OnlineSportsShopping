@@ -16,7 +16,6 @@ import javax.persistence.Table;
  * Date : 06-04-2021
  * Description : This is Login Entity 
 */
-
 @Entity
 @Table(name = "Login")
 public class Login {

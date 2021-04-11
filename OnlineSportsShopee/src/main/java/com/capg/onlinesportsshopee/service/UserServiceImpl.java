@@ -11,6 +11,7 @@ import com.capg.onlinesportsshopee.model.UserDTO;
 import com.capg.onlinesportsshopee.repo.IUserRepository;
 import com.capg.onlinesportsshopee.util.UserUtil;
 
+
 /*
  * Author : SAI MADHU BHAVANA A
  * Version : 1.0
@@ -18,7 +19,6 @@ import com.capg.onlinesportsshopee.util.UserUtil;
  * Description : This is User Service Layer that provides services to Add New User, Update Existing User details, 
  *               Delete Existing User, Get Existing User details and Check User
 */
-
 
 @Service
 public class UserServiceImpl implements IUserService {
@@ -33,29 +33,47 @@ public class UserServiceImpl implements IUserService {
 	 * Exception : UserServiceException
 	 */
 
+	/*
+	 * Description : This method adds User
+	 * Input Parameter : User Object 
+	 * Return Value : UserDTO Object 
+	 * Exception : UserServiceException
+	 */
+
 	@Override
 	public UserDTO addUser(User user) throws UserServiceException {
 		Optional<User> userTemp = userrepo.findById(user.getUserId());
-		if (userTemp.isEmpty()) {
-
+		if (userTemp.isEmpty())
+				{
 			user = userrepo.save(user);
 			return UserUtil.convertToUserDto(user);
 
 		} else {
 			throw new UserServiceException("User already exists ");
 		}
+
 	}
-	
+
+
 	/*
-	 * Description : This method Updates User Details
+	 * Description : This method gets User by userID
 	 * Input Parameter : User Object 
 	 * Return Value : UserDTO Object 
 	 * Exception : UserServiceException
 	 */
-
-	
 	@Override
-	public UserDTO updateUser(User user) throws UserServiceException {
+	public UserDTO getId(long userId) throws UserServiceException {
+		Optional<User> getUserTemp = userrepo.findById(userId);
+		if (getUserTemp.isEmpty()) {
+			throw new UserServiceException("User does not exist");
+		} else {
+			User getUserId = userrepo.findById(userId).orElse(null);
+			return UserUtil.convertToUserDto(getUserId);
+		}
+
+	}
+	@Override
+	public UserDTO updateUser(User user) {
 		Optional<User> user1 = userrepo.findById(user.getUserId());
 		if (!user1.isEmpty()) {
 
@@ -65,6 +83,7 @@ public class UserServiceImpl implements IUserService {
 		} else {
 			throw new UserServiceException("User already exists ");
 		}
+
 	}
 	
 	/*
@@ -73,7 +92,6 @@ public class UserServiceImpl implements IUserService {
 	 * Return Value : UserDTO Object 
 	 * Exception : UserNotFoundException
 	 */
-
 
 	@Override
 	public UserDTO deleteUser(long userId) throws UserNotFoundException {
@@ -91,26 +109,7 @@ public class UserServiceImpl implements IUserService {
 				throw new UserNotFoundException("User is not present ");
 			}
 		}	
-	}
-	
-	/*
-	 * Description : This method gets User by userID
-	 * Input Parameter : User Object 
-	 * Return Value : UserDTO Object 
-	 * Exception : UserServiceException
-	 */
-	
-	@Override
-	public UserDTO getId(long userId) throws UserServiceException {
-		Optional<User> getUserTemp = userrepo.findById(userId);
-		if (getUserTemp.isEmpty()) {
-			throw new UserServiceException("User does not exist");
-		} else {
-			User getUserId = userrepo.findById(userId).orElse(null);
-			return UserUtil.convertToUserDto(getUserId);
-		}
-	}
-	
+}
 	/*
 	 * Description : This method checks User
 	 * Input Parameter : User Object 
@@ -128,6 +127,7 @@ public class UserServiceImpl implements IUserService {
 		else
 			throw new UserNotFoundException("Password does not Match");
 		return flag;
+
 	}
 	
 	/*
@@ -199,5 +199,25 @@ public class UserServiceImpl implements IUserService {
 		else
 			flag = true;
 		return flag;		
+	}
+	public static boolean validateUserId(User user) {
+		boolean flag = true;
+		Long userId = user.getUserId();
+		UserServiceImpl service = new UserServiceImpl();
+		if (userId == null|| userId < 0 || !service.userrepo.existsById(userId))
+			flag = false;
+		return flag;
+	}
+	
+	public static void validateUsername(User user) {
+		String userName = user.getUsername();
+		if (userName == null||user.getUsername().length() < 3 || user.getUsername().length() > 20) 
+			throw new UserServiceException("Invalid Username");
+	}
+	
+	public static void validatePassword(User user) {
+		String password = user.getPassword();
+		if (password == null||user.getPassword().length() < 3 || user.getPassword().length() > 20) 
+			throw new UserServiceException("Password not valid");
 	}
 }

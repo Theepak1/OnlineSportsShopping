@@ -14,6 +14,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+/*
+ * Author      : JISHNA K
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is Order Entity class
+*/
+
 
 @Entity
 @Table(name="orders")
@@ -39,6 +46,7 @@ public class Order implements Serializable {
 	private String billingDate;
 	
 
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userid", referencedColumnName = "userid",nullable = false)
 	private Customer customer;
@@ -48,6 +56,7 @@ public class Order implements Serializable {
 
 	@OneToOne(fetch = FetchType.LAZY)
 	private Payment payment;
+
 
 	public Order() {
 		super();
@@ -59,7 +68,10 @@ public class Order implements Serializable {
 		this. orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-
+		this.customer= new Customer(userId);
+		this.orderId= orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
 		this.customer= new Customer(userId);
 	}
 
@@ -70,14 +82,14 @@ public class Order implements Serializable {
 			long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
 
 		super();
-		this. orderId= orderId;
+		this.orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-
 		this.customer= new Customer(userId);
 		
 
 		this.customer= new Customer (name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
+		this.customer= new Customer (userId,name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
 		this.product = new Product( productId,productName,category, description,brand,color,
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
 			cartid,imageName, cartProductName,  quantity, price, total);
@@ -85,9 +97,13 @@ public class Order implements Serializable {
 
 	}
 	
+	
+
 	public long getOrderId() {
 		return orderId;
 	}
+	
+	
 	
 	public void setOrderId(long orderId) {
 		this.orderId = orderId;
@@ -129,6 +145,16 @@ public class Order implements Serializable {
 				+ customer + ", product=" + product + ", payment=" + payment + "]";
 	}
 	
-
-
+	public Order(@NotBlank(message = "Order Id should not be blank") long orderId,
+			@NotBlank(message = "Amount should not be blank") double amount,
+			@NotBlank(message = "Billing Date should not be blank") String billingDate, Customer customer,
+			Product product, Payment payment) {
+		super();
+		this.orderId = orderId;
+		this.amount = amount;
+		this.billingDate = billingDate;
+		this.customer = customer;
+		this.product = product;
+		this.payment = payment;
+	}
 }

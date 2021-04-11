@@ -1,11 +1,19 @@
 package com.capg.onlinesportsshopee.model;
-
-import org.springframework.stereotype.Component;
 import com.capg.onlinesportsshopee.bean.Customer;
 import java.time.LocalDate;
+
+import org.springframework.stereotype.Component;
+
 import com.capg.onlinesportsshopee.bean.Payment;
 import com.capg.onlinesportsshopee.bean.Product;
 
+
+/*
+ * Author      : JISHNA K
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is OrderDTO class
+*/
 
 @Component
 public class OrderDTO  {
@@ -29,7 +37,7 @@ public class OrderDTO  {
 		this. orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-		this.customer= new Customer (name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
+		this.customer= new Customer (userId,name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
 		this.product = new Product( productId,productName,category, description,brand,color,
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
 			cartid,imageName, cartProductName,  quantity, price, total);

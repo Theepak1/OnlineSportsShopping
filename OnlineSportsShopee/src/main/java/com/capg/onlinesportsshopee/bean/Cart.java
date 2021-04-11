@@ -9,7 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Cart Entity
+ */
 @Entity
 @Table(name="cart")
 public class Cart implements Serializable{

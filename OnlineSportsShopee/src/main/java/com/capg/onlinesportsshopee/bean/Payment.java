@@ -1,3 +1,4 @@
+
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
@@ -14,10 +15,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+
 /*
  * Author : SYED SAMSUDEEN A
  * Version : 1.0
- * Date : 02-04-2021
+ * Date : 01-04-2021
  * Description : This is Payment Entity 
 */
 @Entity
@@ -55,6 +57,17 @@ public class Payment implements Serializable{
 		this.status = status;
 		
 	}
+	public Payment(long paymentId, String type,
+			 String status, Card card) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.card = card;
+	}
+
+	
+	
 
 	public long getPaymentId() {
 		return paymentId;

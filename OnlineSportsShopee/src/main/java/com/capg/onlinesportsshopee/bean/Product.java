@@ -16,7 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Product Entity
+ */
 @Entity
 @Table(name = "products")
 public class Product implements Serializable {
@@ -79,6 +83,7 @@ public class Product implements Serializable {
 
 	public Product() {
 
+		super();
 	}
 
 	public Product(long productId, String productName, String category, String description, String brand, String color,
@@ -99,6 +104,28 @@ public class Product implements Serializable {
 		this.estimatedDelivery = estimatedDelivery;
 		this.cart = new Cart(cartid,imageName , cartProductName,quantity,price,total);
 	}
+	
+	public Product(long productId,String productName, String category, String description, String brand, String color,
+			int size, int mrp, int discount, double priceAfterDiscount,
+			boolean inStock, LocalDate estimatedDelivery, Cart cart) 
+	{
+		super();
+		this.productId = productId;
+		this.productName = productName;
+		this.category = category;
+		this.description = description;
+		this.brand = brand;
+		this.color = color;
+		this.size = size;
+		this.mrp = mrp;
+		this.discount = discount;
+		this.priceAfterDiscount = priceAfterDiscount;
+		this.inStock = inStock;
+		this.estimatedDelivery = estimatedDelivery;
+		this.cart = cart;
+	}
+
+	
 
 	public long getProductId() {
 		return productId;
@@ -204,5 +231,9 @@ public class Product implements Serializable {
 				+ ", estimatedDelivery=" + estimatedDelivery + ", cart=" + cart + "]";
 	}
     
+	public Product(long productId)
+	{
+		this.productId=productId;
+	}
 
 }
