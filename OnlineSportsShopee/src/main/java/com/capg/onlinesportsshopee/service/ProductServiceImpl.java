@@ -22,14 +22,15 @@ Description : This is Product Service Layer that provides services to add new pr
 public class ProductServiceImpl implements IProductService {
 
 	 @Autowired
-	 IProductRepository repo;
+	 private IProductRepository repo;
+	
 
-		/*
+	 /*
 		 * Description : This method adds Product Details 
 		 * Input Parameter : Product
 		 * Object Return Value : ProductDTO Object 
 		 * Exception : ProductServiceException
-		 */
+		 */ 
 	@Override
 	public ProductDTO addProduct(Product product) throws ProductServiceException {
 		Optional<Product> product1= repo.findById(product.getProductId());
@@ -82,17 +83,17 @@ public class ProductServiceImpl implements IProductService {
 		
 	}
 
+
 	/*
 	 * Description : This method finds product byId
 	 * Input Parameter : ProductId
 	 * Object Return Value : ProductDTO Object 
 	 * Exception : ProductServiceException
 	 */
-
 	@Override
-	public ProductDTO getProduct(long productId) throws ProductServiceException {
+	public ProductDTO getProduct(long productId){
 		Optional<Product> product=repo.findById(productId);
-		if(product.isEmpty()) {
+		if(!product.isEmpty()) {
 			Product getProduct = repo.findById(productId).orElse(null);
 			return ProductUtil.convertToProductDto(getProduct);
 			
@@ -105,12 +106,12 @@ public class ProductServiceImpl implements IProductService {
 		
 	}
 
+
 	/*
 	 * Description : This method gets all Product Details 
 	 * Object Return Value :List of ProductDTO Object 
 	 * Exception : ProductServiceException
 	 */
-
 	@Override
 	public List<ProductDTO> getAllProduct() throws ProductServiceException {
 		List<Product> productList= repo.findAll();
@@ -121,12 +122,7 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 
-	/*
-	 * Description : This method finds Product by Name 
-	 * Input Parameter : ProductName
-	 * Object Return Value : ProductDTO Object 
-	 * Exception : ProductServiceException
-	 */
+	
 
 	@Override
 	public List<ProductDTO> findByProductName(String productName) throws ProductServiceException {
@@ -138,12 +134,6 @@ public class ProductServiceImpl implements IProductService {
 	return ProductUtil.convertToProductDtoList(productList);
 }
 
-	/*
-	 * Description : This method finds Product by Size 
-	 * Input Parameter : size
-	 * Object Return Value : ProductDTO Object 
-	 * Exception : ProductServiceException
-	 */
 
 	@Override
 	public List<ProductDTO> findBySize(int size) throws ProductServiceException {
@@ -154,12 +144,6 @@ public class ProductServiceImpl implements IProductService {
 		return ProductUtil.convertToProductDtoList(productList);
 	}
 
-	/*
-	 * Description : This method finds Product by priceAfterDiscount 
-	 * Input Parameter : priceAfterDiscount
-	 * Object Return Value : ProductDTO Object 
-	 * Exception : ProductServiceException
-	 */
 
 	@Override
 	public List<ProductDTO> findByPriceAfterDiscount(double priceAfterDiscount ) throws ProductServiceException {
@@ -172,13 +156,6 @@ public class ProductServiceImpl implements IProductService {
 
 
 
-	/*
-	 * Description : This method finds product by color
-	 * Input Parameter : color
-	 * Object Return Value : ProductDTO Object 
-	 * Exception : ProductServiceException
-	 */
-	
 	@Override
 	public List<ProductDTO> findByColor(String color) throws ProductServiceException {
 		List<Product> productList= repo.findByColor(color);
@@ -188,30 +165,6 @@ public class ProductServiceImpl implements IProductService {
 		return ProductUtil.convertToProductDtoList(productList);
 
 	}
-	
-	
-	public static boolean checkProductName(Product product) {
-		boolean flag = true;
-		if (product.getProductName().length() < 3 || product.getProductName().length() > 20 || product.getProductName().isEmpty()) {
-			flag = false;
-		}
-		return flag;
-	}
 
-	public static boolean checkSize(Product product) {
-		boolean flag = true;
-		if (product.getSize() < 3 || product.getSize() > 11 ) {
-			flag = false;
-		}
-		return flag;
-	}
-	
-	public static boolean checkDiscount(Product product) {
-		boolean flag = true;
-		if (product.getDiscount() < 1 || product.getSize() > 100 ) {
-			flag = false;
-		}
-		return flag;
-	}
-	
 }
+
