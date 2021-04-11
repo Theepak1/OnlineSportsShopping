@@ -1,13 +1,19 @@
 package com.capg.onlinesportsshopee.repo;
 
 
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.capg.onlinesportsshopee.bean.Order;
 
+/*
+ * Author      : JISHNA K
+ * Version     : 1.0
+ * Date        : 05-04-2021
+ * Description : This is OrderRepository Interface
+*/
 
-
+@Repository
 public interface IOrderRepository extends JpaRepository<Order, Long> {
 
 	

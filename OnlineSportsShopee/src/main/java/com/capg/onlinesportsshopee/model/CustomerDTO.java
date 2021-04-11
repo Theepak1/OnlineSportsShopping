@@ -1,11 +1,4 @@
-
-
-
-
-
 package com.capg.onlinesportsshopee.model;
-
-
 
 
 import org.springframework.stereotype.Component;
@@ -112,4 +105,3 @@ public class CustomerDTO
 
 	
 }
-

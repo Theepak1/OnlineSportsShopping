@@ -1,5 +1,4 @@
 package com.capg.onlinesportsshopee.bean;
-
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.CascadeType;
@@ -14,6 +13,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
+
+/*
+ * Author : SYED SAMSUDEEN A
+ * Version : 1.0
+ * Date : 01-04-2021
+ * Description : This is Payment Entity 
+*/
 @Entity
 @Table(name = "payment" )
 public class Payment implements Serializable{
@@ -41,7 +47,7 @@ public class Payment implements Serializable{
 		super();
 	}
 
-	public Payment(long paymentId,String type, String status, long id,String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+	public Payment(long paymentId,String type, String status, String cardName,long id, String cardNumber, LocalDate cardExpiry, int cvv) {
 		super();
 		this.card = new Card(id,cardName,cardNumber,cardExpiry,cvv);
 		this.paymentId=paymentId;
@@ -49,6 +55,17 @@ public class Payment implements Serializable{
 		this.status = status;
 		
 	}
+	public Payment(long paymentId, String type,
+			 String status, Card card) {
+		super();
+		this.paymentId = paymentId;
+		this.type = type;
+		this.status = status;
+		this.card = card;
+	}
+
+	
+	
 
 	public long getPaymentId() {
 		return paymentId;
