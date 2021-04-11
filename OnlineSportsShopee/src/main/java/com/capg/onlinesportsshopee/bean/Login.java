@@ -10,6 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 06-04-2021
+ * Description : This is Login Entity 
+*/
+
 @Entity
 @Table(name = "Login")
 public class Login {

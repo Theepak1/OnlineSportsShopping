@@ -6,6 +6,13 @@ import java.util.List;
 import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.model.UserDTO;
 
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 04-04-2021
+ * Description : This is UserUtil Class
+*/
+
 public class UserUtil {
 	
 	public static List<UserDTO> convertToUserDtoList(List<User> list)

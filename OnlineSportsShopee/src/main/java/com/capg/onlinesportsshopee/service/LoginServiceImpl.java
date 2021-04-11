@@ -7,7 +7,12 @@ import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.LoginNotFoundException;
 import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 
-
+/*
+ * Author : SAI MADHU BHAVANA A
+ * Version : 1.0
+ * Date : 06-04-2021
+ * Description : This is Login Service Interface Layer that provides services to Log-in 
+*/
 
 @Service
 public class LoginServiceImpl implements ILoginService {
