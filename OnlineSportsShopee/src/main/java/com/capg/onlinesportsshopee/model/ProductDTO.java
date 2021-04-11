@@ -1,10 +1,16 @@
 package com.capg.onlinesportsshopee.model;
+
 import java.time.LocalDate;
+
 
 import org.springframework.stereotype.Component;
 
 import com.capg.onlinesportsshopee.bean.Cart;
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Product DTO
+ */
 @Component
 public class ProductDTO {
 	private long productId;
@@ -162,3 +168,4 @@ public class ProductDTO {
 	}
 
 }
+

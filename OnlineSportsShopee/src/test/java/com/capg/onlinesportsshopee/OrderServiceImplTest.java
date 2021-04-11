@@ -36,7 +36,7 @@ public class OrderServiceImplTest {
 
 	@Autowired
 	OrderServiceImpl service;
-	final Logger LOGGER =	LoggerFactory.getLogger(this.getClass());
+	final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
 	List<Order> list = new ArrayList<>();
 
@@ -44,12 +44,13 @@ public class OrderServiceImplTest {
 	@Test
 	void testAddOrder() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-25");
-		Address address = new Address(102,"3", "11th street","porur", "chennai", "tamil nadu", 656565);
-		Customer customer = new Customer(101,"jini"," jini@gmail.com","9040384458","2/3/1998",address);
-		Product product = new Product(1,"Nike Airforce", " Shoes", " Sports shoes", " Nike", " white",
-				 5, 4000, 10,  3000, true, expiryDate,1,"shoe image","Nike Airforce", 3, 3000, 6000);
-		Payment payment = new Payment(65, "Debit", " Success", " visa", 30, " 6321987425898521", expiryDate, 260);
-		Order orderTemp = new Order(67, 8000, "25/3/2021", customer, product, payment);
+		Address address = new Address(63, "3", "7th street", "porur", "chennai", "tamil nadu", 656565);
+		Customer customer = new Customer(62, "syeddd", " syeddd@gmail.com", "9040380958", "2/4/1998", address);
+		Product product = new Product(1, "Nike Airforce", " Shoes", " Sports shoes", " Nike", " white", 5, 4000, 10,
+				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 4000, 8000);
+		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
+				258);
+		Order orderTemp = new Order(1, 8000, "25/3/2021", customer, product, payment);
 		try {
 			service.addOrder(orderTemp);
 		} catch (OrderServiceException exception) {
@@ -57,18 +58,19 @@ public class OrderServiceImplTest {
 			LOGGER.info("AddOrder() Tested");
 		}
 	}
-	
+
 	@Disabled
 	@Test
 	void testAddOrder2() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-25");
-		Address address = new Address(1,"3", "7th street","porur", "chennai", "tamil nadu", 656565);
-		Customer customer = new Customer(2,"syeddd"," syeddd@gmail.com","9040380958","2/4/1998",address);
-		Product product = new Product(1,"Nike Airforce", " Shoes", " Sports shoes", " Nike", " white",
-				 5, 5000, 10,  4000, true, expiryDate,1,"shoe image","Nike Airforce", 2, 4000, 8000);
-		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate, 258);
+		Address address = new Address(63, "3", "7th street", "porur", "chennai", "tamil nadu", 656565);
+		Customer customer = new Customer(62, "syeddd", " syeddd@gmail.com", "9040380958", "2/4/1998", address);
+		Product product = new Product(1, "Nike Airforce", " Shoes", " Sports shoes", " Nike", " white", 5, 4000, 10,
+				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 3000, 6000);
+		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
+				258);
 		Order orderTemp = new Order(1, 8000, "25/3/2021", customer, product, payment);
-		
+
 		assertEquals(orderTemp.getAmount(), service.addOrder(orderTemp).getAmount());
 		LOGGER.info("AddOrder2() Tested");
 	}
@@ -77,7 +79,7 @@ public class OrderServiceImplTest {
 	@Test
 	void testRemoveOrder() {
 		try {
-			service.removeOrder(26);
+			service.removeOrder(22);
 		} catch (OrderServiceException exception) {
 			assertEquals("OrderId does not exist to delete", exception.getMessage());
 			LOGGER.info("findByID() Tested");
@@ -88,7 +90,7 @@ public class OrderServiceImplTest {
 	@Disabled
 	@Test
 	void testRemoveOrder1() {
-		assertEquals(service.getOrderDetails(23).getAmount(), service.removeOrder(23).getAmount());
+		assertEquals(service.getOrderDetails(122).getAmount(), service.removeOrder(122).getAmount());
 		LOGGER.info("RemoveOrder() Tested");
 
 	}
@@ -97,14 +99,15 @@ public class OrderServiceImplTest {
 	@Test
 	void testUpdateOrder() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-25");
-		Address address = new Address(4,"3", "10th street","porur", "chennai", "tamil nadu", 656565);
-		Customer customer = new Customer(3,"jishna","jishna@gmail.com","9040380958","2/4/1998",address);
-		Product product = new Product(1,"Nike Airforce", " Shoes", " Sports shoes", " Nike", " white",
-				 5, 4000, 10,  8000, true, expiryDate,1,"shoe image","Nike Airforce", 2, 4000, 8000);
-		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate, 258);
+		Address address = new Address(63, "3", "7th street", "porur", "chennai", "tamil nadu", 656565);
+		Customer customer = new Customer(62, "syeddd", " syeddd@gmail.com", "9040380958", "2/4/1998", address);
+		Product product = new Product(1, "Nike Airforce", " Shoes", " Sports shoes", " Nike", " white", 5, 4000, 10,
+				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 3000, 6000);
+		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
+				258);
 		Order orderTemp = new Order(122, 9000, "25/3/2021", customer, product, payment);
 		long OrderId = orderTemp.getOrderId();
-		
+
 		assertEquals(orderTemp.getAmount(), service.updateOrder(OrderId, orderTemp).getAmount());
 		LOGGER.info("UpdateOrder() Tested");
 
@@ -114,11 +117,12 @@ public class OrderServiceImplTest {
 	@Test
 	void testUpdateOrder2() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-25");
-		Address address = new Address(2,"3", "7th street","porur", "chennai", "tamil nadu", 656565);
-		Customer customer = new Customer(1,"syeddd"," syeddd@gmail.com","9040380958","2/4/1998",address);
-		Product product = new Product(2,"Nike Airforce", " Shoes", " Sports shoes", " Nike", " white",
-				 5, 4000, 10,  8000, true, expiryDate,1,"shoe image","Nike Airforce", 2, 4000, 8000);
-		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate, 258);
+		Address address = new Address(63, "3", "7th street", "porur", "chennai", "tamil nadu", 656565);
+		Customer customer = new Customer(62, "syeddd", " syeddd@gmail.com", "9040380958", "2/4/1998", address);
+		Product product = new Product(1, "Nike Airforce", " Shoes", " Sports shoes", " Nike", " white", 5, 4000, 10,
+				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 3000, 6000);
+		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
+				258);
 		Order orderTemp = new Order(1, 8000, "25/3/2021", customer, product, payment);
 		long OrderId = orderTemp.getOrderId();
 		try {
@@ -130,33 +134,33 @@ public class OrderServiceImplTest {
 
 	}
 
-	//@Disabled
+	@Disabled
 	@Test
 	void testGetOrderDetails() {
-		OrderDTO order = service.getOrderDetails(41);
+		OrderDTO order = service.getOrderDetails(75);
 		assertEquals(8000, order.getAmount());
 		LOGGER.info("GetOrderDetails() Tested");
 
 	}
 
-	//@Disabled
+	@Disabled
 	@Test
 	void testGetOrderDetails2() {
 		try {
-			service.getOrderDetails(41);
+			service.getOrderDetails(75);
 		} catch (OrderServiceException exception) {
 			assertEquals("OrderId does not exist", exception.getMessage());
 			LOGGER.info("GetOrderDetails2 Tested");
 		}
 	}
 
-	//@Disabled
+	@Disabled
 	@Test
 	void testGetAllOrderDetails() {
-		OrderDTO order1 = service.getOrderDetails(41);
-        OrderDTO order2 = service.getOrderDetails(41);
+		OrderDTO order1 = service.getOrderDetails(121);
+		OrderDTO order2 = service.getOrderDetails(122);
 		Order order3 = OrderUtil.convertToorder(order1);
-        Order order4 = OrderUtil.convertToorder(order2);
+		Order order4 = OrderUtil.convertToorder(order2);
 		list.add(order3);
 		list.add(order4);
 
@@ -164,4 +168,6 @@ public class OrderServiceImplTest {
 		LOGGER.info("GetAllOrderDetails() Tested");
 	}
 
+
 }
+

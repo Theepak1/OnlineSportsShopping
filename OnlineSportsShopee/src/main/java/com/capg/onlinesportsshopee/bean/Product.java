@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.bean;
 
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -15,7 +16,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Product Entity
+ */
 @Entity
 @Table(name = "products")
 public class Product implements Serializable {
@@ -119,6 +124,8 @@ public class Product implements Serializable {
 		this.estimatedDelivery = estimatedDelivery;
 		this.cart = cart;
 	}
+
+	
 
 	public long getProductId() {
 		return productId;
@@ -224,5 +231,9 @@ public class Product implements Serializable {
 				+ ", estimatedDelivery=" + estimatedDelivery + ", cart=" + cart + "]";
 	}
     
+	public Product(long productId)
+	{
+		this.productId=productId;
+	}
 
 }

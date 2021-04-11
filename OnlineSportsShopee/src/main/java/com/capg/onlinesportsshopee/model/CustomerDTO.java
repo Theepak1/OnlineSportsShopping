@@ -1,9 +1,13 @@
 package com.capg.onlinesportsshopee.model;
 
-
 import org.springframework.stereotype.Component;
-
 import com.capg.onlinesportsshopee.bean.Address;
+/*
+ * Author : THEEPAK PRAKASH P
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is CustomerDTO 
+*/
 @Component
 public class CustomerDTO 
 {
@@ -13,6 +17,7 @@ public class CustomerDTO
 	private String contactNo;
 	private  String dob;
 	private Address address;
+
 	
 	
 	public long getUserId() {
@@ -97,6 +102,10 @@ public class CustomerDTO
 	}
 	
 	
+	public CustomerDTO(long userId) {
+		this.userId=userId;
+	}
+
 	@Override
 	public String toString() {
 		return "CustomerDTO [userId=" + userId + ", name=" + name + ", email=" + email + ", contactNo="
@@ -105,3 +114,4 @@ public class CustomerDTO
 
 	
 }
+

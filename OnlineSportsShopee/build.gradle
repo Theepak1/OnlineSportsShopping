@@ -21,8 +21,6 @@ dependencies {
 		testRuntimeOnly "org.junit.platform:junit-platform-commons:1.7.0"
 	}
 
-	
-	
 	// https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator-annotation-processor
 implementation group: 'org.hibernate.validator', name: 'hibernate-validator-annotation-processor', version: '6.1.5.Final'
 
@@ -34,3 +32,4 @@ compile group: 'javax.validation', name: 'validation-api', version: '2.0.0.Beta1
 test {
 	useJUnitPlatform()
 }
+

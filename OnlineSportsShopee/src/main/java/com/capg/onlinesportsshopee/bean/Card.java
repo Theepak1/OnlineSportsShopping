@@ -1,15 +1,6 @@
-package com.capg.onlinesportsshopee.bean;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -25,7 +16,7 @@ import javax.validation.constraints.NotNull;
 /*
  * Author : SYED SAMSUDEEN A
  * Version : 1.0
- * Date : 04-04-2021
+ * Date : 02-04-2021
  * Description : This is Card Entity  
 */
 @Entity

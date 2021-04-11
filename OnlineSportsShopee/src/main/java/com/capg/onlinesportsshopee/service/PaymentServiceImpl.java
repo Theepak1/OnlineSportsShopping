@@ -12,12 +12,27 @@ import com.capg.onlinesportsshopee.model.PaymentDTO;
 import com.capg.onlinesportsshopee.repo.IPaymentRepository;
 import com.capg.onlinesportsshopee.util.PaymentUtil;
 
+/*
+ * Author : SYED SAMSUDEEN A
+ * Version : 1.0
+ * Date : 03-04-2021
+ * Description : This is Payment Service Layer that provides services to Add New Payment details, Update Existing Payment details, 
+ *               Delete Existing Payment details, Get Existing Payment details and Get All Existing Payment details
+*/
+
 @Service
 public class PaymentServiceImpl implements IPaymentService {
 
 	@Autowired
-	IPaymentRepository paymentRepository;
+	private IPaymentRepository paymentRepository;
 
+	/*
+	 * Description : This method adds Payment Details
+	 * Input Parameter : Payment Object 
+	 * Return Value : PaymentDTO Object 
+	 * Exception : PaymentServiceException
+	 */
+	
 	@Override
 	public PaymentDTO addPayment(Payment payment) throws PaymentServiceException {
 		Optional<Payment> paymentTemp = paymentRepository.findById(payment.getPaymentId());
@@ -42,12 +57,19 @@ public class PaymentServiceImpl implements IPaymentService {
 		}
 	}
 
+	/*
+	 * Description : This method remove existing Payment Details
+	 * Input Parameter : Payment Object 
+	 * Return Value : PaymentDTO Object 
+	 * Exception : PaymentServiceException
+	 */
+	
 	@Override
 	public PaymentDTO removePayment(long paymentId) throws PaymentServiceException {
 		Optional<Payment> payment = paymentRepository.findById(paymentId);
 		if (payment.isEmpty()) 
 		{
-			throw new PaymentServiceException("Payment does not exist for paymenId to delete");
+			throw new PaymentServiceException("Payment does not exist for paymentId to delete");
 		} 
 		else 
 		{
@@ -63,6 +85,13 @@ public class PaymentServiceImpl implements IPaymentService {
 		}
 	}
 
+	/*
+	 * Description : This method update existing Payment Details
+	 * Input Parameter : Payment Object and long PaymentID 
+	 * Return Value : PaymentDTO Object 
+	 * Exception : PaymentServiceException
+	 */
+	
 	@Override
 	public PaymentDTO updatePayment(long paymentId, Payment payment) throws PaymentServiceException {
 		Optional<Payment> paymentTemp = paymentRepository.findById(paymentId);
@@ -86,11 +115,18 @@ public class PaymentServiceImpl implements IPaymentService {
 		}
 	}
 
+	/*
+	 * Description : This method get existing Payment Details
+	 * Input Parameter : long PaymentID
+	 * Return Value : PaymentDTO Object 
+	 * Exception : PaymentServiceException
+	 */
+	
 	@Override
 	public PaymentDTO getPaymentDetails(long paymentId) throws PaymentServiceException {
 		Optional<Payment> paymentTemp = paymentRepository.findById(paymentId);
 		if (paymentTemp.isEmpty()) {
-			throw new PaymentServiceException("Payment does not exist fro paymentId");
+			throw new PaymentServiceException("Payment does not exist for paymentId");
 		} 
 		else 
 		{
@@ -99,6 +135,12 @@ public class PaymentServiceImpl implements IPaymentService {
 		}
 	}
 
+	/*
+	 * Description : This method get existing Payment Details
+	 * Return Value : PaymentDTO Object list
+	 * Exception : PaymentServiceException
+	 */
+	
 	@Override
 	public List<PaymentDTO> getAllPaymentDetails() throws PaymentServiceException {
 		List<Payment> paymentTemp = paymentRepository.findAll();
@@ -112,6 +154,12 @@ public class PaymentServiceImpl implements IPaymentService {
 		}
 	}
 
+	/*
+	 * Description : This method validate payment type
+	 * Input Parameter :  Payment Object
+	 * Return Value : boolean 
+	 * Exception : PaymentServiceException
+	 */
 	public  boolean validatePaymentType(Payment payment) {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[A-Za-z]*$"); 
@@ -126,6 +174,12 @@ public class PaymentServiceImpl implements IPaymentService {
 		return flag;
 	}
 
+	/*
+	 * Description : This method validate Payment Status
+	 * Input Parameter :  Payment Object
+	 * Return Value : boolean 
+	 * Exception : PaymentServiceException
+	 */
 	public  boolean validatePaymentStatus(Payment payment) {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[A-Za-z]*$");
@@ -140,6 +194,12 @@ public class PaymentServiceImpl implements IPaymentService {
 		return flag;
 	}
 
+	/*
+	 * Description : This method validate Card Name
+	 * Input Parameter :  Payment Object
+	 * Return Value : boolean 
+	 * Exception : PaymentServiceException
+	 */
 	public  boolean validateCardName(Payment payment) {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[a-zA-Z ]*$");
@@ -154,6 +214,12 @@ public class PaymentServiceImpl implements IPaymentService {
 		return flag;
 	}
 
+	/*
+	 * Description : This method validate Card Name
+	 * Input Parameter :  Payment Object
+	 * Return Value : boolean 
+	 * Exception : PaymentServiceException
+	 */
 	public  boolean validateCardNumber(Payment payment) {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[0-9]*$");
@@ -169,6 +235,12 @@ public class PaymentServiceImpl implements IPaymentService {
 		return flag;
 	}
 
+	/*
+	 * Description : This method validate Card Number
+	 * Input Parameter :  Payment Object
+	 * Return Value : boolean 
+	 * Exception : PaymentServiceException
+	 */
 	public boolean validateCvv(Payment payment) {
 		boolean flag = false;
 		Pattern pattern = Pattern.compile("^[0-9]{3}$");
@@ -185,6 +257,12 @@ public class PaymentServiceImpl implements IPaymentService {
 
 	}
 
+	/*
+	 * Description : This method validate Card Expiry
+	 * Input Parameter :  Payment Object
+	 * Return Value : boolean 
+	 * Exception : PaymentServiceException
+	 */
 	public  boolean validateCardExpiry(Payment payment) {
 		boolean flag = false;
 		if (payment.getCard().getCardExpiry() != null && payment.getCard().getCardExpiry().isAfter(LocalDate.now())) {

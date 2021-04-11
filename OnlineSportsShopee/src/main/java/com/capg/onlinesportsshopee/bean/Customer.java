@@ -1,6 +1,8 @@
+
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
+
 
 
 import javax.persistence.CascadeType;
@@ -51,6 +53,9 @@ public class Customer implements Serializable{
 	@OneToOne(cascade = {CascadeType.ALL})
 	private Address address;
 	
+
+
+
 
 
 

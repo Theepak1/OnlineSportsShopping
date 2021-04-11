@@ -1,16 +1,28 @@
 package com.capg.onlinesportsshopee.bean;
+
+import java.io.Serializable;
+
 import javax.persistence.Column;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-
-
+/*
+ * Author : THEEPAK PRAKASH P
+ * Version : 1.0
+ * Date : 01-04-2021
+ * Description : This is Address Entity 
+*/
 @Entity
 @Table(name="address")
-public class Address {
+public class Address implements Serializable {
+
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "addressId")
@@ -18,27 +30,27 @@ public class Address {
 	private int addressId;
 	
 	@Column(name="doorno",nullable=false)
-	
+	@NotBlank(message="DoorNo should not be blank")
 	private String doorNo;
 	
 	@Column(name="street",length=20,nullable=false)
-	
+	@NotBlank(message="Street should not be blank")
 	private String street;
 	
 	@Column(name="area",length=20,nullable=false)
-	
+	@NotBlank(message="Area should not be blank")
 	private String area;
 	
 	@Column(name="city",length=20,nullable=false)
-	
+	@NotBlank(message="City should not be blank")
 	private String city;
 	
 	@Column(name="state",length=20,nullable=false)
-	
+	@NotBlank(message="State should not be blank")
 	private String state;
 	
 	@Column(name="pincode",length=6,nullable=false)
-	
+	@NotBlank(message="PinCode should not be blank")
 	private int pinCode;
 
 	public String getDoorNo() {
@@ -102,12 +114,10 @@ public class Address {
 		this.state = state;
 		this.pinCode = pinCode;
 	}
-	public Address(int addressId, @NotBlank(message = "DoorNo should not be blank") String doorNo,
-			@NotBlank(message = "Street should not be blank") String street,
-			@NotBlank(message = "Area should not be blank") String area,
-			@NotBlank(message = "City should not be blank") String city,
-			@NotBlank(message = "State should not be blank") String state,
-			@NotBlank(message = "PinCode should not be blank") int pinCode) {
+
+	
+	public Address(int addressId, String doorNo, String street, String area, String city, String state,int pinCode) 
+	{
 		super();
 		this.addressId = addressId;
 		this.doorNo = doorNo;
@@ -117,15 +127,19 @@ public class Address {
 		this.state = state;
 		this.pinCode = pinCode;
 	}
+	
+	public Address()
+	{
 
-	public Address() {
 		super();
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Address [doorNo=" + doorNo + ", street=" + street + ", area=" + area + ", city=" + city + ", state="
 				+ state + ", pinCode=" + pinCode + "]";
 	}
+
 
 }

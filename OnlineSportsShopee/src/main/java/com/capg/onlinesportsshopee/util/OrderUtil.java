@@ -7,15 +7,12 @@ import org.springframework.stereotype.Component;
 
 import com.capg.onlinesportsshopee.bean.Order;
 import com.capg.onlinesportsshopee.model.OrderDTO;
-
-
 /*
  * Author      : JISHNA K
  * Version     : 1.0
  * Date        : 05-04-2021
  * Description : This is OrderUtil class
 */
-
 @Component
 public class OrderUtil {
 	
@@ -57,3 +54,4 @@ public class OrderUtil {
 	
 
 }
+

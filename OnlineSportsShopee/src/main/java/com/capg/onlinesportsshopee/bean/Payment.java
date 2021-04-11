@@ -1,4 +1,6 @@
+
 package com.capg.onlinesportsshopee.bean;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import javax.persistence.CascadeType;
@@ -104,3 +106,4 @@ public class Payment implements Serializable{
 		return "Payment [paymentId=" + paymentId + ", type=" + type + ", status=" + status + ", card=" + card + "]";
 	}
 }
+

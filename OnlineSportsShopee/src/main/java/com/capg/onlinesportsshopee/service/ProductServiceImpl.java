@@ -10,14 +10,27 @@ import com.capg.onlinesportsshopee.model.ProductDTO;
 import com.capg.onlinesportsshopee.repo.IProductRepository;
 import com.capg.onlinesportsshopee.util.ProductUtil;
 
+/*Author : AAYUSHI CHANSORIYA
+Version: 1.0
+Date   : 05-04-2021
+Description : This is Product Service Layer that provides services to add new products, 
+              update the existing product details, remove existing product details,
+              get existing product details and get all existing product details.
+*/
 
 @Service
 public class ProductServiceImpl implements IProductService {
 
 	 @Autowired
-	 IProductRepository repo;
+	 private IProductRepository repo;
 	
 
+	 /*
+		 * Description : This method adds Product Details 
+		 * Input Parameter : Product
+		 * Object Return Value : ProductDTO Object 
+		 * Exception : ProductServiceException
+		 */ 
 	@Override
 	public ProductDTO addProduct(Product product) throws ProductServiceException {
 		Optional<Product> product1= repo.findById(product.getProductId());
@@ -29,6 +42,12 @@ public class ProductServiceImpl implements IProductService {
 		}
 	}
 
+	/*
+	 * Description : This method removes Product Details 
+	 * Input Parameter : Product
+	 * Object Return Value : ProductDTO Object 
+	 * Exception : ProductServiceException
+	 */
 	@Override
 	public void removeProduct(long productId) throws ProductServiceException {
 	Optional<Product> product1=repo.findById(productId);
@@ -43,7 +62,12 @@ public class ProductServiceImpl implements IProductService {
 		
 }
 
-	
+	/*
+	 * Description : This method updates Product Details 
+	 * Input Parameter : Product
+	 * Object Return Value : ProductDTO Object 
+	 * Exception : ProductServiceException
+	 */
 	@Override
 	public ProductDTO updateProduct(long productId, Product product) throws ProductServiceException {
 		Optional<Product> product1=repo.findById(productId);
@@ -60,8 +84,14 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 
+	/*
+	 * Description : This method finds product byId
+	 * Input Parameter : ProductId
+	 * Object Return Value : ProductDTO Object 
+	 * Exception : ProductServiceException
+	 */
 	@Override
-	public ProductDTO getProduct(long productId) throws ProductServiceException {
+	public ProductDTO getProduct(long productId){
 		Optional<Product> product=repo.findById(productId);
 		if(!product.isEmpty()) {
 			Product getProduct = repo.findById(productId).orElse(null);
@@ -77,6 +107,11 @@ public class ProductServiceImpl implements IProductService {
 	}
 
 
+	/*
+	 * Description : This method gets all Product Details 
+	 * Object Return Value :List of ProductDTO Object 
+	 * Exception : ProductServiceException
+	 */
 	@Override
 	public List<ProductDTO> getAllProduct() throws ProductServiceException {
 		List<Product> productList= repo.findAll();
