@@ -2,6 +2,7 @@ package com.capg.onlinesportsshopee.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,11 @@ import com.capg.onlinesportsshopee.exceptions.ProductServiceException;
 import com.capg.onlinesportsshopee.model.ProductDTO;
 import com.capg.onlinesportsshopee.service.IProductService;
 
-
+/* Author : AAYUSHI CHANSORIYA
+ * Version : 1.0
+ * Date : 02-04-2021
+ * Description : This is Product Controller
+ */
 @RestController
 @RequestMapping("/api/oss")
 public class ProductController {
@@ -78,5 +83,3 @@ public class ProductController {
 		return productService.findByPriceAfterDiscount(priceAfterDiscount);
 	}
 }
-
->>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
