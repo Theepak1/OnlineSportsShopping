@@ -50,11 +50,11 @@ public class OrderServiceImplTest {
 				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 4000, 8000);
 		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
 				258);
-		Order orderTemp = new Order(1, 8000, "25/3/2021", customer, product, payment);
+		Order orderTemp = new Order(152, 8000, "25/3/2021", customer, product, payment);
 		try {
 			service.addOrder(orderTemp);
 		} catch (OrderServiceException exception) {
-			assertEquals("Enter the valid order detials", exception.getMessage());
+			assertEquals("Order already exists", exception.getMessage());
 			LOGGER.info("AddOrder() Tested");
 		}
 	}
@@ -69,7 +69,7 @@ public class OrderServiceImplTest {
 				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 3000, 6000);
 		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
 				258);
-		Order orderTemp = new Order(1, 8000, "25/3/2021", customer, product, payment);
+		Order orderTemp = new Order(1, 8000, "25/4/2021", customer, product, payment);
 
 		assertEquals(orderTemp.getAmount(), service.addOrder(orderTemp).getAmount());
 		LOGGER.info("AddOrder2() Tested");
@@ -103,9 +103,9 @@ public class OrderServiceImplTest {
 		Customer customer = new Customer(62, "syeddd", " syeddd@gmail.com", "9040380958", "2/4/1998", address);
 		Product product = new Product(1, "Nike Airforce", " Shoes", " Sports shoes", " Nike", " white", 5, 4000, 10,
 				3000, true, expiryDate, 1, "shoe image", "Nike Airforce", 2, 3000, 6000);
-		Payment payment = new Payment(25, "Debit", " Success", " Syed Samsudeen", 26, " 6321987425898521", expiryDate,
+		Payment payment = new Payment(145, "Debit", " Success", " Syed Samsudeen", 144, " 6321987425898521", expiryDate,
 				258);
-		Order orderTemp = new Order(122, 9000, "25/3/2021", customer, product, payment);
+		Order orderTemp = new Order(151, 9000, "25/04/2021", customer, product, payment);
 		long OrderId = orderTemp.getOrderId();
 
 		assertEquals(orderTemp.getAmount(), service.updateOrder(OrderId, orderTemp).getAmount());
