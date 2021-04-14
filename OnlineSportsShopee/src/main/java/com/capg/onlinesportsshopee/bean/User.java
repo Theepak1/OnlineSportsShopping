@@ -53,6 +53,13 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+
+	public User(String password, String role,String username) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
 	public long getUserId() {
 		return userId;
 	}
