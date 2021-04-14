@@ -2,6 +2,7 @@ package com.capg.onlinesportsshopee;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,9 +38,9 @@ class UserServiceImpTest {
 
 
 	@Disabled
-    @Test
+	@Test
 	void testAddUser() {
-		User userTemp = new User(1, "Madhu", "madhu", "user");
+		User userTemp = new User(1, "Ma", "madhu", "user");
 		try {
 			service.addUser(userTemp);
 			LOGGER.info("AddUser() is Tested");
@@ -52,8 +53,8 @@ class UserServiceImpTest {
 	@Disabled
 	@Test
 	void testAddUser2() {
-		User userTemp = new User(1, "madhu123", "user", "Madhu");
-		assertEquals(userTemp.getUsername(), service.addUser(userTemp));
+		User userTemp = new User("madhu13", "user", "Mdhu");
+		assertEquals(userTemp.getUsername(), service.addUser(userTemp).getusername());
 		LOGGER.info("AddUser2() is Tested");
 	}
 
@@ -64,7 +65,7 @@ class UserServiceImpTest {
 			service.deleteUser(14);
 			LOGGER.info("DeleteUser() is Tested");
 		} catch (UserServiceException exception) {
-			assertEquals("User does not exist to delete", exception.getMessage());
+			assertEquals("No user found", exception.getMessage());
 		}
 
 	}
@@ -72,9 +73,9 @@ class UserServiceImpTest {
 	@Disabled
 	@Test
 	void testUpdateUser() {
-		User userTemp = new User(11, "bhav123", "user", "bhvana");
+		User userTemp = new User(191, "bhav23", "user", "bhvana");
 		userTemp.getUserId();
-		assertEquals("pending", service.updateUser(userTemp));
+		assertEquals("bhav23", service.updateUser(userTemp).getusername());
 		LOGGER.info("UpdateUser() is Tested");
 	}
 
@@ -86,17 +87,18 @@ class UserServiceImpTest {
 		try {
 			service.updateUser(userTemp);
 		} catch (UserServiceException exception) {
-			assertEquals("User does not exist for UserId", exception.getMessage());
+			assertEquals("User does not exists ", exception.getMessage());
 			LOGGER.info("UpdateUser2() is Tested");
 		}
 
 	}
 
+
 	@Disabled
 	@Test
 	void testGetUserId() {
-		UserDTO user = service.getId(9);
-		assertEquals("Madhu", user.getusername());
+		UserDTO user = service.getId(191);
+		assertEquals("SyedSamsud", user.getusername());
 		LOGGER.info("GetUser() is Tested");
 	}
 
@@ -106,7 +108,7 @@ class UserServiceImpTest {
 		try {
 			service.getId(15);
 		} catch (UserServiceException exception) {
-			assertEquals("User does not exist for UserId", exception.getMessage());
+			assertEquals("User does not exist", exception.getMessage());
 			LOGGER.info("GetUserId2() is Tested");
 		}
 	}

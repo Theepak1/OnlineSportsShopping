@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 
+
 import javax.persistence.Table;
 
 import javax.persistence.GeneratedValue;
@@ -53,6 +54,13 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+
+	public User(String password, String role,String username) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
 	public long getUserId() {
 		return userId;
 	}
@@ -128,6 +136,5 @@ public class User implements Serializable {
 
 
 }
-
 
 
