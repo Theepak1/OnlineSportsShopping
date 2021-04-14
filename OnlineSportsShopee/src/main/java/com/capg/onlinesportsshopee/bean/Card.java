@@ -59,6 +59,13 @@ public class Card implements Serializable {
 		this.cvv = cvv;
 	}
 
+	public Card( String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+		super();
+		this.cardName = cardName;
+		this.cardNumber = cardNumber;
+		this.cardExpiry = cardExpiry;
+		this.cvv = cvv;
+	}
 
 
 	public long getId() {

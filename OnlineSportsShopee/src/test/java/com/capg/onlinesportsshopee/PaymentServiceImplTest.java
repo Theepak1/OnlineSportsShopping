@@ -41,7 +41,7 @@ class PaymentServiceImpTest {
 	@Test
 	void testAddPayment() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-24");
-		Payment paymentTemp = new Payment(1, "debit", "paid", "SyedSamsu", 1, "12444683478", expiryDate, 256);
+		Payment paymentTemp = new Payment( "debit", "paid", "SyedSamsu",  "12444683478", expiryDate, 256);
 		try {
 			service.addPayment(paymentTemp);
 
@@ -59,7 +59,7 @@ class PaymentServiceImpTest {
 	void testAddPayment2() {
 		LOGGER.info("Add Payment Details executed");
 		LocalDate expiryDate = LocalDate.parse("2025-05-24");
-		Payment paymentTemp = new Payment(2, "debit", "paid", "Samsu", 2, "9244472347892236", expiryDate, 256);
+		Payment paymentTemp = new Payment( "debit", "paid", "Samsu", "9244472347002236", expiryDate, 256);
 
 		assertEquals(paymentTemp.getStatus(), service.addPayment(paymentTemp).getStatus());
 
