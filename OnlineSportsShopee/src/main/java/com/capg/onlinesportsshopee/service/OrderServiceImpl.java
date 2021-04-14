@@ -10,7 +10,10 @@ import com.capg.onlinesportsshopee.bean.Order;
 import com.capg.onlinesportsshopee.exceptions.OrderServiceException;
 import com.capg.onlinesportsshopee.model.OrderDTO;
 import com.capg.onlinesportsshopee.repo.IOrderRepository;
+import com.capg.onlinesportsshopee.util.CustomerUtil;
 import com.capg.onlinesportsshopee.util.OrderUtil;
+import com.capg.onlinesportsshopee.util.PaymentUtil;
+import com.capg.onlinesportsshopee.util.ProductUtil;
 
 /*
  * Author      : JISHNA k
@@ -25,6 +28,15 @@ public class OrderServiceImpl implements IOrderService {
 	@Autowired
 	private IOrderRepository orderRepo;
 	
+	@Autowired
+	private CustomerServiceImpl customerRepo;
+	
+	@Autowired
+	private ProductServiceImpl productRepo;
+	
+	@Autowired
+	private PaymentServiceImpl paymentRepo;
+	
 
 	   /*
      * Description    :This method adds Order Details
@@ -38,10 +50,13 @@ public class OrderServiceImpl implements IOrderService {
 		Optional<Order> addOrdertemp = orderRepo.findById(order.getOrderId());
 		if (addOrdertemp.isEmpty()){
 			Order addOrder = orderRepo.save(order);
-			return OrderUtil.convertToOrderDto(addOrder);
+			Order order1= new Order(addOrder.getOrderId(),addOrder.getAmount(),addOrder.getBillingDate(),CustomerUtil.convertToCustomer(customerRepo.getCustomer(addOrder.getCustomer().getUserId())),
+					ProductUtil.convertToProduct(productRepo.getProduct(addOrder.getProduct().getProductId())),PaymentUtil.convertToPayment(paymentRepo.getPaymentDetails(addOrder.getPayment().getPaymentId())));
+			return OrderUtil.convertToOrderDto(order1);
 		}
 		else
 		{
+			
 			throw new OrderServiceException("Order already exists");
 		}
 		
@@ -87,7 +102,7 @@ public class OrderServiceImpl implements IOrderService {
 			throw new OrderServiceException("OrderId not found");
 		}
         else {
-			return OrderUtil.convertToOrderDto(orderRepo.save(order1));
+			return OrderUtil.convertToOrderDto(orderRepo.save(order));
 		}
 	}
 		
