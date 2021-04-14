@@ -35,6 +35,13 @@ public class PaymentDTO {
 		this.status = status;
 		this.card = new Card (id,cardName,cardNumber,cardExpiry,cvv);
 	}
+	
+	public PaymentDTO( String type, String status, String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+		super();
+		this.type = type;
+		this.status = status;
+		this.card = new Card (cardName,cardNumber,cardExpiry,cvv);
+	}
 
 	public long getPaymentId() {
 		return paymentId;
