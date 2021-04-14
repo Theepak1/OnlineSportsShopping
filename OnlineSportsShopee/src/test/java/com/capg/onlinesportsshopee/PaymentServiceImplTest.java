@@ -59,7 +59,7 @@ class PaymentServiceImpTest {
 	void testAddPayment2() {
 		LOGGER.info("Add Payment Details executed");
 		LocalDate expiryDate = LocalDate.parse("2025-05-24");
-		Payment paymentTemp = new Payment(1, "debit", "paid", "SyedSamsu", 1, "1244472347892236", expiryDate, 256);
+		Payment paymentTemp = new Payment(2, "debit", "paid", "Samsu", 2, "9244472347892236", expiryDate, 256);
 
 		assertEquals(paymentTemp.getStatus(), service.addPayment(paymentTemp).getStatus());
 
@@ -75,7 +75,7 @@ class PaymentServiceImpTest {
 			service.removePayment(96);
 
 		} catch (PaymentServiceException exception) {
-			assertEquals("Payment does not exist for paymenId to delete", exception.getMessage());
+			assertEquals("Payment does not exist for paymentId to delete", exception.getMessage());
 			LOGGER.info("RemovePayment()  Tested");
 		}
 
@@ -84,8 +84,8 @@ class PaymentServiceImpTest {
 	@Disabled
 	@Test
 	void testRemovePayment1() {
-		assertEquals(service.getPaymentDetails(96).getStatus(), service.removePayment(96).getStatus());
 
+		assertEquals(service.getPaymentDetails(108).getStatus(), service.removePayment(108).getStatus());
 		LOGGER.info("RemovePayment1()  Tested");
 
 
@@ -95,10 +95,10 @@ class PaymentServiceImpTest {
 	@Test
 	void testUpdatePayment() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-24");
-		Payment paymentTemp = new Payment(112, "debit", "pending", "SyedSamsudeen", 111, "1244472347892236", expiryDate,
+		Payment paymentTemp = new Payment(145, "debit", "paid", "Syed Samsudeen A", 144, "9244472347892236", expiryDate,
 				256);
 		long paymentId = paymentTemp.getPaymentId();
-		assertEquals("pending", service.updatePayment(paymentId, paymentTemp).getStatus());
+		assertEquals("paid", service.updatePayment(paymentId, paymentTemp).getStatus());
 
 		LOGGER.info("UpdatePayment()  Tested");
 
@@ -109,7 +109,7 @@ class PaymentServiceImpTest {
 	@Test
 	void testUpdatePayment2() {
 		LocalDate expiryDate = LocalDate.parse("2025-05-24");
-		Payment paymentTemp = new Payment(119, "debit", "paid", "SyedSamsu", 117, "1244472347892236", expiryDate, 256);
+		Payment paymentTemp = new Payment(200, "debit", "paid", "SyedSamsu", 117, "1244472347892236", expiryDate, 256);
 		long paymentId = paymentTemp.getPaymentId();
 		try {
 			service.updatePayment(paymentId, paymentTemp);
@@ -137,7 +137,7 @@ class PaymentServiceImpTest {
 	@Test
 	void testGetPaymentDetails2() {
 		try {
-			service.getPaymentDetails(25);
+			service.getPaymentDetails(20);
 		} catch (PaymentServiceException exception) {
 			assertEquals("Payment does not exist for paymentId", exception.getMessage());
 

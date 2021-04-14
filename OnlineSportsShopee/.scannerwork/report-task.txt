@@ -1,6 +1,6 @@
-projectKey=onlinesportsshopee:project
+projectKey=onlinesportsshopee:fullproject
 serverUrl=http://localhost:9000
 serverVersion=7.5.0.20543
-dashboardUrl=http://localhost:9000/dashboard?id=onlinesportsshopee%3Aproject
-ceTaskId=AXi5_n3nB07ApgGVQ5sp
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXi5_n3nB07ApgGVQ5sp
+dashboardUrl=http://localhost:9000/dashboard?id=onlinesportsshopee%3Afullproject
+ceTaskId=AXi6ESKeB07ApgGVQ5sx
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXi6ESKeB07ApgGVQ5sx
