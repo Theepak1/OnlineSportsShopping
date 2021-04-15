@@ -65,7 +65,7 @@ public class UserServiceImpl implements IUserService {
 	public UserDTO getId(long userId) throws UserServiceException {
 		Optional<User> getUserTemp = userrepo.findById(userId);
 		if (getUserTemp.isEmpty()) {
-			throw new UserServiceException("User does not exist");
+			throw new UserServiceException("User does not exist for userId");
 		} else {
 			User getUserId = userrepo.findById(userId).orElse(null);
 			return UserUtil.convertToUserDto(getUserId);
@@ -81,7 +81,7 @@ public class UserServiceImpl implements IUserService {
 			return UserUtil.convertToUserDto(updateUser);
 
 		} else {
-			throw new UserServiceException("User already exists ");
+			throw new UserServiceException("User already exist for userId");
 		}
 
 	}
@@ -97,7 +97,7 @@ public class UserServiceImpl implements IUserService {
 	public UserDTO deleteUser(long userId) throws UserNotFoundException {
 		Optional<User> user1 = userrepo.findById(userId);
 		if (user1.isEmpty())
-			throw new UserServiceException("No user found");
+			throw new UserNotFoundException("No user found");
 		else {
 			userrepo.deleteById(userId);
 			if(user1.isPresent())
@@ -106,9 +106,9 @@ public class UserServiceImpl implements IUserService {
 			}
 			else
 			{
-				throw new UserNotFoundException("User is not present ");
+				throw new UserNotFoundException("User does not exists");
 			}
-		}	
+		}
 }
 	/*
 	 * Description : This method checks User

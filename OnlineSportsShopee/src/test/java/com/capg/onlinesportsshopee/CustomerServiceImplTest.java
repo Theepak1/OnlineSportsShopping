@@ -2,6 +2,7 @@ package com.capg.onlinesportsshopee;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class CustomerServiceImplTest {
 
 	final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
 
+	@Disabled
 	@Test
 	void testAddCustomer() {
 
@@ -41,6 +43,7 @@ public class CustomerServiceImplTest {
 
 	}
 
+	@Disabled
 	@Test
 	void testAddCustomer2() {
 
@@ -51,6 +54,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Add customer Tested");
 	}
 
+	@Disabled
 	@Test
 	void testRemoveCustomer() {
 		try {
@@ -62,12 +66,14 @@ public class CustomerServiceImplTest {
 
 	}
 
+	@Disabled
 	@Test
 	void testRemoveCustomer1() {
 		assertEquals(service.getCustomer(189).getContactNo(), service.removeCustomer(189).getContactNo());
 		LOGGER.info("Remove customer Tested");
 	}
 
+	@Disabled
 	@Test
 	void testUpdateCustomer() {
 		Customer customer = new Customer(170, "theepakenewone", "theepakee@gmail.com", "9321121212", "2/2/1999", "2",
@@ -77,6 +83,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Update customer Tested");
 	}
 
+	@Disabled
 	@Test
 	void testUpdateCustomer2() {
 
@@ -91,6 +98,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Update customer Tested");
 	}
 
+	@Disabled
 	@Test
 	void testFindCustomerById() {
 		CustomerDTO customer = service.getCustomer(180);
@@ -98,6 +106,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Get customer by id  Tested");
 	}
 
+	@Disabled
 	@Test
 	void testGetContactNo() {
 		CustomerDTO customer = service.getCustomer(180);
@@ -105,6 +114,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Get customer by Contact number  Tested");
 	}
 
+	@Disabled
 	@Test
 	void testGetDateOfBirth() {
 		CustomerDTO customer = service.getCustomer(180);
@@ -112,6 +122,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Get customer by Date of birth Tested");
 	}
 
+	@Disabled
 	@Test
 	void testGetEmail() {
 		CustomerDTO customer = service.getCustomer(180);
@@ -119,6 +130,7 @@ public class CustomerServiceImplTest {
 		LOGGER.info("Get customer by id  Tested");
 	}
 
+	@Disabled
 	@Test
 	void testValidateCheckName() {
 		Customer customer = new Customer("th", "theepak3e@gmail.com", "9111121212", "2/2/1999", "2", "19th", "porrur",
@@ -128,6 +140,7 @@ public class CustomerServiceImplTest {
 
 	}
 
+	@Disabled
 	@Test
 	void testValidateCheckContactNo() {
 
@@ -138,6 +151,7 @@ public class CustomerServiceImplTest {
 
 	}
 
+	@Disabled
 	@Test
 	void testValidateCheckEmail() {
 

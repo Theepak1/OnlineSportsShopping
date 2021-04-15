@@ -38,7 +38,7 @@ class UserServiceImpTest {
 	//@Disabled
 	@Test
 	void testAddUser() {
-		User userTemp = new User(1,"Madhu","madhu","user");
+		User userTemp = new User(1, "Madhu","madhu","user");
 		try {
 			service.addUser(userTemp);
 			LOGGER.info("AddUser() is Tested");
@@ -52,7 +52,7 @@ class UserServiceImpTest {
 	@Test
 	void testAddUser2() {
 		User userTemp = new User(1,"madhu123","user","Madhu");
-		assertEquals(userTemp.getUsername(), service.addUser(userTemp));
+		assertEquals(userTemp.getUsername(), service.addUser(userTemp).getusername());
 		LOGGER.info("AddUser2() is Tested");
 	}
 
@@ -60,10 +60,10 @@ class UserServiceImpTest {
 	@Test
 	void testDeleteUser() throws UserNotFoundException  {
 		try {
-			service.deleteUser(14);
+			service.deleteUser(34);
+		} catch (UserNotFoundException exception) {
+			assertEquals("No user found", exception.getMessage());
 			LOGGER.info("DeleteUser() is Tested");
-		} catch (UserServiceException exception) {
-			assertEquals("User does not exist to delete", exception.getMessage());
 		}
 
 	}
@@ -71,34 +71,33 @@ class UserServiceImpTest {
 	//@Disabled
 	@Test
 	void testUpdateUser() {
-		User userTemp = new User(11,"bhav123","user","bhvana");
+		User userTemp = new User(32,"bhav123","user","bhavana");
 		userTemp.getUserId();
-		assertEquals("pending", service.updateUser(userTemp));	
+		assertEquals(32 , service.updateUser(userTemp).getUserId());	
 		LOGGER.info("UpdateUser() is Tested");
 	}
 	
 	//@Disabled
 	@Test
 	void testUpdateUser2() {
-		User userTemp = new User(12,"bhavana123","user","bhvana");
+		User userTemp = new User(12,"bhavana123","user","bhvana"); //check order of variables 
 		userTemp.getUserId();
 		try {
 		service.updateUser(userTemp);
 		}
 		catch(UserServiceException exception)
 		{
-			assertEquals("User does not exist for UserId", exception.getMessage());
+			assertEquals("User does not exist for userId", exception.getMessage());
 			LOGGER.info("UpdateUser2() is Tested");
 		}
 		
 	}
 
 	
-	  //@Disabled
-	  
+	  //@Disabled 
 	  @Test void testGetUserId(){ 
-		  UserDTO user = service.getId(9);
-		  assertEquals("Madhu", user.getusername());
+		  UserDTO user = service.getId(29);
+		  assertEquals(29, user.getUserId());
 		  LOGGER.info("GetUser() is Tested");
 	  }
 	 
@@ -106,12 +105,12 @@ class UserServiceImpTest {
 	@Test
 	void testGetUserId2()  {
 		try {
-			service.getId(15);
+			service.getId(13);
 		}catch (UserServiceException exception) {
-			assertEquals("User does not exist for UserId", exception.getMessage());
+			assertEquals("User does not exist for userId", exception.getMessage());
 			LOGGER.info("GetUserId2() is Tested");
 		}
 	}
+}
 
 	
-}

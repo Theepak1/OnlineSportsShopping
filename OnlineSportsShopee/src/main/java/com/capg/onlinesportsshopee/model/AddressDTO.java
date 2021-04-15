@@ -1,7 +1,5 @@
 package com.capg.onlinesportsshopee.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import org.springframework.stereotype.Component;
 
 @Component
