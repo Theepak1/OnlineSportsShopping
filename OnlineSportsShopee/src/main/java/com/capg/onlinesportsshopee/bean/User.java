@@ -7,7 +7,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -118,5 +117,3 @@ public class User implements Serializable {
 		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
 }
-
-

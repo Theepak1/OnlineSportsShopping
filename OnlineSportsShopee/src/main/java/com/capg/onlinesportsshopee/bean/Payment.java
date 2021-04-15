@@ -66,7 +66,13 @@ public class Payment implements Serializable{
 		this.card = card;
 	}
 
-	
+	public Payment(String type, String status, String cardName, String cardNumber, LocalDate cardExpiry, int cvv) {
+		super();
+		this.card = new Card(cardName,cardNumber,cardExpiry,cvv);
+		this.type = type;
+		this.status = status;
+		
+	}
 	
 
 	public long getPaymentId() {
@@ -106,3 +112,4 @@ public class Payment implements Serializable{
 		return "Payment [paymentId=" + paymentId + ", type=" + type + ", status=" + status + ", card=" + card + "]";
 	}
 }
+
