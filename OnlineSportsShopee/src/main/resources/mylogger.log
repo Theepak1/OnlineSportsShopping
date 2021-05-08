@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 2021-04-08 15:43:18.994  INFO 4424 --- [main] c.c.o.OnlineSportsShopeeApplication      : Starting OnlineSportsShopeeApplication on SYDSAMSU-PC with PID 4424 (C:\Users\Syed Samsu\git\OnlineSportsShopping\OnlineSportsShopee\bin\main started by Syed Samsu in C:\Users\Syed Samsu\git\OnlineSportsShopping\OnlineSportsShopee)
 2021-04-08 15:43:19.013  INFO 4424 --- [main] c.c.o.OnlineSportsShopeeApplication      : No active profile set, falling back to default profiles: default
 2021-04-08 15:43:37.338  INFO 4424 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
@@ -1544,4 +1545,32 @@ Caused by: org.hibernate.HibernateException: Access to DialectResolutionInfo can
 2021-04-14 19:57:43.583  INFO 2936 --- [SpringContextShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2021-04-14 19:57:43.602  INFO 2936 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2021-04-14 19:57:43.679  INFO 2936 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+>>>>>>> refs/remotes/origin/SyedBranch
+=======
+2021-05-07 09:15:47.425  INFO 2824 --- [main] c.c.o.OnlineSportsShopeeApplication      : Starting OnlineSportsShopeeApplication on SYDSAMSU-PC with PID 2824 (C:\Users\Syed Samsu\git\OnlineSportsShopping\OnlineSportsShopee\bin\main started by Syed Samsu in C:\Users\Syed Samsu\git\OnlineSportsShopping\OnlineSportsShopee)
+2021-05-07 09:15:47.595  INFO 2824 --- [main] c.c.o.OnlineSportsShopeeApplication      : No active profile set, falling back to default profiles: default
+2021-05-07 09:16:19.669  INFO 2824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-05-07 09:16:24.840  INFO 2824 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4754ms. Found 6 JPA repository interfaces.
+2021-05-07 09:16:30.716  INFO 2824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9191 (http)
+2021-05-07 09:16:31.137  INFO 2824 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-07 09:16:31.139  INFO 2824 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.43]
+2021-05-07 09:16:32.496  INFO 2824 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-07 09:16:32.499  INFO 2824 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 43695 ms
+2021-05-07 09:16:35.626  INFO 2824 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-05-07 09:16:36.873  INFO 2824 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.28.Final
+2021-05-07 09:16:40.663  INFO 2824 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-05-07 09:16:42.341  INFO 2824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-05-07 09:16:45.999  INFO 2824 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-05-07 09:16:46.433  INFO 2824 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-05-07 09:17:07.328  INFO 2824 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-05-07 09:17:07.485  INFO 2824 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-05-07 09:17:15.814  WARN 2824 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-05-07 09:17:17.552  INFO 2824 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-07 09:17:21.237  INFO 2824 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9191 (http) with context path ''
+2021-05-07 09:17:21.367  INFO 2824 --- [main] c.c.o.OnlineSportsShopeeApplication      : Started OnlineSportsShopeeApplication in 103.839 seconds (JVM running for 118.731)
+2021-05-07 09:24:44.152  INFO 2824 --- [http-nio-9191-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-07 09:24:44.155  INFO 2824 --- [http-nio-9191-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-07 09:24:44.196  INFO 2824 --- [http-nio-9191-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 40 ms
+2021-05-07 09:24:45.121  INFO 2824 --- [http-nio-9191-exec-1] c.c.o.controller.LoginController         : Validate Login is executed
+2021-05-07 09:27:03.783  INFO 2824 --- [http-nio-9191-exec-3] c.c.o.controller.PaymentController       : Get ALL Payment Details executed
 >>>>>>> refs/remotes/origin/SyedBranch

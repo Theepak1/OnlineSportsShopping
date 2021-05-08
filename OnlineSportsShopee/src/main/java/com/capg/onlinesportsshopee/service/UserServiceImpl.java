@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,14 +112,24 @@ public class UserServiceImpl implements IUserService {
 				throw new UserNotFoundException("Payment is not present ");
 			}
             
-
 		}
-			
 		
-
 	}
 
 
+	@Override
+	public List<UserDTO> getAllUserDetails() throws UserServiceException {
+		List<User> userTemp = userrepo.findAll();
+		if (userTemp.isEmpty()) {
+			throw new UserServiceException("Users not found");
+		} 
+		else 
+		{
+			List<User> getAllUsers = userrepo.findAll();
+			return UserUtil.convertToUserDtoList(getAllUsers);
+		}
+	}
+	
 	
 	 
 
@@ -126,11 +137,13 @@ public class UserServiceImpl implements IUserService {
 		boolean flag = false;
 		User user = userrepo.findById(userId).orElse(null);
 		if (user == null)
-			throw new UserNotFoundException("Invalid User Name");
+			//throw new UserNotFoundException("Invalid User Name");
+			flag = false;
 		else if (user.getPassword().equals(password))
 			flag = true;
 		else
-			throw new UserNotFoundException("Password does not Match");
+			//throw new UserNotFoundException("Password does not Match");
+			flag=false;
 		return flag;
 
 	}
