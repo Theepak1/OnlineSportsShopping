@@ -35,8 +35,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Override
 	public CustomerDTO addCustomer(Customer customer) throws CustomerServiceException {
 		Optional<Customer> addCustomerTemp = customerRepo.findById(customer.getUserId());
-		if (addCustomerTemp.isEmpty() && CustomerServiceImpl.checkName(customer)
-				&& CustomerServiceImpl.checkContactNo(customer) && CustomerServiceImpl.checkEmail(customer)) {
+		if (addCustomerTemp.isEmpty()) {
 			Customer addCustomer = customerRepo.save(customer);
 			return CustomerUtil.convertToCustomerDto(addCustomer);
 		} else {
@@ -78,8 +77,7 @@ public class CustomerServiceImpl implements ICustomerService {
 	@Override
 	public CustomerDTO updateCustomer(Customer customer) throws CustomerServiceException {
 		Optional<Customer> updateCustomerTemp = customerRepo.findById(customer.getUserId());
-		if (updateCustomerTemp.isEmpty() && CustomerServiceImpl.checkName(customer)
-				&& CustomerServiceImpl.checkContactNo(customer) && CustomerServiceImpl.checkEmail(customer)) {
+		if (updateCustomerTemp.isEmpty() ) {
 			throw new CustomerServiceException("Customer not found or invalid inputs");
 		} else {
 			Customer updateCustomer = customerRepo.save(customer);

@@ -38,23 +38,13 @@ public class PaymentServiceImpl implements IPaymentService {
 		Optional<Payment> paymentTemp = paymentRepository.findById(payment.getPaymentId());
 		if (paymentTemp.isEmpty() )
 		{
-			if( validatePaymentType(payment)  && validatePaymentStatus(payment)  
-				&& validateCardName(payment) && validateCvv(payment)  
-			&& validateCardNumber(payment) && validateCardExpiry(payment) )
-			{
 				Payment addPayment = paymentRepository.save(payment);
 				return PaymentUtil.convertToPaymentDto(addPayment);
 			}
 			else
 			{
-				throw new PaymentServiceException("Enter the valid payment detials");
+				throw new PaymentServiceException("Payment detials Already Exist");
 			}
-		
-		} 
-		else 
-		{
-			throw new PaymentServiceException("Payment already exists ");
-		}
 	}
 
 	/*
@@ -97,22 +87,13 @@ public class PaymentServiceImpl implements IPaymentService {
 		Optional<Payment> paymentTemp = paymentRepository.findById(paymentId);
 		if ( !paymentTemp.isEmpty() )
 		{
-			if(	validatePaymentStatus(payment) && validatePaymentType(payment)
-				&&  validateCardName(payment) && validateCardNumber(payment) 
-				&& validateCvv(payment) && validateCardExpiry(payment) )
-			{
 				Payment updatePayment = paymentRepository.save(payment);
 				return PaymentUtil.convertToPaymentDto(updatePayment);
 			}
 			else
 			{
-				throw new PaymentServiceException("Enter the valid payment detials");
+				throw new PaymentServiceException("Enter payment detials does not exist");
 			}
-		}
-		else 
-		{
-			throw new PaymentServiceException("Payment does not exist for PaymentId");
-		}
 	}
 
 	/*
