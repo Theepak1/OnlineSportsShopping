@@ -6,8 +6,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
 import javax.persistence.Table;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -22,19 +22,23 @@ import javax.persistence.GenerationType;
 public class User implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="user_id")
 	private long userId;
-
-	@Column(name = "username", nullable = false)
+	
+	@Column(name="username", nullable=false)
 	private String username;
 	
 	@Column(name="password", nullable=false)
 	private String password;
-
-	@Column(name = "role", nullable = false)
+	
+	@Column(name="role",nullable=false)
 	private String role;
+	
+
+	
 	public User() {
 		super();
 	}
@@ -47,6 +51,13 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
+
+	public User(String password, String role,String username) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
 	public long getUserId() {
 		return userId;
 	}
@@ -78,6 +89,9 @@ public class User implements Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -116,4 +130,9 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", role=" + role + "]";
 	}
+
+
 }
+
+
+

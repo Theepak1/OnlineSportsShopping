@@ -7,6 +7,9 @@ import com.capg.onlinesportsshopee.bean.Payment;
 import com.capg.onlinesportsshopee.exceptions.PaymentServiceException;
 import com.capg.onlinesportsshopee.model.PaymentDTO;
 
+
+
+
 /*
  * Author : SYED SAMSUDEEN A
  * Version : 1.0
@@ -17,7 +20,6 @@ import com.capg.onlinesportsshopee.model.PaymentDTO;
 
 public interface IPaymentService {
 
-
 	public PaymentDTO addPayment(Payment payment) throws PaymentServiceException; 
 	public PaymentDTO removePayment(long paymentId) throws PaymentServiceException;
 	public PaymentDTO updatePayment(long paymentId ,Payment payment) throws PaymentServiceException;
@@ -25,3 +27,4 @@ public interface IPaymentService {
 	public List<PaymentDTO> getAllPaymentDetails() throws PaymentServiceException;
 
 }
+

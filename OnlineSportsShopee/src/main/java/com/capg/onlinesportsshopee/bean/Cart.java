@@ -1,5 +1,6 @@
 package com.capg.onlinesportsshopee.bean;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ public class Cart implements Serializable{
 	@Column(name="imageName",nullable = false)
 	private String imageName;
 	
-	@Column(name="cartProductName",nullable = false)
+	@Column(name="cartProductName",nullable = true)
 	@NotBlank(message="CartProductName should not be blank")
 	private String cartProductName;
 	
@@ -40,6 +41,7 @@ public class Cart implements Serializable{
 	@Column(name="price",nullable = false)
 	 private double price;
 	
+
 	@Column(name = "total",nullable = false)
 	 private double total;
 	

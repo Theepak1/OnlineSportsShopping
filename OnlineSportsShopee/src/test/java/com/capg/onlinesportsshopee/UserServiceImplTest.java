@@ -96,7 +96,7 @@ class UserServiceImpTest {
 	
 	  //@Disabled 
 	  @Test void testGetUserId(){ 
-		  UserDTO user = service.getId(29);
+		  UserDTO user = service.getId(10);
 		  assertEquals(29, user.getUserId());
 		  LOGGER.info("GetUser() is Tested");
 	  }

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ import com.capg.onlinesportsshopee.service.IPaymentService;
 */
 @RestController
 @RequestMapping("/api/oss")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PaymentController {
 	
 	@Autowired
@@ -51,10 +53,10 @@ public class PaymentController {
 		return new ResponseEntity<PaymentDTO>(removePayment,HttpStatus.OK);
 	}
 	
-	@PutMapping("/updatePayment")
-	public ResponseEntity<PaymentDTO> updatePayment(@RequestBody Payment payment) {
+	@PutMapping("/updatePayment/{paymentId}")
+	public ResponseEntity<PaymentDTO> updatePayment(@PathVariable long paymentId,@RequestBody Payment payment) {
 		LOGGER.info("Update Payment Details executed");
-		PaymentDTO updatePayment = paymentService.updatePayment(payment.getPaymentId(), payment);
+		PaymentDTO updatePayment = paymentService.updatePayment(paymentId, payment);
 		return new ResponseEntity<PaymentDTO>(updatePayment, HttpStatus.OK);
 	}
 	
@@ -71,4 +73,6 @@ public class PaymentController {
 		List<PaymentDTO> getAllPayment = paymentService.getAllPaymentDetails();
 		return new ResponseEntity<List<PaymentDTO>>(getAllPayment, HttpStatus.OK);
 	}
+	
+
 }

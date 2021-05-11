@@ -4,7 +4,7 @@ public class CartDTO {
 
 	private long cartId;
 	private String imageName;
-	private String productName;
+	private String cartProductName;
 	private int quantity;
 	private double price;
 	private double total;
@@ -26,11 +26,11 @@ public class CartDTO {
 	}
 
 	public String getProductName() {
-		return productName;
+		return cartProductName;
 	}
 
 	public void setProductName(String productName) {
-		this.productName = productName;
+		this.cartProductName = productName;
 	}
 
 	public int getQuantity() {

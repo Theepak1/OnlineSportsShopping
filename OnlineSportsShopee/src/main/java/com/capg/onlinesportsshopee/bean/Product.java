@@ -102,7 +102,7 @@ public class Product implements Serializable {
 		this.priceAfterDiscount = priceAfterDiscount;
 		this.inStock = inStock;
 		this.estimatedDelivery = estimatedDelivery;
-		this.cart = new Cart(cartid,imageName , cartProductName,quantity,price,total);
+		this.cart = new Cart(cartid,imageName,cartProductName,quantity,price,total);
 	}
 	
 	public Product(long productId,String productName, String category, String description, String brand, String color,
@@ -237,3 +237,4 @@ public class Product implements Serializable {
 	}
 
 }
+

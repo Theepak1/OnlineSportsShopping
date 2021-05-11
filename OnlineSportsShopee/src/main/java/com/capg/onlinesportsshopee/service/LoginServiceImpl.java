@@ -7,12 +7,7 @@ import com.capg.onlinesportsshopee.bean.User;
 import com.capg.onlinesportsshopee.exceptions.LoginNotFoundException;
 import com.capg.onlinesportsshopee.exceptions.UserNotFoundException;
 
-/*
- * Author : SAI MADHU BHAVANA A
- * Version : 1.0
- * Date : 06-04-2021
- * Description : This is Login Service Interface Layer that provides services to Log-in 
-*/
+
 
 @Service
 public class LoginServiceImpl implements ILoginService {
@@ -25,9 +20,11 @@ public class LoginServiceImpl implements ILoginService {
 	public boolean Login(User user) throws LoginNotFoundException,UserNotFoundException {
 		boolean flag = false;
 		if(user == null)
-			throw new LoginNotFoundException("User Details cannot be Empty");
+			//throw new LoginNotFoundException("User Details cannot be Empty");
+			flag= false;
 		else if(!userService.checkUser(user.getUserId(), user.getUsername(), user.getPassword()))
-			throw new LoginNotFoundException("Invalid UserName or Password");
+			//throw new LoginNotFoundException("Invalid UserName or Password");
+			flag= false;
 		else
 			flag = true;
 		return flag;

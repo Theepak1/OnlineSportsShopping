@@ -1,4 +1,3 @@
-
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
@@ -116,4 +115,3 @@ public class Card implements Serializable {
 	
 	
 }
-

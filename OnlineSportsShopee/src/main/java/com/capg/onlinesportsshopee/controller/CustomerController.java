@@ -1,3 +1,4 @@
+
 package com.capg.onlinesportsshopee.controller;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,16 +22,15 @@ import com.capg.onlinesportsshopee.bean.Customer;
 import com.capg.onlinesportsshopee.exceptions.CustomerServiceException;
 import com.capg.onlinesportsshopee.model.CustomerDTO;
 import com.capg.onlinesportsshopee.service.ICustomerService;
-
 /*
  * Author : THEEPAK PRAKASH P
->>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
  * Version : 1.0
  * Date : 07-04-2021
  * Description : This is  Customer Controller 
 */
 @RestController
 @RequestMapping("/api/oss")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CustomerController {
 
 	@Autowired
@@ -44,6 +45,7 @@ public class CustomerController {
 		return new ResponseEntity<CustomerDTO>(resultcustomer, HttpStatus.OK);
 
 	}
+
 	@DeleteMapping("/deleteCustomer/{id}")
 	public ResponseEntity<CustomerDTO> deleteCustomer(@PathVariable long id) throws CustomerServiceException {
 		LOGGER.info("Delete Customer executed");
@@ -58,7 +60,6 @@ public class CustomerController {
 		CustomerDTO resultCustomer = customerService.updateCustomer(customer);
 		return new ResponseEntity<CustomerDTO>(resultCustomer, HttpStatus.OK);
 	}
-	
 
 	@GetMapping("/getCustomer/{id}")
 	public ResponseEntity<CustomerDTO> getCustomer(@PathVariable long id) throws CustomerServiceException {

@@ -1,9 +1,9 @@
+
 package com.capg.onlinesportsshopee.model;
-import com.capg.onlinesportsshopee.bean.Customer;
-import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
-
+import com.capg.onlinesportsshopee.bean.Customer;
+import java.time.LocalDate;
 import com.capg.onlinesportsshopee.bean.Payment;
 import com.capg.onlinesportsshopee.bean.Product;
 
@@ -14,7 +14,6 @@ import com.capg.onlinesportsshopee.bean.Product;
  * Date        : 05-04-2021
  * Description : This is OrderDTO class
 */
-
 @Component
 public class OrderDTO  {
 	private long orderId;

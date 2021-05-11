@@ -1,7 +1,10 @@
 package com.capg.onlinesportsshopee.bean;
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +13,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 /*
  * Author : THEEPAK PRAKASH P
->>>>>>> branch 'master' of https://github.com/Theepak1/OnlineSportsShopping.git
  * Version : 1.0
  * Date : 01-04-2021
  * Description : This is Address Entity 
@@ -113,6 +115,7 @@ public class Address implements Serializable {
 		this.pinCode = pinCode;
 	}
 
+	
 	public Address(int addressId, String doorNo, String street, String area, String city, String state,int pinCode) 
 	{
 		super();
@@ -127,6 +130,7 @@ public class Address implements Serializable {
 	
 	public Address()
 	{
+
 		super();
 	}
 

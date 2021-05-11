@@ -65,15 +65,12 @@ public class Order implements Serializable {
 	public Order(long orderId, double amount, String billingDate,long userId) {
 
 		super();
-		this. orderId= orderId;
-		this.amount = amount;
-		this.billingDate = billingDate;
-		this.customer= new Customer(userId);
 		this.orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
 		this.customer= new Customer(userId);
 	}
+
 
 	public Order(long orderId, double amount, String billingDate,long userId,String name, String email, String contactNo, String dob,String doorNo, String street, String area, String city, String state, int pinCode,
 			long productId, String productName, String category, String description, String brand, String color,
@@ -85,10 +82,6 @@ public class Order implements Serializable {
 		this.orderId= orderId;
 		this.amount = amount;
 		this.billingDate = billingDate;
-		this.customer= new Customer(userId);
-		
-
-		this.customer= new Customer (name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
 		this.customer= new Customer (userId,name,email,contactNo,dob, doorNo,street,area, city, state, pinCode );
 		this.product = new Product( productId,productName,category, description,brand,color,
 			size, mrp, discount, priceAfterDiscount, inStock,  estimatedDelivery,
@@ -144,7 +137,7 @@ public class Order implements Serializable {
 		return "Order [orderId=" + orderId + ", amount=" + amount + ", billingDate=" + billingDate + ", customer="
 				+ customer + ", product=" + product + ", payment=" + payment + "]";
 	}
-	
+
 	public Order(@NotBlank(message = "Order Id should not be blank") long orderId,
 			@NotBlank(message = "Amount should not be blank") double amount,
 			@NotBlank(message = "Billing Date should not be blank") String billingDate, Customer customer,
@@ -157,4 +150,7 @@ public class Order implements Serializable {
 		this.product = product;
 		this.payment = payment;
 	}
+	
+
+
 }
